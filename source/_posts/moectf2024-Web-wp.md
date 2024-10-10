@@ -1,4 +1,5 @@
 ---
+typora-root-url: ./moectf2024-Web-wp
 title: moectf2024-Web-wp
 toc: true
 categories:
@@ -19,7 +20,7 @@ phpstudy傻瓜式安装即可，鼓励大家自行搭建，然后附件源码放
 
 按要求做，做下一步时不要丢弃上一步的操作
 
-![](/img1.png)
+![](img1.png)
 
 ## ProveYourLove
 
@@ -118,8 +119,8 @@ if($_POST){
 
 题目给了源码文件，5000端口映射在外网，但是app2.py运行在一个随机端口（5001-6000）需要借助ssrf爆破内网app2的端口
 
-![](/img2.png)
+![](img2.png)
 
 可以通过暴露出来的服务打ssrf爆破app2的运行端口，从而借助ssrf窃取内网app2的图片
 
-![](/img3.png)
+![](img3.png)
