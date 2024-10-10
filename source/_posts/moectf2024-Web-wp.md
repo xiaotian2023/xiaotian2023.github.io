@@ -1,5 +1,4 @@
 ---
-typora-root-url: ./moectf2024-Web-wp
 title: moectf2024-Web-wp
 toc: true
 categories:
