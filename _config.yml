@@ -5,7 +5,7 @@ keywords: xt,blog,个人博客,生活,学习,工作
 author: xiaotian
 language: zh-CN
 timezone: ''
-url: https://blog.xiaotian.website
+url: https://www.xiaotian.org.cn
 permalink: ':year/:month/:day/:title/'
 permalink_defaults: null
 pretty_urls:
