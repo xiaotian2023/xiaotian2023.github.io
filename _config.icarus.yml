@@ -280,7 +280,7 @@ widgets:
         type: links
         # Names and URLs of the sites
         links:
-            开源练习场项目: https://github.com/xiaotian2023/CTF-Web-Reproduces-Docker
+            CTF复现: https://github.com/xiaotian2023/CTF-Web-Review
     # Categories widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar

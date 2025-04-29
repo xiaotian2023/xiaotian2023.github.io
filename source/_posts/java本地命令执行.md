@@ -8,6 +8,7 @@ categories:
   - web
 date: 2025-03-20 21:11:21
 tags:
+  - java
 ---
 
 # java本地命令执行
