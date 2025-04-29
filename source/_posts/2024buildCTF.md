@@ -1,6 +1,6 @@
 ---
 typora-root-url: ./2024buildCTF
-title: moectf2024-Web-wp
+title: 2024buildCTF-web-wp
 toc: true
 categories:
   - 技术
