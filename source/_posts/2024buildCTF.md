@@ -203,7 +203,7 @@ curl访问路径4
 
 ## fake_signin
 
-![img](D:\wp\img\2.png)
+![img](2.png)
 
 flask默认开启多线程（threaded默认True），而users是全局变量，多线程并进，每个都会访问修改users，在supplement_count+=1还未返回时，开多个线程可以同时签到
 
@@ -258,7 +258,7 @@ b'BuildCTF{5d5a77cc-0406-40d9-9087-bb3953ec7f8c}'b'BuildCTF{5d5a77cc-0406-40d9-9
 
 ## 打包给你
 
-![L6YtvZPBS52bxac](img/1.png)
+![L6YtvZPBS52bxac](1.png)
 
 *表示当前目录下所有非隐藏文件文件名组合    
 
