@@ -6,7 +6,7 @@ categories:
   - ctf
   - web
 date: 2025-05-11 12:43:47
-tags：
+tags: 
 ---
 
 本篇以Bottle的SimpleTemplate ssti研究内存马
