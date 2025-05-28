@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>Flask内存马查杀</title>
+    <link href="/2025/05/28/Flask%E5%86%85%E5%AD%98%E9%A9%AC%E6%9F%A5%E6%9D%80/"/>
+    <url>/2025/05/28/Flask%E5%86%85%E5%AD%98%E9%A9%AC%E6%9F%A5%E6%9D%80/</url>
+    
+    <content type="html"><![CDATA[<p>本文将介绍如何在 Flask 应用的内存中查杀内存马（Webshell），重点是如何通过操作 Flask 应用对象 <code>&lt;Flask &#39;app&#39;&gt;</code> 来发现并清除恶意代码。</p><hr><p>内存马通常是通过动态代码注入的方式存在于内存中，利用 Flask 应用的生命周期和钩子函数来隐藏自身行为。查杀内存马关键在于：</p><ul><li>找到 Flask 进程对应的 Python 运行环境</li><li>访问 Flask 应用对象，分析其属性和注册的钩子、路由等</li><li>识别并定位恶意注入的函数或钩子，进行清除或禁用</li></ul><hr><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>这里我们使用 <strong>pyrasite</strong> 这个开源工具，能够注入代码到运行中的 Python 进程，实时交互并调试。</p><h3 id="安装-pyrasite"><a href="#安装-pyrasite" class="headerlink" title="安装 pyrasite"></a>安装 pyrasite</h3><blockquote><p>建议直接从 GitHub 克隆最新版安装，pypi的不行</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/lmacken/pyrasite.git<br>pip install ./pyrasite<br></code></pre></td></tr></table></figure><hr><h2 id="查杀步骤"><a href="#查杀步骤" class="headerlink" title="查杀步骤"></a>查杀步骤</h2><h3 id="1-找到-Flask-进程-ID"><a href="#1-找到-Flask-进程-ID" class="headerlink" title="1. 找到 Flask 进程 ID"></a>1. 找到 Flask 进程 ID</h3><p>使用命令查看运行中的 Flask 应用：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ps aux | grep python<br></code></pre></td></tr></table></figure><p>或者针对 Flask 启动脚本查找：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ps aux | grep app.py<br></code></pre></td></tr></table></figure><p>假设 Flask 进程 PID 为 <code>8</code>。</p><hr><h3 id="2-注入交互-Shell"><a href="#2-注入交互-Shell" class="headerlink" title="2. 注入交互 Shell"></a>2. 注入交互 Shell</h3><p>注入 Python 交互式 shell 到 Flask 进程：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pyrasite-shell 8<br></code></pre></td></tr></table></figure><p>这样就可以在 Flask 进程中执行任意 Python 代码。</p><hr><h3 id="3-访问-Flask-应用对象"><a href="#3-访问-Flask-应用对象" class="headerlink" title="3. 访问 Flask 应用对象"></a>3. 访问 Flask 应用对象</h3><p>进入 shell 后，找到 Flask 应用对象。一般常见变量名是 <code>app</code> 或 <code>application</code>，如果不知道变量名，可通过 <code>globals()</code> 或 <code>locals()</code> 查找。</p><p>常用属性包括：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">app.after_request_funcs       <span class="hljs-comment"># 请求后钩子函数字典</span><br>app.before_request_funcs      <span class="hljs-comment"># 请求前钩子函数字典</span><br>app.url_map                   <span class="hljs-comment"># 路由映射表</span><br>app.view_functions            <span class="hljs-comment"># 路由对应的处理函数字典</span><br>app.error_handler_spec        <span class="hljs-comment"># 错误处理函数映射</span><br></code></pre></td></tr></table></figure><hr><h3 id="4-查找恶意钩子或路由"><a href="#4-查找恶意钩子或路由" class="headerlink" title="4. 查找恶意钩子或路由"></a>4. 查找恶意钩子或路由</h3><p>查看所有注册的路由及对应函数：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> route, func <span class="hljs-keyword">in</span> app.view_functions.items():<br>    <span class="hljs-built_in">print</span>(route, func)<br></code></pre></td></tr></table></figure><hr><h3 id="5-分析错误处理钩子"><a href="#5-分析错误处理钩子" class="headerlink" title="5. 分析错误处理钩子"></a>5. 分析错误处理钩子</h3><p>错误处理函数可能被利用来绕过正常访问限制：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">exc_class, code = app._get_exc_class_and_code(<span class="hljs-number">404</span>)<br>malicious_handler = app.error_handler_spec.get(<span class="hljs-literal">None</span>, &#123;&#125;).get(code, &#123;&#125;).get(exc_class)<span class="hljs-comment">#exc_class,code=app._get_exc_class_and_code(404);app.error_handler_spec[None][code][exc_class]</span><br><span class="hljs-keyword">import</span> dis<br>dis.dis(malicious_handler)<br></code></pre></td></tr></table></figure><hr><h3 id="6-反汇编可疑函数"><a href="#6-反汇编可疑函数" class="headerlink" title="6. 反汇编可疑函数"></a>6. 反汇编可疑函数</h3><p>利用 Python 的 <code>dis</code> 模块对可疑函数进行反汇编，查看底层字节码逻辑：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> dis<br>dis.dis(app.view_functions[<span class="hljs-string">&#x27;shell&#x27;</span>])<br></code></pre></td></tr></table></figure><p>通过字节码分析判断函数是否含有执行系统命令、执行动态代码等行为。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+      <category>web</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>web安全</tag>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>SQLi详解</title>
     <link href="/2025/05/22/SQLi%E8%AF%A6%E8%A7%A3/"/>
     <url>/2025/05/22/SQLi%E8%AF%A6%E8%A7%A3/</url>
@@ -72,8 +101,6 @@
     <categories>
       
       <category>技术</category>
-      
-      <category>ctf</category>
       
       <category>web</category>
       
