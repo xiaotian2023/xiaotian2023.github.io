@@ -1029,21 +1029,21 @@ links:
   # Member item of page
   items:
     - {
-      title: "Fluid Blog",
-      intro: "主题博客",
-      link: "https://hexo.fluid-dev.com/",
+      title: "XDSEC",
+      intro: "西电信安协会",
+      link: "https://xdsec.org/",
       avatar: "/img/favicon.png"
     }
     - {
-      title: "Fluid Docs",
-      intro: "主题使用指南",
-      link: "https://hexo.fluid-dev.com/docs/",
+      title: "L-team",
+      intro: "L-team 战队",
+      link: "https://l.xdsec.org/about.html",
       avatar: "/img/favicon.png"
     }
     - {
-      title: "Fluid Repo",
-      intro: "主题 GitHub 仓库",
-      link: "https://github.com/fluid-dev/hexo-theme-fluid",
+      title: "rik",
+      intro: "Pwner",
+      link: "https://pwnerik.cn",
       avatar: "/img/favicon.png"
     }
 
