@@ -19,25 +19,23 @@
   <meta name="author" content="xiaotian">
   <meta name="keywords" content="xt,blog,个人博客,生活,学习,工作">
   
-    <meta name="description" content="java本地命令执行Runtime 就一个构造方法，是private的，只能在Runtime类中实例化，但是可以使用静态方法getRuntime获取到Runtime对象，通过Runtime对象的方法exec执行命令 exec返回一个Process对象 调用链（windows） 12345Runtime.exec() 	-&gt;ProcessBuilder.start()		-&gt; Proce">
+    <meta name="description" content="本篇研究CSRF（Cross-Site Request Forgery，跨站请求伪造） 作用：攻击者诱导已登录用户在不知情的情况下对受信任网站发起请求，冒充用户执行敏感操作（如转账、修改密码等） 原理 利用浏览器自动携带 Cookie 的特性，在用户不知情的情况下向目标网站发起请求。  流程： 用户登录了银行网站，浏览器保存了 Cookie（如 sessionid&#x3D;abc123）  用户未登出银行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java本地命令执行">
-<meta property="og:url" content="https://www.xiaotian.org.cn/2025/03/20/java%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html">
+<meta property="og:title" content="CSRF详解">
+<meta property="og:url" content="https://www.xiaotian.org.cn/2025/05/08/CSRF%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="xt&#39;s blog">
-<meta property="og:description" content="java本地命令执行Runtime 就一个构造方法，是private的，只能在Runtime类中实例化，但是可以使用静态方法getRuntime获取到Runtime对象，通过Runtime对象的方法exec执行命令 exec返回一个Process对象 调用链（windows） 12345Runtime.exec() 	-&gt;ProcessBuilder.start()		-&gt; Proce">
+<meta property="og:description" content="本篇研究CSRF（Cross-Site Request Forgery，跨站请求伪造） 作用：攻击者诱导已登录用户在不知情的情况下对受信任网站发起请求，冒充用户执行敏感操作（如转账、修改密码等） 原理 利用浏览器自动携带 Cookie 的特性，在用户不知情的情况下向目标网站发起请求。  流程： 用户登录了银行网站，浏览器保存了 Cookie（如 sessionid&#x3D;abc123）  用户未登出银行">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.xiaotian.org.cn/2025/03/20/java%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image.png">
-<meta property="article:published_time" content="2025-03-20T13:11:21.000Z">
-<meta property="article:modified_time" content="2025-05-28T14:12:58.889Z">
+<meta property="article:published_time" content="2025-05-08T13:10:12.000Z">
+<meta property="article:modified_time" content="2025-05-28T14:22:37.899Z">
 <meta property="article:author" content="xiaotian">
-<meta property="article:tag" content="java">
 <meta property="article:tag" content="web安全">
+<meta property="article:tag" content="csrf">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.xiaotian.org.cn/2025/03/20/java%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image.png">
   
   
   
-  <title>java本地命令执行 - xt&#39;s blog</title>
+  <title>CSRF详解 - xt&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -215,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="java本地命令执行"></span>
+            <span id="subtitle" data-typed-text="CSRF详解"></span>
           
         </div>
 
@@ -226,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-20 21:11" pubdate>
-          2025年3月20日 晚上
+        <time datetime="2025-05-08 21:10" pubdate>
+          2025年5月8日 晚上
         </time>
       </span>
     
@@ -238,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          506 字
+          314 字
         
       </span>
     
@@ -249,7 +247,7 @@
         
         
         
-          5 分钟
+          3 分钟
         
       </span>
     
@@ -286,42 +284,49 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">java本地命令执行</h1>
+            <h1 id="seo-header">CSRF详解</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="java本地命令执行"><a href="#java本地命令执行" class="headerlink" title="java本地命令执行"></a>java本地命令执行</h1><h3 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h3><p><img src="/2025/03/20/java%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image.png" srcset="/img/loading.gif" lazyload></p>
-<p>就一个构造方法，是private的，只能在Runtime类中实例化，但是可以使用静态方法getRuntime获取到Runtime对象，通过Runtime对象的方法exec执行命令</p>
-<p>exec返回一个Process对象</p>
-<p>调用链（windows）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">Runtime.exec() <br>	-&gt;ProcessBuilder.start()<br>		-&gt; ProcessImpl.start() <br>     		-&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">ProcessImpl</span>()<br>    <span class="hljs-comment">//都在java.lang下</span><br></code></pre></td></tr></table></figure>
-
-<p>linux是将ProcessImpl的start换成forkAndExec</p>
-<p>Runtime.exec直接执行，或在jdk8以下反射执行</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">System.out.println(org.apache.commons.io.IOUtils.toString(Runtime.getRuntime().exec(<span class="hljs-string">&quot;ls&quot;</span>).getInputStream()));<br><span class="hljs-comment">//需要添加库org.apache.commons.io</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="ProcessBuilder"><a href="#ProcessBuilder" class="headerlink" title="ProcessBuilder"></a>ProcessBuilder</h3><p>类跟方法start都是public的，直接用，也是返回Process对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">System.out.println(org.apache.commons.io.IOUtils.toString(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ProcessBuilder</span>(<span class="hljs-string">&quot;whoami&quot;</span>).start().getInputStream()));<br></code></pre></td></tr></table></figure>
-
-<h3 id="ProcessImpl"><a href="#ProcessImpl" class="headerlink" title="ProcessImpl"></a>ProcessImpl</h3><p>类是default权限，只能在java8以下反射获取，并调用static的start</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">Class&lt;?&gt; clazz = Class.forName(<span class="hljs-string">&quot;java.lang.ProcessImpl&quot;</span>);<br>String[] cmds = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]&#123;<span class="hljs-string">&quot;whoami&quot;</span>&#125;;<br><span class="hljs-type">Method</span> <span class="hljs-variable">method</span> <span class="hljs-operator">=</span> clazz.getDeclaredMethod(<span class="hljs-string">&quot;start&quot;</span>, String[].class, Map.class, String.class, ProcessBuilder.Redirect[].class, <span class="hljs-type">boolean</span>.class);<br>method.setAccessible(<span class="hljs-literal">true</span>);<br><span class="hljs-type">Process</span> <span class="hljs-variable">e</span> <span class="hljs-operator">=</span> (Process) method.invoke(<span class="hljs-literal">null</span>, cmds, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">false</span>);<br>System.out.println(org.apache.commons.io.IOUtils.toString(e.getInputStream()));<br></code></pre></td></tr></table></figure>
-
-<h3 id="Jni命令执行"><a href="#Jni命令执行" class="headerlink" title="Jni命令执行"></a>Jni命令执行</h3><p>java中native方法是底层c&#x2F;c++实现的（jni就是java与c&#x2F;c++地层交流的api）</p>
-<p>自己编写native方法测试</p>
-<p>创建test2.java</p>
-<p>java测试</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> test;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">native</span> String <span class="hljs-title function_">nativeMethod</span><span class="hljs-params">(String str)</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        System.load(<span class="hljs-string">&quot;D:\\download\\untitled1\\test\\cmd.dll&quot;</span>); 	<span class="hljs-comment">//你最后的dll生成的位置，或者你直接将dll丢掉java.library.path</span><br>        System.out.println(test2.nativeMethod(<span class="hljs-string">&quot;ls / -al&quot;</span>));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">javac -<span class="hljs-built_in">cp</span> . test2.java -h .  //-h选项用来在指定目录生成test_test2.h<br></code></pre></td></tr></table></figure>
-
-<p>编写test_test2.cpp</p>
-<p>java与c&#x2F;c++通信参考（<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_25722767/article/details/52557235%EF%BC%89">https://blog.csdn.net/qq_25722767/article/details/52557235）</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//</span><br><span class="hljs-comment">// Created by tiand on 2025-03-20.</span><br><span class="hljs-comment">//</span><br><br>#include <span class="hljs-string">&quot;test_test2.h&quot;</span><br>#include &lt;string&gt; <br>#include &lt;cstdio&gt;<br>using namespace std;<br><br>JNIEXPORT jstring JNICALL <span class="hljs-title function_">Java_test_test2_nativeMethod</span><span class="hljs-params">(JNIEnv *env, jclass jclass, jstring str)</span> &#123;<br>    <span class="hljs-keyword">if</span> (str == NULL) &#123;<br>        <span class="hljs-keyword">return</span> NULL;<br>    &#125;<br><br>    const <span class="hljs-type">char</span> *c_str = env-&gt;GetStringUTFChars(str, NULL);<br>    <span class="hljs-keyword">if</span> (c_str == NULL) &#123;<br>        <span class="hljs-keyword">return</span> NULL;<br>    &#125;<br><br>    FILE *fp = popen(c_str, <span class="hljs-string">&quot;r&quot;</span>);<br>    env-&gt;ReleaseStringUTFChars(str, c_str);  <span class="hljs-comment">// 释放传入的字符串</span><br><br>    <span class="hljs-keyword">if</span> (fp == NULL) &#123;<br>        <span class="hljs-keyword">return</span> NULL;<br>    &#125;<br><br>    string output;  <span class="hljs-comment">// 定义 string 存储完整的输出</span><br>    <span class="hljs-type">char</span> buffer[<span class="hljs-number">1024</span>];<br><br>    <span class="hljs-keyword">while</span> (fgets(buffer, sizeof(buffer), fp) != NULL) &#123;<br>        output += buffer;<br>    &#125;<br>    pclose(fp);<br><br>    <span class="hljs-keyword">return</span> env-&gt;NewStringUTF(output.c_str());  <span class="hljs-comment">// 返回完整的多行字符串</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>编译命令</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmd">g++ -shared -o <span class="hljs-built_in">cmd</span>.dll test_test2.cpp -I&quot;<span class="hljs-variable">%JAVA_HOME%</span>/include&quot; -I&quot;<span class="hljs-variable">%JAVA_HOME%</span>/include/win32&quot; -static -static-libgcc -static-libstdc++ -Wl,--add-stdcall-alias<br><br>#-static尽量静态编译<br></code></pre></td></tr></table></figure>
-
+                <p>本篇研究CSRF（Cross-Site Request Forgery，跨站请求伪造）</p>
+<p>作用：攻击者诱导已登录用户在不知情的情况下对受信任网站发起请求，<strong>冒充用户执行敏感操作</strong>（如转账、修改密码等）</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><blockquote>
+<p><strong>利用浏览器自动携带 Cookie 的特性</strong>，在用户不知情的情况下向目标网站发起请求。</p>
+</blockquote>
+<h3 id="流程："><a href="#流程：" class="headerlink" title="流程："></a>流程：</h3><ol>
+<li><p>用户登录了银行网站，浏览器保存了 Cookie（如 <code>sessionid=abc123</code>）</p>
+</li>
+<li><p>用户未登出银行网站，然后访问了攻击者控制的网站</p>
+</li>
+<li><p>攻击者控制的网站含有</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://bank.com/transfer?to=hacker&amp;amount=1000&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>浏览器会携带 <code>Cookie</code> 向 <code>bank.com</code> 发起请求，从而在用户不知情的情况下完成了转账。</p>
+</li>
+</ol>
+<p>跟xss的区别就是得通过前端html或者js伪造用户发起请求</p>
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><table>
+<thead>
+<tr>
+<th>防御手段</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>使用 CSRF Token</td>
+<td>每个表单或请求附带一个随机的、用户唯一的 token，服务端验证</td>
+</tr>
+<tr>
+<td>验证 Referer &#x2F; Origin</td>
+<td>检查请求头中的 <code>Referer</code> 或 <code>Origin</code> 是否为本站 #当然如果触发界面是用户网站就没用了</td>
+</tr>
+<tr>
+<td>敏感操作需二次验证</td>
+<td>如验证码、短信、密码确认、手动确定等</td>
+</tr>
+</tbody></table>
+<p>推荐使用CSRF Token</p>
 
                 
               </div>
@@ -362,9 +367,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/java/" class="print-no-link">#java</a>
-      
         <a href="/tags/web%E5%AE%89%E5%85%A8/" class="print-no-link">#web安全</a>
+      
+        <a href="/tags/csrf/" class="print-no-link">#csrf</a>
       
     </div>
   
@@ -376,8 +381,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>java本地命令执行</div>
-      <div>https://www.xiaotian.org.cn/2025/03/20/java本地命令执行/</div>
+      <div>CSRF详解</div>
+      <div>https://www.xiaotian.org.cn/2025/05/08/CSRF详解/</div>
     </div>
     <div class="license-meta">
       
@@ -389,7 +394,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月20日</div>
+          <div>2025年5月8日</div>
         </div>
       
       
@@ -421,9 +426,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/29/ACTF2025-Web-WriteUp/" title="ACTF2025-Web-WriteUp">
+                      <a href="/2025/05/22/SQLi%E8%AF%A6%E8%A7%A3/" title="SQLi详解">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ACTF2025-Web-WriteUp</span>
+                        <span class="hidden-mobile">SQLi详解</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -431,8 +436,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/11/python%E6%B2%99%E7%AE%B1%E4%B8%8Essti%E5%85%A5%E9%97%A8/" title="python沙箱与ssti入门">
-                        <span class="hidden-mobile">python沙箱与ssti入门</span>
+                      <a href="/2025/05/07/Flask%E5%86%85%E5%AD%98%E9%A9%AC%E8%AF%A6%E8%A7%A3/" title="Flask内存马详解">
+                        <span class="hidden-mobile">Flask内存马详解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
