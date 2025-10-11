@@ -4,11 +4,11 @@ title: java本地命令执行
 toc: true
 categories:
   - 技术
-  - ctf
   - web
 date: 2025-03-20 21:11:21
 tags:
   - java
+  - web安全
 ---
 
 # java本地命令执行

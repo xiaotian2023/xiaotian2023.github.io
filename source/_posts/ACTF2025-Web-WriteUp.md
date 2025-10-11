@@ -7,7 +7,7 @@ categories:
   - web
 date: 2025-04-29 21:11:21
 tags:
-  - xctf
+  - ctf
 ---
 
 ## not so web 1

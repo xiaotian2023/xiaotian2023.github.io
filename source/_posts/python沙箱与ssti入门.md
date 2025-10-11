@@ -2,11 +2,9 @@
 title: python沙箱与ssti入门
 date: 2025-03-11 19:49:28
 tags: 
-  - ctf
   - python
 categories:
   - 技术
-  - ctf
   - web
 toc: true
 comments: true
@@ -17,6 +15,8 @@ comments: true
 完整版云文档: https://doc.weixin.qq.com/doc/w3_AV4A0QaYAIoYb700En5SsqbaVhU4l?scode=APUACwdKABEAMrANAQAV4A0QaYAIo&version=4.1.32.6005&platform=win
 
 题目练习场：https://ctf.xidian.edu.cn/training/
+
+一个查payload的好文档：https://shirajuki.js.org/blog/pyjail-cheatsheet/
 
 ## python沙箱
 
