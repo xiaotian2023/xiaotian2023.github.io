@@ -11,3 +11,7 @@ tags:
 ---
 
 本文研究Linux提权的一些姿势
+
+sudo -l
+
+suid

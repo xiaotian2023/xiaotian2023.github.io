@@ -1,3 +1,18 @@
+---
+typora-root-url: webshell管理器的流量分析
+title: 应急之webshell管理器的流量分析（菜刀蚁剑哥斯拉冰蝎）
+toc: true
+categories:
+  - 技术
+  - web
+  - wp
+  date: 2025-3-3 22:15:08
+  tags: 
+  - 应急响应
+
+
+---
+
 # 应急之webshell管理器的流量分析（菜刀蚁剑哥斯拉冰蝎）
 
 ## 菜刀
@@ -94,7 +109,7 @@ die();
 
 自带解密可以用
 
-![image-20260301152938630](C:\Users\tiand\AppData\Roaming\Typora\typora-user-images\image-20260301152938630.png)
+![image-20260301152938630](/image-20260301152938630.png)
 
 返回解密后类似
 

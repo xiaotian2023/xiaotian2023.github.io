@@ -1,3 +1,17 @@
+---
+title: Pyjail Cheatsheet
+toc: true
+categories:
+  - 技术
+  - web
+date: 2025-05-28 23:10:12
+tags:
+  - web安全
+
+---
+
+
+
 来源：原文页面。([Shirajuki](https://shirajuki.js.org/blog/pyjail-cheatsheet/))
 
 ------
