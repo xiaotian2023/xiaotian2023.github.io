@@ -3,9 +3,7 @@ typora-root-url: 春秋云境Tsclient
 title: 春秋云境Tsclient
 toc: true
 categories:
-  - 技术
-  - web
-  - wp
+  - 渗透测试
 date: 2025-3-3 22:15:08
 tags: 
   - 渗透测试
@@ -433,11 +431,11 @@ REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution 
 
 或者手动regedit
 
-![image-20260303221731142](/image-20260303221731142.png)
+![image-20260303221731142](image-20260303221731142.png)
 
 锁定账户去触发
 
-![image-20260303221645709](/image-20260303221645709.png)
+![image-20260303221645709](image-20260303221645709.png)
 
 ## DC
 

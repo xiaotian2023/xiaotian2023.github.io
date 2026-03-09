@@ -3,9 +3,7 @@ typora-root-url: 春秋云境Certify
 title: 春秋云境Certify
 toc: true
 categories:
-  - 技术
-  - web
-  - wp
+  - 渗透测试
 date: 2025-03-07 22:15:08
 tags: 
   - 渗透测试
@@ -50,7 +48,7 @@ E:\Users\tiand>fscan -h 39.99.131.86
 
 打开solr看到版本8.11.0，查到漏洞
 
-![image-20260307190305718](/image-20260307190305718.png)
+![image-20260307190305718](image-20260307190305718.png)
 
 文中
 
@@ -58,7 +56,7 @@ For vulnerability exploitation, you can use the [Java Chains](https://github.com
 
 复现
 
-![image-20260307203452219](/image-20260307203452219.png)
+![image-20260307203452219](image-20260307203452219.png)
 
 ```
 solr@ubuntu:/tmp$ sudo -l

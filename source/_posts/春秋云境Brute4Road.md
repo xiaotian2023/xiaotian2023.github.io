@@ -3,9 +3,7 @@ typora-root-url: 春秋云境Brute4Road
 title: 春秋云境Brute4Road
 toc: true
 categories:
-  - 技术
-  - web
-  - wp
+  - 渗透测试
 date: 2025-03-04 22:15:08
 tags: 
   - 渗透测试

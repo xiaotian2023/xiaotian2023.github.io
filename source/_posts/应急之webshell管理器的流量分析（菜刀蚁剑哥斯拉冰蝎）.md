@@ -3,9 +3,7 @@ typora-root-url: webshell管理器的流量分析
 title: 应急之webshell管理器的流量分析（菜刀蚁剑哥斯拉冰蝎）
 toc: true
 categories:
-  - 技术
-  - web
-  - wp
+  - 应急响应
 date: 2025-3-3 22:15:08
 tags: 
   - 应急响应
