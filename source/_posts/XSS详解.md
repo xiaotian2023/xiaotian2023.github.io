@@ -2,7 +2,6 @@
 title: XSS详解
 toc: true
 categories:
-  - 技术
   - web
 date: 2024-05-06 21:00:00
 tags:
