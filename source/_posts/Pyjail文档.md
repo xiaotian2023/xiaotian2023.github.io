@@ -2,11 +2,10 @@
 title: Pyjail Cheatsheet
 toc: true
 categories:
-  - 技术
   - web
 date: 2025-05-28 23:10:12
 tags:
-  - web安全
+  - python
 
 ---
 

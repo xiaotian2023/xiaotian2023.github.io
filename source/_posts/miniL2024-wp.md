@@ -3,9 +3,7 @@ typora-root-url: ./miniL2024-wp
 title: Mini L-CTF 2024 Writeup
 toc: true
 categories:
-  - 技术
   - ctf
-  - web
 date: 2024-05-10 22:15:08
 tags: 
   - ctf

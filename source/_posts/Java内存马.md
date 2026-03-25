@@ -2,12 +2,10 @@
 title: Java内存马
 toc: true
 categories:
-  - 技术
   - web
 date: 2025-09-20 23:10:12
 tags:
   - java
-  - web安全
 
 ---
 

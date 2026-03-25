@@ -2,12 +2,10 @@
 title: JNDI注入
 toc: true
 categories:
-  - 技术
   - web
 date: 2025-09-02 23:10:12
 tags:
   - java
-  - web安全
 ---
 
 本文介绍jndi注入

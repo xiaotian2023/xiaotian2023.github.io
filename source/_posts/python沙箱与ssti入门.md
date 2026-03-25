@@ -4,7 +4,6 @@ date: 2025-03-11 19:49:28
 tags: 
   - python
 categories:
-  - 技术
   - web
 toc: true
 comments: true

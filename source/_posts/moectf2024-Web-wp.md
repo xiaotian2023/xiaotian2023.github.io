@@ -3,10 +3,7 @@ typora-root-url: ./moectf2024-Web-wp
 title: moectf2024-Web-wp
 toc: true
 categories:
-  - 技术
   - ctf
-  - web
-  - wp
 date: 2024-10-10 22:15:08
 tags: 
   - ctf

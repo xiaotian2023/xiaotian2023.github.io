@@ -4,9 +4,7 @@ title: web入门指北
 date: 2024-09-03 19:49:28
 tags: 
 categories:
-  - 技术
   - ctf
-  - web
 toc: true
 comments: true
 ---

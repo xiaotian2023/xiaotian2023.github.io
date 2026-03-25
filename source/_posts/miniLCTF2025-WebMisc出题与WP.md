@@ -2,9 +2,7 @@
 title: miniLCTF2025-Web/Misc出题与WP
 toc: true
 categories:
-  - 技术
   - ctf
-  - web
 date: 2025-05-05 16:58:47
 tags:
   - ctf

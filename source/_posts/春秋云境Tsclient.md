@@ -42,9 +42,11 @@ E:\Users\tiand>fscan -h 39.99.142.105
 [11.7s]     扫描已完成: 3/3
 ```
 
-## 入口点
+## MSSQL
 
 mdut连接nt service\mssqlserver权限(服务账户)
+
+### sweetpotato
 
 potato提权，上传sweetpotato提拿flag
 

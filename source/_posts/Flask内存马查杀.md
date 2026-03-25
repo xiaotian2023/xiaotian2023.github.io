@@ -2,12 +2,10 @@
 title: Flask内存马查杀
 toc: true
 categories:
-  - 技术
   - web
 date: 2025-05-28 23:10:12
 tags:
   - python
-  - web安全
 ---
 
 本文介绍如何在 Flask 应用的内存中查杀内存马（Webshell），重点是如何通过操作 Flask 应用对象 `<Flask 'app'>` 来发现并清除恶意代码。

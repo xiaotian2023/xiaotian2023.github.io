@@ -2,9 +2,7 @@
 title: ACTF2025-Web-WriteUp
 toc: true
 categories:
-  - 技术
   - ctf
-  - web
 date: 2025-04-29 21:11:21
 tags:
   - ctf

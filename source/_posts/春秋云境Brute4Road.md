@@ -45,7 +45,7 @@ E:\Users\tiand>fscan -h 39.99.148.252
 [10.3s]     扫描已完成: 5/5
 ```
 
-## 入口点
+## redis
 
 redis未授权，在vps打主从复制rce
 
@@ -84,7 +84,7 @@ ls -al /home/redis/flag/flag01
 [redis@centos-web01 db]$
 ```
 
-提权
+### suid提权
 
 ```
 [redis@centos-web01 db]$ find / -perm -u=s 2>/dev/null
@@ -460,6 +460,8 @@ nuclei模板，仿照利用
 
 mdut连接mssql 172.22.2.16:1433:sa ElGNkOiC
 
+### potato提权
+
 权限是nt service\mssqlserver，potato提权
 
 ```
@@ -501,7 +503,7 @@ flag03: flag{ff45fefb-5299-4a5e-afe1-51f6b29b9eb8}
 [+] Process created, enjoy!
 ```
 
-## DC
+## 约束委派
 
 16在windows域里，从16找打DC的路径
 

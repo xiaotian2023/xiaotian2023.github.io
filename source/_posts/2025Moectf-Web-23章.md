@@ -3,13 +3,10 @@ title: 2025Moectf-Web-23章
 toc: true
 categories:
   - ctf
-  - web
-  - wp
 date: 2025-09-20 23:10:12
 tags:
   - java
-  - web安全
-
+  - ctf
 ---
 
 非常基础的java反序列化，大概能知道java反射，类加载，urldns链基本就可以

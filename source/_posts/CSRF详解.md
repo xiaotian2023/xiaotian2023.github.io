@@ -2,12 +2,10 @@
 title: CSRF详解
 toc: true
 categories:
-  - 技术
   - web
-date: 2025-05-08 21:10:12
+date: 2024-05-08 21:10:12
 tags:
   - csrf
-  - web安全
 ---
 
 本篇研究CSRF（Cross-Site Request Forgery，跨站请求伪造）

@@ -45,7 +45,7 @@ E:\>fscan -h 39.98.118.141
 [10.0s]     扫描已完成: 3/3
 ```
 
-## 入口点
+## thinkphp
 
 thinkphpgui直接利用
 
@@ -56,6 +56,8 @@ find找flag失败，估计在root目录
 suid提权没找到
 
 ![](image-20260302172421688.png)
+
+### sudo提权
 
 查看用户sudo权限
 
@@ -268,7 +270,7 @@ dir C:\ /S /B|findstr flag
 
 没flag啥也没有, 应该是给dc当跳板的
 
-## DC
+## DCSync
 
 已经是system了，先找domain admin的票据密码hash
 

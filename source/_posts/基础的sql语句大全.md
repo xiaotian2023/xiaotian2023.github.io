@@ -2,12 +2,10 @@
 title: 基础的sql语句大全
 toc: true
 categories:
-  - 技术
   - web
 date: 2025-06-14 21:10:12
 tags:
   - sqli
-  - web安全
 ---
 
 本篇为基础的sql语句，方便sql注入时忘记语法来进行查询

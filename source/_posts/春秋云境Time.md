@@ -73,7 +73,7 @@ E:\Users\tiand>fscan -h 39.98.108.227 -p all
 [5m30s]     扫描已完成: 4/4
 ```
 
-## 入口点
+## Neo4j
 
 7474端口打开一看是Neo4j，找nday去打
 
@@ -694,7 +694,7 @@ RDP上去找不到flag也无法提权，搞不到服务账户
 
 先尝试横向DC
 
-## DC
+## autologin
 
 找到到domain admins路径
 

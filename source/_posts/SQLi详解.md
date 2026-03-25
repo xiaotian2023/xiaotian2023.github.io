@@ -2,12 +2,10 @@
 title: SQLi详解
 toc: true
 categories:
-  - 技术
   - web
-date: 2025-05-22 21:00:00
+date: 2024-05-22 21:00:00
 tags:
   - sqli
-  - web安全
 ---
 
 本篇研究 SQL注入（SQL Injection），主要从mysql视角
