@@ -1,0 +1,934 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaotian">
+  <meta name="keywords" content="xt,blog,个人博客,生活,学习,工作">
+  
+    <meta name="description" content="AWDP-FIX12345#!&#x2F;bin&#x2F;shcat app.py &gt; &#x2F;app&#x2F;app.pyps -ef | grep app|grep -v grep |awk &#x27;&#123;print $2&#125;&#x27; |xargs kill -9python3 &#x2F;app&#x2F;app.py  通防 1234567https:&#x2F;&#x2F;github.com&#x2F;leohearts&#x2F;awd-watc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWDP-FIX手册">
+<meta property="og:url" content="https://www.xiaotian.org.cn/2025/03/20/AWDP-FIX%E6%89%8B%E5%86%8C/index.html">
+<meta property="og:site_name" content="xt&#39;s blog">
+<meta property="og:description" content="AWDP-FIX12345#!&#x2F;bin&#x2F;shcat app.py &gt; &#x2F;app&#x2F;app.pyps -ef | grep app|grep -v grep |awk &#x27;&#123;print $2&#125;&#x27; |xargs kill -9python3 &#x2F;app&#x2F;app.py  通防 1234567https:&#x2F;&#x2F;github.com&#x2F;leohearts&#x2F;awd-watc">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-20T13:11:21.000Z">
+<meta property="article:modified_time" content="2026-03-25T10:09:41.381Z">
+<meta property="article:author" content="xiaotian">
+<meta property="article:tag" content="AWDP">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>AWDP-FIX手册 - xt&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.xiaotian.org.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xt&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AWDP-FIX手册"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-20 21:11" pubdate>
+          2025年3月20日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          36 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">AWDP-FIX手册</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="AWDP-FIX"><a href="#AWDP-FIX" class="headerlink" title="AWDP-FIX"></a>AWDP-FIX</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><br><span class="hljs-built_in">cat</span> app.py &gt; /app/app.py<br>ps -ef | grep app|grep -v grep |awk <span class="hljs-string">&#x27;&#123;print $2&#125;&#x27;</span> |xargs <span class="hljs-built_in">kill</span> -9<br>python3 /app/app.py<br></code></pre></td></tr></table></figure>
+
+<p>通防</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/leohearts/</span>awd-watchbird<br>https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/sharpleung/</span>CTF-WAF<br>https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/NonupleBroken/</span>AWD_PHP_WAF<br>https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/DasSecurity-HatLab/</span>AoiAWD<br>https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/dr0op/</span>k4l0ng_WAF<br>https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/Drun1baby/</span>AWD-AWDP_SecFilters<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="php"><a href="#php" class="headerlink" title="php"></a>php</h2><h3 id="rce"><a href="#rce" class="headerlink" title="rce"></a>rce</h3><h4 id="黑名单"><a href="#黑名单" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">preg_match</span> preg_replace、<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs smalltalk"><span class="hljs-string">$s</span>tr1 =<span class="hljs-comment">&quot;&quot;</span>;<br>foreach (<span class="hljs-string">$_</span>POST as <span class="hljs-string">$k</span>ey =&gt; <span class="hljs-string">$v</span>alue) &#123;<br>    <span class="hljs-string">$s</span>tr1.=<span class="hljs-string">$k</span>ey;<br>    <span class="hljs-string">$s</span>tr1.=<span class="hljs-string">$v</span>alue;<br>&#125;<br><span class="hljs-string">$s</span>tr2 =<span class="hljs-comment">&quot;&quot;</span>;<br>foreach (<span class="hljs-string">$_</span>GET as <span class="hljs-string">$k</span>ey =&gt; <span class="hljs-string">$v</span>alue) &#123;<br>    <span class="hljs-string">$s</span>tr2.=<span class="hljs-string">$k</span>ey;<br>    <span class="hljs-string">$s</span>tr2.=<span class="hljs-string">$v</span>alue;<br>&#125;<br>if (preg_match(<span class="hljs-comment">&quot;/system|tail|flag|\&#x27;|\&quot;</span>|\&lt;|\&#123;|\&#125;|exec|base64|phpinfo|&lt;\?|\<span class="hljs-comment">&quot;/i&quot;</span>, <span class="hljs-string">$s</span>tr1)||preg_match(<span class="hljs-comment">&quot;/system|tail|flag|\&#x27;|\&quot;</span>|\&lt;|\&#123;|\&#125;|exec|base64|phpinfo|&lt;\?|\<span class="hljs-comment">&quot;/i&quot;</span>, <span class="hljs-string">$s</span>tr2)) &#123;<br>    die(<span class="hljs-string">&#x27;no!&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wafrce</span>(<span class="hljs-params"><span class="hljs-variable">$str</span></span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> !<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/openlog|syslog|readlink|symlink|popepassthru|stream_socket_server|scandir|assert|pcntl_exec|fwrite|curl|system|eval|assert|flag|passthru|exec|chroot|chgrp|chown|shell_exec|proc_open|proc_get_status|popen|ini_alter|ini_restore/i&quot;</span>, <span class="hljs-variable">$str</span>);<br>&#125;<br><br><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/system|tail|flag|exec|base64/i&#x27;</span>, <span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;REQUEST_URI&#x27;</span>])) &#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;no!&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="无字母数字命令执行"><a href="#无字母数字命令执行" class="headerlink" title="无字母数字命令执行"></a>无字母数字命令执行</h4><p>这类 payload 不一定直接出现 <code>cat</code>、<code>bash</code>、<code>sh</code> 这些单词，更多是依赖反引号、<code>$()</code>、<code>$&#123;&#125;</code>、重定向、管道、换行、通配符等符号去拼接和触发命令。</p>
+<h4 id="黑名单-1"><a href="#黑名单-1" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wafrce_no_alnum_blacklist</span>(<span class="hljs-params"><span class="hljs-variable">$str</span></span>) </span>&#123;<br>    <span class="hljs-variable">$value</span> = <span class="hljs-title function_ invoke__">rawurldecode</span>(<span class="hljs-title function_ invoke__">rawurldecode</span>((<span class="hljs-keyword">string</span>)<span class="hljs-variable">$str</span>));<br>    <span class="hljs-variable">$blacklist</span> = [<br>        <span class="hljs-string">&#x27;`&#x27;</span>, <span class="hljs-string">&#x27;$(&#x27;</span>, <span class="hljs-string">&#x27;$&#123;&#x27;</span>, <span class="hljs-string">&#x27;$$&#x27;</span>, <span class="hljs-string">&#x27;$IFS&#x27;</span>, <span class="hljs-string">&#x27;$&#123;IFS&#125;&#x27;</span>,<br>        <span class="hljs-string">&#x27;|&#x27;</span>, <span class="hljs-string">&#x27;&amp;&#x27;</span>, <span class="hljs-string">&#x27;;&#x27;</span>, <span class="hljs-string">&#x27;&gt;&#x27;</span>, <span class="hljs-string">&#x27;&lt;&#x27;</span>, <span class="hljs-string">&#x27;&gt;&gt;&#x27;</span>, <span class="hljs-string">&#x27;&lt;&lt;&#x27;</span>, <span class="hljs-string">&#x27;&lt;&lt;&lt;&#x27;</span>,<br>        <span class="hljs-string">&quot;\n&quot;</span>, <span class="hljs-string">&quot;\r&quot;</span>, <span class="hljs-string">&quot;\t&quot;</span>,<br>        <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;[&#x27;</span>, <span class="hljs-string">&#x27;]&#x27;</span>, <span class="hljs-string">&#x27;&#123;&#x27;</span>, <span class="hljs-string">&#x27;&#125;&#x27;</span>, <span class="hljs-string">&#x27;\\&#x27;</span><br>    ];<br><br>    <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$blacklist</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$item</span>) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">stripos</span>(<span class="hljs-variable">$value</span>, <span class="hljs-variable">$item</span>) !== <span class="hljs-literal">false</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h4><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">function wafrce_no_alnum_regex($str) &#123;<br>    $value = rawurldecode(rawurldecode((string)$str));<br><br>    $pattern = &#x27;/<br>        \$\(|<span class="hljs-string"></span><br><span class="hljs-string">        \$\&#123;[^&#125;]+\&#125;</span>|<br>        `[^`]<span class="hljs-symbol">*</span>`|<span class="hljs-string"></span><br><span class="hljs-string">        [</span>|<span class="hljs-string">;&amp;&lt;&gt;`]</span>|<span class="hljs-string">\r</span>|<span class="hljs-string">\n</span>|<span class="hljs-string">\t</span>|<br>        (?:^|<span class="hljs-string">[^a-z0-9])[~*?\[\]&#123;&#125;\\\/]&#123;3,&#125;(?:[^a-z0-9]</span>|<span class="hljs-string">$)</span>|<br>        ^(?=.<span class="hljs-symbol">*</span>[`$()&#123;&#125;|<span class="hljs-string">&amp;;&lt;&gt;~*?\[\]\\\/])[^a-z0-9]&#123;4,&#125;$</span><br><span class="hljs-string">    /ix&#x27;;</span><br><span class="hljs-string"></span><br><span class="hljs-string">    return !preg_match($pattern, $value);</span><br><span class="hljs-string">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$_REQUEST</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$key</span> =&gt; <span class="hljs-variable">$value</span>) &#123;<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">wafrce_no_alnum_blacklist</span>(<span class="hljs-variable">$key</span>) || !<span class="hljs-title function_ invoke__">wafrce_no_alnum_blacklist</span>(<span class="hljs-variable">$value</span>)) &#123;<br>        <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;no!&#x27;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">wafrce_no_alnum_regex</span>(<span class="hljs-variable">$key</span>) || !<span class="hljs-title function_ invoke__">wafrce_no_alnum_regex</span>(<span class="hljs-variable">$value</span>)) &#123;<br>        <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;no!&#x27;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这种拦截误杀会比普通关键字黑名单更高，适合先顶在存在命令执行风险的参数入口前面做应急防护。</p>
+<h3 id="xss"><a href="#xss" class="headerlink" title="xss"></a>xss</h3><h4 id="黑名单-2"><a href="#黑名单-2" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wafxss</span>(<span class="hljs-params"><span class="hljs-variable">$str</span></span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> !<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/\&#x27;|http|\&quot;|\`|cookie|&lt;|&gt;|script/i&quot;</span>, <span class="hljs-variable">$str</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="CSP策略"><a href="#CSP策略" class="headerlink" title="CSP策略"></a>CSP策略</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Content-Security-Policy: default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;self&#x27;;&quot;</span>);<br><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="特殊字符转义"><a href="#特殊字符转义" class="headerlink" title="特殊字符转义"></a>特殊字符转义</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">e</span>(<span class="hljs-params"><span class="hljs-variable">$value</span></span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">htmlspecialchars</span>((<span class="hljs-keyword">string</span>)<span class="hljs-variable">$value</span>, ENT_QUOTES | ENT_SUBSTITUTE, <span class="hljs-string">&#x27;UTF-8&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h3><h4 id="黑名单-3"><a href="#黑名单-3" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight wren"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs wren"><span class="hljs-variable">function</span> <span class="hljs-title function_">wafsqli</span>($<span class="hljs-params">str</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-operator">!</span><span class="hljs-title function_">preg_match</span>(<span class="hljs-string">&quot;/select|and|\*|<span class="hljs-char escape_">\x09</span>|\x0a|\x0b|\x0c|\x0d|\xa0|<span class="hljs-char escape_">\x00</span>|<span class="hljs-char escape_">\x26</span>|\x7c|or|into|from|where|join|sleexml|extractvalue|+|regex|copy|read|file|create|grand|dir|insert|link|server|drop|=|&gt;|&lt;|;|<span class="hljs-char escape_">\&quot;</span>|\&#x27;|\^|\|/i&quot;</span>, $<span class="hljs-variable">str</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="mysqli-预处理"><a href="#mysqli-预处理" class="headerlink" title="mysqli 预处理"></a>mysqli 预处理</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$id</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;id&#x27;</span>] ?? <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-variable">$stmt</span> = <span class="hljs-title function_ invoke__">mysqli_prepare</span>(<span class="hljs-variable">$conn</span>, <span class="hljs-string">&quot;select * from users where id = ?&quot;</span>);<br><span class="hljs-title function_ invoke__">mysqli_stmt_bind_param</span>(<span class="hljs-variable">$stmt</span>, <span class="hljs-string">&quot;s&quot;</span>, <span class="hljs-variable">$id</span>); <span class="hljs-comment">//s：字符串</span><br><span class="hljs-title function_ invoke__">mysqli_stmt_execute</span>(<span class="hljs-variable">$stmt</span>);<br><span class="hljs-variable">$result</span> = <span class="hljs-title function_ invoke__">mysqli_stmt_get_result</span>(<span class="hljs-variable">$stmt</span>);<br><br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$id</span> = <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;id&#x27;</span>]) ? (<span class="hljs-keyword">int</span>)<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;id&#x27;</span>] : <span class="hljs-number">0</span>;<br><span class="hljs-variable">$stmt</span> = <span class="hljs-title function_ invoke__">mysqli_prepare</span>(<span class="hljs-variable">$conn</span>, <span class="hljs-string">&quot;select * from users where id = ?&quot;</span>);<br><span class="hljs-title function_ invoke__">mysqli_stmt_bind_param</span>(<span class="hljs-variable">$stmt</span>, <span class="hljs-string">&quot;i&quot;</span>, <span class="hljs-variable">$id</span>);  <span class="hljs-comment">//i: 整数</span><br><span class="hljs-title function_ invoke__">mysqli_stmt_execute</span>(<span class="hljs-variable">$stmt</span>);<br><span class="hljs-variable">$result</span> = <span class="hljs-title function_ invoke__">mysqli_stmt_get_result</span>(<span class="hljs-variable">$stmt</span>);<br><br><span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$mysqli</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(<span class="hljs-string">&quot;select * from users where id = ?&quot;</span>);<br><span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">bind_param</span>(<span class="hljs-string">&quot;i&quot;</span>, <span class="hljs-variable">$id</span>);<br><span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>();<br><span class="hljs-variable">$result</span> = <span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">get_result</span>();<br></code></pre></td></tr></table></figure>
+
+<h4 id="PDO预处理"><a href="#PDO预处理" class="headerlink" title="PDO预处理"></a>PDO预处理</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$username</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;username&#x27;</span>] ?? <span class="hljs-string">&#x27;&#x27;</span>;<br><span class="hljs-variable">$password</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;password&#x27;</span>] ?? <span class="hljs-string">&#x27;&#x27;</span>;<br><br><span class="hljs-variable">$stmt</span> = <span class="hljs-variable">$pdo</span>-&gt;<span class="hljs-title function_ invoke__">prepare</span>(<span class="hljs-string">&quot;select * from users where username = :username and password = :password&quot;</span>);<br><span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">execute</span>([<br>    <span class="hljs-string">&#x27;:username&#x27;</span> =&gt; <span class="hljs-variable">$username</span>,<br>    <span class="hljs-string">&#x27;:password&#x27;</span> =&gt; <span class="hljs-variable">$password</span><br>]);<br><span class="hljs-variable">$user</span> = <span class="hljs-variable">$stmt</span>-&gt;<span class="hljs-title function_ invoke__">fetch</span>(PDO::<span class="hljs-variable constant_">FETCH_ASSOC</span>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="addslashes-函数"><a href="#addslashes-函数" class="headerlink" title="addslashes() 函数"></a>addslashes() 函数</h4><blockquote>
+<p>addslashes() 函数返回在预定义字符之前添加反斜杠的字符串。<br> 预定义字符是：</p>
+<ul>
+<li>单引号（’）</li>
+<li>双引号（”）</li>
+<li>反斜杠（\）</li>
+<li>NULL</li>
+</ul>
+<p>该函数可用于为存储在数据库中的字符串以及数据库查询语句准备字符串。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$username</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;username&#x27;</span>];<br><span class="hljs-variable">$password</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;password&#x27;</span>];<br><br><span class="hljs-variable">$username</span> = <span class="hljs-title function_ invoke__">addslashes</span>(<span class="hljs-variable">$username</span>);<br><span class="hljs-variable">$password</span> = <span class="hljs-title function_ invoke__">addslashes</span>(<span class="hljs-variable">$password</span>);<br><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;username&#x27;</span>]) &amp;&amp; <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;password&#x27;</span>])) &#123;<br>    <span class="hljs-variable">$sql</span> = <span class="hljs-string">&quot;SELECT * FROM users WHERE username = &#x27;<span class="hljs-subst">$username</span>&#x27; AND password = &#x27;<span class="hljs-subst">$password</span>&#x27;&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>放到漏洞点的最前面</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$_REQUEST</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$key</span>=&gt;<span class="hljs-variable">$value</span>) &#123;<br>    <span class="hljs-variable">$_POST</span>[<span class="hljs-variable">$key</span>] = <span class="hljs-title function_ invoke__">addslashes</span>(<span class="hljs-variable">$value</span>);<br>    <span class="hljs-variable">$_GET</span>[<span class="hljs-variable">$key</span>] = <span class="hljs-title function_ invoke__">addslashes</span>(<span class="hljs-variable">$value</span>);<br>    <span class="hljs-variable">$_REQUEST</span>[<span class="hljs-variable">$key</span>] = <span class="hljs-title function_ invoke__">addslashes</span>(<span class="hljs-variable">$value</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h3><h4 id="黑名单-4"><a href="#黑名单-4" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$filename</span> = <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>];<br><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/\.(php|php3|php4|php5|phtml|pht|phar|asp|aspx|jsp|jspx|htaccess|ini|conf)$/i&#x27;</span>, <span class="hljs-variable">$filename</span>)) &#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;forbidden file&#x27;</span>);<br>&#125;<br><br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$content</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;file&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>]);<br><span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&#x27;/&lt;\?(php|=)?|eval\s*\(|assert\s*\(|system\s*\(|exec\s*\(/i&#x27;</span>, <span class="hljs-variable">$content</span>)) &#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;malicious file&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="白名单"><a href="#白名单" class="headerlink" title="白名单"></a>白名单</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$x</span>=<span class="hljs-title function_ invoke__">explode</span>(<span class="hljs-string">&#x27;.&#x27;</span>,<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;myfile&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>]);<br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$x</span>[<span class="hljs-title function_ invoke__">sizeof</span>(<span class="hljs-variable">$x</span>)-<span class="hljs-number">1</span>]!=<span class="hljs-string">&#x27;png&#x27;</span>)&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;只允许png哦!&lt;br&gt;&quot;</span>);<br>&#125;<br><span class="hljs-variable">$allowTypes</span> = [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF];<br><span class="hljs-variable">$type</span> = <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&quot;myfile&quot;</span>][<span class="hljs-string">&quot;type&quot;</span>];<br><span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">in_array</span>(<span class="hljs-variable">$type</span>, <span class="hljs-variable">$allow_content_type</span>)) &#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;只允许png哦!&lt;br&gt;&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="htaccess-apache"><a href="#htaccess-apache" class="headerlink" title=".htaccess (apache)"></a>.htaccess (apache)</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">php_flag</span> engine <span class="hljs-literal">off</span><br><span class="hljs-attribute">Options</span> -ExecCGI<br><span class="hljs-attribute">AddType</span> text/plain .php .phtml .php3 .php4 .php5 .phar<br><br><span class="hljs-section">&lt;IfModule mod_rewrite.c&gt;</span><br>    <span class="hljs-attribute">RewriteEngine</span> <span class="hljs-literal">On</span><br>    <span class="hljs-attribute">RewriteRule</span> \.ph.*$ -<span class="hljs-meta"> [F]</span><br><span class="hljs-section">&lt;/IfModule&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="thinkphp框架防护"><a href="#thinkphp框架防护" class="headerlink" title="thinkphp框架防护"></a>thinkphp框架防护</h4><p>把这个waf直接上到public&#x2F;index.php最前面</p>
+<p>可以防住所有的tp框架漏洞</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$_REQUEST</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$key</span>=&gt;<span class="hljs-variable">$value</span>) &#123;<br>    <span class="hljs-variable">$_POST</span>[<span class="hljs-variable">$key</span>] = <span class="hljs-title function_ invoke__">preg_replace</span>(<span class="hljs-string">&quot;/construct|get|call_user_func|load|invokefunction|Session|phpinfo|param1|Runtime|assert|input|dump|checkcode|union|select|updatexml|@/i&quot;</span>,<span class="hljs-string">&#x27;&#x27;</span>,<span class="hljs-variable">$value</span>);<br>    <span class="hljs-variable">$_GET</span>[<span class="hljs-variable">$key</span>] = <span class="hljs-title function_ invoke__">preg_replace</span>(<span class="hljs-string">&quot;/construct|get|call_user_func|load|invokefunction|Session|phpinfo|param1|Runtime|assert|input|dump|checkcode|union|select|updatexml|@/i&quot;</span>,<span class="hljs-string">&#x27;&#x27;</span>,<span class="hljs-variable">$value</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">wafsqli</span>(<span class="hljs-params">value</span>):<br>    blacklist = [<br>        <span class="hljs-string">&quot;select&quot;</span>, <span class="hljs-string">&quot;union&quot;</span>, <span class="hljs-string">&quot;and&quot;</span>, <span class="hljs-string">&quot;or&quot;</span>, <span class="hljs-string">&quot;from&quot;</span>, <span class="hljs-string">&quot;where&quot;</span>, <span class="hljs-string">&quot;join&quot;</span>,<br>        <span class="hljs-string">&quot;sleep&quot;</span>, <span class="hljs-string">&quot;benchmark&quot;</span>, <span class="hljs-string">&quot;extractvalue&quot;</span>, <span class="hljs-string">&quot;updatexml&quot;</span>,<br>        <span class="hljs-string">&quot;insert&quot;</span>, <span class="hljs-string">&quot;delete&quot;</span>, <span class="hljs-string">&quot;update&quot;</span>, <span class="hljs-string">&quot;drop&quot;</span>,<br>        <span class="hljs-string">&quot;;&quot;</span>, <span class="hljs-string">&quot;--&quot;</span>, <span class="hljs-string">&quot;#&quot;</span>, <span class="hljs-string">&quot;/*&quot;</span>, <span class="hljs-string">&quot;*/&quot;</span>, <span class="hljs-string">&quot;\&quot;&quot;</span>, <span class="hljs-string">&quot;&#x27;&quot;</span>, <span class="hljs-string">&quot;=&quot;</span>, <span class="hljs-string">&quot;&gt;&quot;</span>, <span class="hljs-string">&quot;&lt;&quot;</span><br>    ]<br><br>    value = <span class="hljs-built_in">str</span>(value).lower()<br>    <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> blacklist:<br>        <span class="hljs-keyword">if</span> item <span class="hljs-keyword">in</span> value:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="rce-1"><a href="#rce-1" class="headerlink" title="rce"></a>rce</h3><h4 id="黑名单-5"><a href="#黑名单-5" class="headerlink" title="黑名单"></a>黑名单</h4><p>主要危险点一般出现在：</p>
+<ul>
+<li>os.system</li>
+<li>os.popen</li>
+<li>subprocess.Popen</li>
+<li>subprocess.call</li>
+<li>eval</li>
+<li>exec</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> request<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">wafrce</span>(<span class="hljs-params">value</span>):<br>    pattern = <span class="hljs-string">r&quot;system|exec|eval|subprocess|popen|os\.|cat|ls|flag|bash|sh|curl|wget|nc|bash -c|`|\$\(.*\)|\.\./&quot;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> re.search(pattern, <span class="hljs-built_in">str</span>(value), re.I)<br><br><span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> request.args.items():<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> wafrce(key) <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> wafrce(value):<br>        exit(<span class="hljs-string">&quot;no!&quot;</span>)<br><br><span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> request.form.items():<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> wafrce(key) <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> wafrce(value):<br>        exit(<span class="hljs-string">&quot;no!&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> request<br><br>str1 = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> request.form.items():<br>    str1 += <span class="hljs-built_in">str</span>(key)<br>    str1 += <span class="hljs-built_in">str</span>(value)<br><br>str2 = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> request.args.items():<br>    str2 += <span class="hljs-built_in">str</span>(key)<br>    str2 += <span class="hljs-built_in">str</span>(value)<br><br><span class="hljs-keyword">if</span> re.search(<span class="hljs-string">r&quot;system|tail|flag|exec|base64|bash|sh|curl|wget|&lt;\?|&#123;|&#125;&quot;</span>, str1, re.I) <span class="hljs-keyword">or</span> \<br>   re.search(<span class="hljs-string">r&quot;system|tail|flag|exec|base64|bash|sh|curl|wget|&lt;\?|&#123;|&#125;&quot;</span>, str2, re.I):<br>    exit(<span class="hljs-string">&quot;no!&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="xss-1"><a href="#xss-1" class="headerlink" title="xss"></a>xss</h3><h4 id="黑名单-6"><a href="#黑名单-6" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">wafxss</span>(<span class="hljs-params">value</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> re.search(<span class="hljs-string">r&quot;http|script|cookie|onerror|onload|alert|&lt;|&gt;|&#x27;|\&quot;|`&quot;</span>, <span class="hljs-built_in">str</span>(value), re.I)<br></code></pre></td></tr></table></figure>
+
+<p>Flask 中快速拦截：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> request<br><br><span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> request.args.items():<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> wafxss(key) <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> wafxss(value):<br>        exit(<span class="hljs-string">&quot;blocked&quot;</span>)<br><br><span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> request.form.items():<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> wafxss(key) <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> wafxss(value):<br>        exit(<span class="hljs-string">&quot;blocked&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="CSP-策略"><a href="#CSP-策略" class="headerlink" title="CSP 策略"></a>CSP 策略</h4><p>Flask：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.after_request</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">add_csp</span>(<span class="hljs-params">response</span>):<br>    response.headers[<span class="hljs-string">&quot;Content-Security-Policy&quot;</span>] = <span class="hljs-string">&quot;default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;self&#x27;;&quot;</span><br>    <span class="hljs-keyword">return</span> response<br></code></pre></td></tr></table></figure>
+
+<h4 id="特殊字符转义-1"><a href="#特殊字符转义-1" class="headerlink" title="特殊字符转义"></a>特殊字符转义</h4><p>Python 里推荐直接用模板引擎自动转义，或者手动调用 html.escape。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> html<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">e</span>(<span class="hljs-params">value</span>):<br>    <span class="hljs-keyword">return</span> html.escape(<span class="hljs-built_in">str</span>(value), quote=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">name = request.args.get(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;&quot;</span>)<br>safe_name = e(name)<br></code></pre></td></tr></table></figure>
+
+<p>如果是 Flask + Jinja2，默认模板渲染会自动转义：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> render_template_string, request<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/&quot;</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">index</span>():<br>    name = request.args.get(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-keyword">return</span> render_template_string(<span class="hljs-string">&quot;&lt;div&gt;&#123;&#123; name &#125;&#125;&lt;/div&gt;&quot;</span>, name=name)<br></code></pre></td></tr></table></figure>
+
+<h3 id="sql注入-1"><a href="#sql注入-1" class="headerlink" title="sql注入"></a>sql注入</h3><h4 id="黑名单-7"><a href="#黑名单-7" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">wafsqli</span>(<span class="hljs-params">value</span>):<br>    pattern = <span class="hljs-string">r&quot;select|union|and|or|from|where|join|sleep|benchmark|extractvalue|updatexml|insert|delete|update|drop|;|--|#|/\*|\*/|\&quot;|&#x27;|=|&gt;|&lt;&quot;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> re.search(pattern, <span class="hljs-built_in">str</span>(value), re.I)<br></code></pre></td></tr></table></figure>
+
+<p>快速拦截：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> request<br><br><span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> request.args.items():<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> wafsqli(key) <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> wafsqli(value):<br>        exit(<span class="hljs-string">&quot;blocked&quot;</span>)<br><br><span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> request.form.items():<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> wafsqli(key) <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> wafsqli(value):<br>        exit(<span class="hljs-string">&quot;blocked&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="pymysql-预处理"><a href="#pymysql-预处理" class="headerlink" title="pymysql 预处理"></a>pymysql 预处理</h4><p>错误写法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">username = request.args.get(<span class="hljs-string">&quot;username&quot;</span>)<br>sql = <span class="hljs-string">&quot;select * from users where username = &#x27;%s&#x27;&quot;</span> % username<br>cursor.execute(sql)<br></code></pre></td></tr></table></figure>
+
+<p>安全写法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pymysql<br><br>username = request.args.get(<span class="hljs-string">&quot;username&quot;</span>, <span class="hljs-string">&quot;&quot;</span>)<br>sql = <span class="hljs-string">&quot;select * from users where username = %s&quot;</span><br>cursor.execute(sql, (username,))<br>row = cursor.fetchone()<br></code></pre></td></tr></table></figure>
+
+<p>多个参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">username = request.form.get(<span class="hljs-string">&quot;username&quot;</span>, <span class="hljs-string">&quot;&quot;</span>)<br>password = request.form.get(<span class="hljs-string">&quot;password&quot;</span>, <span class="hljs-string">&quot;&quot;</span>)<br>sql = <span class="hljs-string">&quot;select * from users where username = %s and password = %s&quot;</span><br>cursor.execute(sql, (username, password))<br>user = cursor.fetchone()<br></code></pre></td></tr></table></figure>
+
+<h4 id="sqlite3-预处理"><a href="#sqlite3-预处理" class="headerlink" title="sqlite3 预处理"></a>sqlite3 预处理</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sqlite3<br><br>conn = sqlite3.connect(<span class="hljs-string">&quot;test.db&quot;</span>)<br>cursor = conn.cursor()<br><br>username = <span class="hljs-string">&quot;admin&quot;</span><br>cursor.execute(<span class="hljs-string">&quot;select * from users where username = ?&quot;</span>, (username,))<br>row = cursor.fetchone()<br></code></pre></td></tr></table></figure>
+
+<h4 id="SQLAlchemy-预处理"><a href="#SQLAlchemy-预处理" class="headerlink" title="SQLAlchemy 预处理"></a>SQLAlchemy 预处理</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sqlalchemy <span class="hljs-keyword">import</span> text<br><br>username = request.form.get(<span class="hljs-string">&quot;username&quot;</span>, <span class="hljs-string">&quot;&quot;</span>)<br>stmt = text(<span class="hljs-string">&quot;select * from users where username = :username&quot;</span>)<br>result = db.session.execute(stmt, &#123;<span class="hljs-string">&quot;username&quot;</span>: username&#125;)<br>row = result.fetchone()<br></code></pre></td></tr></table></figure>
+
+<h4 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h4><p>如果是数字参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">id</span> = <span class="hljs-built_in">int</span>(request.args.get(<span class="hljs-string">&quot;id&quot;</span>, <span class="hljs-number">0</span>))<br>cursor.execute(<span class="hljs-string">&quot;select * from users where id = %s&quot;</span>, (<span class="hljs-built_in">id</span>,))<br></code></pre></td></tr></table></figure>
+
+<h3 id="SSTI-模板注入"><a href="#SSTI-模板注入" class="headerlink" title="SSTI (模板注入)"></a>SSTI (模板注入)</h3><h4 id="根本修复"><a href="#根本修复" class="headerlink" title="根本修复"></a>根本修复</h4><p>禁止将用户输入直接拼接进模板字符串。</p>
+<p>错误写法（危险）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">content = request.args.get(<span class="hljs-string">&#x27;content&#x27;</span>)<br><span class="hljs-keyword">return</span> render_template_string(content)<br></code></pre></td></tr></table></figure>
+
+<p>或者：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">name = request.args.get(<span class="hljs-string">&#x27;name&#x27;</span>)<br><span class="hljs-keyword">return</span> render_template_string(<span class="hljs-string">&#x27;Hello &#x27;</span> + name)<br></code></pre></td></tr></table></figure>
+
+<p>安全写法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">name = request.args.get(<span class="hljs-string">&#x27;name&#x27;</span>)<br><span class="hljs-keyword">return</span> render_template_string(<span class="hljs-string">&#x27;Hello &#123;&#123; name &#125;&#125;&#x27;</span>, name=name)<br></code></pre></td></tr></table></figure>
+
+<p>或者使用 <code>render_template</code> 加载静态模板文件。</p>
+<h4 id="黑名单-8"><a href="#黑名单-8" class="headerlink" title="黑名单"></a>黑名单</h4><p>如果不得不使用 <code>render_template_string</code>，可以使用黑名单过滤常见的 SSTI 关键字。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> abort<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">wafssti</span>(<span class="hljs-params">value</span>):<br>    <span class="hljs-comment"># 过滤 &#123;&#123;, &#125;&#125;, &#123;%, %&#125;, [, ], class, mro, base, sub, etc.</span><br>    pattern = <span class="hljs-string">r&quot;\&#123;\&#123;|\&#125;\&#125;|\&#123;%|%\&#125;|\[|\]|class|mro|base|subclasses|init|globals|getitem|popen|os|sys|import|eval|exec|config|request&quot;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> re.search(pattern, <span class="hljs-built_in">str</span>(value), re.I)<br><br><span class="hljs-meta">@app.before_request</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">check_ssti</span>():<br>    <span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> request.values.items():<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> wafssti(key) <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> wafssti(value):<br>            abort(<span class="hljs-number">403</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="node"><a href="#node" class="headerlink" title="node"></a>node</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> keywords = [<span class="hljs-string">&quot;__proto__&quot;</span>, <span class="hljs-string">&quot;constructor&quot;</span>, <span class="hljs-string">&quot;prototype&quot;</span>, <span class="hljs-string">&quot;insert&quot;</span>, <span class="hljs-string">&quot;update&quot;</span>, <span class="hljs-string">&quot;truncate&quot;</span>, <span class="hljs-string">&quot;drop&quot;</span>, <span class="hljs-string">&quot;create&quot;</span>, <span class="hljs-string">&quot;\&quot;&quot;</span>, <span class="hljs-string">&quot;&#x27;&quot;</span>, <span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;&#123;&#123;&quot;</span>, <span class="hljs-string">&quot;&#125;&#125;&quot;</span>, <span class="hljs-string">&quot;union&quot;</span>, <span class="hljs-string">&quot;select&quot;</span>, <span class="hljs-string">&quot;delete&quot;</span>, <span class="hljs-string">&quot;\&quot;&quot;</span>, <span class="hljs-string">&quot;&#x27;&quot;</span>, <span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;&#123;&#123;&quot;</span>, <span class="hljs-string">&quot;&#125;&#125;&quot;</span>, <span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;&#123;&quot;</span>, <span class="hljs-string">&quot;&#125;&quot;</span>, <span class="hljs-string">&quot;flag&quot;</span>];<br>input = input.<span class="hljs-title function_">toLowerCase</span>();<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> i <span class="hljs-keyword">of</span> keywords) &#123;<br>    <span class="hljs-keyword">if</span> (input.<span class="hljs-title function_">includes</span>(i)) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hacker!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="rce-2"><a href="#rce-2" class="headerlink" title="rce"></a>rce</h3><h4 id="黑名单-9"><a href="#黑名单-9" class="headerlink" title="黑名单"></a>黑名单</h4><p>主要危险点一般出现在：</p>
+<ul>
+<li>child_process.exec</li>
+<li>child_process.execSync</li>
+<li>child_process.spawn</li>
+<li>eval</li>
+<li>Function</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> dangerousPattern = <span class="hljs-regexp">/exec|spawn|eval|bash|sh|curl|wget|nc|cat|ls|flag|\$\(|`|\.\.\//i</span>;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">wafrce</span>(<span class="hljs-params">value</span>) &#123;<br>    <span class="hljs-keyword">return</span> !dangerousPattern.<span class="hljs-title function_">test</span>(<span class="hljs-title class_">String</span>(value));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Express 中快速拦截：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">wafrce</span>(<span class="hljs-params">value</span>) &#123;<br>    <span class="hljs-keyword">return</span> !<span class="hljs-regexp">/exec|spawn|eval|bash|sh|curl|wget|nc|cat|ls|flag|\$\(|`|\.\.\//i</span>.<span class="hljs-title function_">test</span>(<span class="hljs-title class_">String</span>(value));<br>&#125;<br><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> input = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(req.<span class="hljs-property">query</span>) + <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(req.<span class="hljs-property">body</span>);<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">wafrce</span>(input)) &#123;<br>        <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">403</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;blocked&quot;</span>);<br>    &#125;<br>    <span class="hljs-title function_">next</span>();<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>如果必须执行系统命令，尽量不用拼接字符串：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; execFile &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;child_process&quot;</span>);<br><br><span class="hljs-title function_">execFile</span>(<span class="hljs-string">&quot;/usr/bin/id&quot;</span>, [<span class="hljs-string">&quot;www-data&quot;</span>], <span class="hljs-function">(<span class="hljs-params">err, stdout</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (err) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(stdout);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="xss-2"><a href="#xss-2" class="headerlink" title="xss"></a>xss</h3><h4 id="黑名单-10"><a href="#黑名单-10" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">wafxss</span>(<span class="hljs-params">value</span>) &#123;<br>    <span class="hljs-keyword">return</span> !<span class="hljs-regexp">/script|onerror|onload|alert|cookie|&lt;|&gt;|&#x27;|&quot;|`|javascript:/i</span>.<span class="hljs-title function_">test</span>(<span class="hljs-title class_">String</span>(value));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Express 中快速拦截：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> input = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(req.<span class="hljs-property">query</span>) + <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(req.<span class="hljs-property">body</span>);<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">wafxss</span>(input)) &#123;<br>        <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">403</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;blocked&quot;</span>);<br>    &#125;<br>    <span class="hljs-title function_">next</span>();<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h4 id="CSP策略-1"><a href="#CSP策略-1" class="headerlink" title="CSP策略"></a>CSP策略</h4><p>不依赖库：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> &#123;<br>    res.<span class="hljs-title function_">setHeader</span>(<br>        <span class="hljs-string">&quot;Content-Security-Policy&quot;</span>,<br>        <span class="hljs-string">&quot;default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;self&#x27;;&quot;</span><br>    );<br>    <span class="hljs-title function_">next</span>();<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>如果项目里已经用了 helmet：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> helmet = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;helmet&quot;</span>);<br><br>app.<span class="hljs-title function_">use</span>(<br>    <span class="hljs-title function_">helmet</span>(&#123;<br>        <span class="hljs-attr">contentSecurityPolicy</span>: &#123;<br>            <span class="hljs-attr">directives</span>: &#123;<br>                <span class="hljs-attr">defaultSrc</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],<br>                <span class="hljs-attr">scriptSrc</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>],<br>                <span class="hljs-attr">objectSrc</span>: [<span class="hljs-string">&quot;&#x27;none&#x27;&quot;</span>],<br>                <span class="hljs-attr">baseUri</span>: [<span class="hljs-string">&quot;&#x27;self&#x27;&quot;</span>]<br>            &#125;<br>        &#125;<br>    &#125;)<br>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="特殊字符转义-2"><a href="#特殊字符转义-2" class="headerlink" title="特殊字符转义"></a>特殊字符转义</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">e</span>(<span class="hljs-params">value</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title class_">String</span>(value)<br>        .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/&amp;/g</span>, <span class="hljs-string">&quot;&amp;amp;&quot;</span>)<br>        .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/&lt;/g</span>, <span class="hljs-string">&quot;&amp;lt;&quot;</span>)<br>        .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/&gt;/g</span>, <span class="hljs-string">&quot;&amp;gt;&quot;</span>)<br>        .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/&quot;/g</span>, <span class="hljs-string">&quot;&amp;quot;&quot;</span>)<br>        .<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/&#x27;/g</span>, <span class="hljs-string">&quot;&amp;#39;&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> name = <span class="hljs-title function_">e</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">name</span> || <span class="hljs-string">&quot;&quot;</span>);<br>    res.<span class="hljs-title function_">send</span>(<span class="hljs-string">`&lt;div&gt;<span class="hljs-subst">$&#123;name&#125;</span>&lt;/div&gt;`</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="sql注入-2"><a href="#sql注入-2" class="headerlink" title="sql注入"></a>sql注入</h3><h4 id="黑名单-11"><a href="#黑名单-11" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">wafsqli</span>(<span class="hljs-params">value</span>) &#123;<br>    <span class="hljs-keyword">return</span> !<span class="hljs-regexp">/select|union|and|or|from|where|join|sleep|benchmark|extractvalue|updatexml|insert|delete|update|drop|;|--|#|\/\*|\*\/|&#x27;|&quot;|=|&gt;|&lt;/i</span>.<span class="hljs-title function_">test</span>(<span class="hljs-title class_">String</span>(value));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>快速拦截：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> input = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(req.<span class="hljs-property">query</span>) + <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(req.<span class="hljs-property">body</span>);<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">wafsqli</span>(input)) &#123;<br>        <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">403</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;blocked&quot;</span>);<br>    &#125;<br>    <span class="hljs-title function_">next</span>();<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h4 id="mysql2-预处理"><a href="#mysql2-预处理" class="headerlink" title="mysql2 预处理"></a>mysql2 预处理</h4><p>错误写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> username = req.<span class="hljs-property">query</span>.<span class="hljs-property">username</span> || <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">const</span> sql = <span class="hljs-string">`select * from users where username = &#x27;<span class="hljs-subst">$&#123;username&#125;</span>&#x27;`</span>;<br><span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> db.<span class="hljs-title function_">query</span>(sql);<br></code></pre></td></tr></table></figure>
+
+<p>安全写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> username = req.<span class="hljs-property">query</span>.<span class="hljs-property">username</span> || <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> db.<span class="hljs-title function_">execute</span>(<br>    <span class="hljs-string">&quot;select * from users where username = ?&quot;</span>,<br>    [username]<br>);<br></code></pre></td></tr></table></figure>
+
+<p>多个参数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> username = req.<span class="hljs-property">body</span>.<span class="hljs-property">username</span> || <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">const</span> password = req.<span class="hljs-property">body</span>.<span class="hljs-property">password</span> || <span class="hljs-string">&quot;&quot;</span>;<br><span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> db.<span class="hljs-title function_">execute</span>(<br>    <span class="hljs-string">&quot;select * from users where username = ? and password = ?&quot;</span>,<br>    [username, password]<br>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="Sequelize-参数化查询"><a href="#Sequelize-参数化查询" class="headerlink" title="Sequelize 参数化查询"></a>Sequelize 参数化查询</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; <span class="hljs-title class_">QueryTypes</span> &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;sequelize&quot;</span>);<br><br><span class="hljs-keyword">const</span> users = <span class="hljs-keyword">await</span> sequelize.<span class="hljs-title function_">query</span>(<br>    <span class="hljs-string">&quot;select * from users where username = :username&quot;</span>,<br>    &#123;<br>        <span class="hljs-attr">replacements</span>: &#123; <span class="hljs-attr">username</span>: req.<span class="hljs-property">query</span>.<span class="hljs-property">username</span> || <span class="hljs-string">&quot;&quot;</span> &#125;,<br>        <span class="hljs-attr">type</span>: <span class="hljs-title class_">QueryTypes</span>.<span class="hljs-property">SELECT</span><br>    &#125;<br>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="强制类型转换-1"><a href="#强制类型转换-1" class="headerlink" title="强制类型转换"></a>强制类型转换</h4><p>如果是数字参数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> id = <span class="hljs-title class_">Number</span>.<span class="hljs-built_in">parseInt</span>(req.<span class="hljs-property">query</span>.<span class="hljs-property">id</span> || <span class="hljs-string">&quot;0&quot;</span>, <span class="hljs-number">10</span>);<br><span class="hljs-keyword">const</span> [rows] = <span class="hljs-keyword">await</span> db.<span class="hljs-title function_">execute</span>(<span class="hljs-string">&quot;select * from users where id = ?&quot;</span>, [id]);<br></code></pre></td></tr></table></figure>
+
+<h3 id="原型链污染"><a href="#原型链污染" class="headerlink" title="原型链污染"></a>原型链污染</h3><h4 id="拦截中间件"><a href="#拦截中间件" class="headerlink" title="拦截中间件"></a>拦截中间件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">wafPrototypePollution</span>(<span class="hljs-params">req, res, next</span>) &#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-title function_">isObject</span> = (<span class="hljs-params">obj</span>) =&gt; obj &amp;&amp; <span class="hljs-keyword">typeof</span> obj === <span class="hljs-string">&#x27;object&#x27;</span> &amp;&amp; !<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(obj);<br>    <span class="hljs-keyword">const</span> visited = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WeakSet</span>();<br>    <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_DEPTH</span> = <span class="hljs-number">20</span>;<br><br>    <span class="hljs-keyword">const</span> <span class="hljs-title function_">check</span> = (<span class="hljs-params">obj, depth = <span class="hljs-number">0</span></span>) =&gt; &#123;<br>        <span class="hljs-keyword">if</span> (depth &gt; <span class="hljs-variable constant_">MAX_DEPTH</span>) &#123;<br>            <span class="hljs-comment">// 深度过大，可能是恶意构造的 payload，直接拦截或者停止递归</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">isObject</span>(obj)) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">if</span> (visited.<span class="hljs-title function_">has</span>(obj)) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">// 避免循环引用死循环</span><br>        visited.<span class="hljs-title function_">add</span>(obj);<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> key <span class="hljs-keyword">in</span> obj) &#123;<br>            <span class="hljs-comment">// 检查 key 本身</span><br>            <span class="hljs-keyword">if</span> (key.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;__proto__&#x27;</span>) || key.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;constructor&#x27;</span>) || key.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;prototype&#x27;</span>)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>            <span class="hljs-comment">// 递归检查</span><br>            <span class="hljs-keyword">if</span> (<span class="hljs-title function_">check</span>(obj[key], depth + <span class="hljs-number">1</span>)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;;<br><br>    <span class="hljs-keyword">if</span> (<span class="hljs-title function_">check</span>(req.<span class="hljs-property">body</span>) || <span class="hljs-title function_">check</span>(req.<span class="hljs-property">query</span>) || <span class="hljs-title function_">check</span>(req.<span class="hljs-property">params</span>)) &#123;<br>        <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">403</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Forbidden&#x27;</span>); <br>    &#125;<br>    <span class="hljs-title function_">next</span>();<br>&#125;<br><br>app.<span class="hljs-title function_">use</span>(wafPrototypePollution);<br></code></pre></td></tr></table></figure>
+
+<h4 id="冻结-Object-prototype"><a href="#冻结-Object-prototype" class="headerlink" title="冻结 Object.prototype"></a>冻结 Object.prototype</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">freeze</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="使用-Map"><a href="#使用-Map" class="headerlink" title="使用 Map"></a>使用 Map</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();<br>map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;key&#x27;</span>, <span class="hljs-string">&#x27;value&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="golang"><a href="#golang" class="headerlink" title="golang"></a>golang</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> (<br>    <span class="hljs-string">&quot;fmt&quot;</span><br>    <span class="hljs-string">&quot;strings&quot;</span><br>)<br><br>filterList := []<span class="hljs-type">string</span>&#123;<span class="hljs-string">&quot;union&quot;</span>, <span class="hljs-string">&quot;select&quot;</span>, <span class="hljs-string">&quot;delete&quot;</span>, <span class="hljs-string">&quot;insert&quot;</span>, <span class="hljs-string">&quot;update&quot;</span>, <span class="hljs-string">&quot;truncate&quot;</span>, <span class="hljs-string">&quot;drop&quot;</span>, <span class="hljs-string">&quot;create&quot;</span>, <span class="hljs-string">&quot;\&quot;&quot;</span>, <span class="hljs-string">&quot;&#x27;&quot;</span>, <span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;&#123;&#123;&quot;</span>, <span class="hljs-string">&quot;&#125;&#125;&quot;</span>, <span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;&#123;&quot;</span>, <span class="hljs-string">&quot;&#125;&quot;</span>, <span class="hljs-string">&quot;flag&quot;</span>&#125;<br>input = strings.ToLower(input)<br><span class="hljs-keyword">for</span> _, s := <span class="hljs-keyword">range</span> filterList &#123;<br>    <span class="hljs-keyword">if</span> strings.Contains( input,s) &#123;<br>        fmt.Println(<span class="hljs-string">&quot;Hacker!&quot;</span>)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>不依赖库</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> (<br>    <span class="hljs-string">&quot;fmt&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">var</span> input <span class="hljs-type">string</span><br><br>    fmt.Print(<span class="hljs-string">&quot;请输入一个字符串：&quot;</span>)<br>    fmt.Scanln(&amp;input)<br><br>    maliciousStrings := []<span class="hljs-type">string</span>&#123;<span class="hljs-string">&quot;union&quot;</span>, <span class="hljs-string">&quot;select&quot;</span>, <span class="hljs-string">&quot;delete&quot;</span>, <span class="hljs-string">&quot;insert&quot;</span>, <span class="hljs-string">&quot;update&quot;</span>, <span class="hljs-string">&quot;truncate&quot;</span>, <span class="hljs-string">&quot;drop&quot;</span>, <span class="hljs-string">&quot;create&quot;</span>, <span class="hljs-string">&quot;\&quot;&quot;</span>, <span class="hljs-string">&quot;&#x27;&quot;</span>, <span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;&#123;&#123;&quot;</span>, <span class="hljs-string">&quot;&#125;&#125;&quot;</span>, <span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;&#123;&quot;</span>, <span class="hljs-string">&quot;&#125;&quot;</span>, <span class="hljs-string">&quot;flag&quot;</span>&#125;<br><br>    <span class="hljs-keyword">if</span> isMalicious(input, maliciousStrings) &#123;<br>        <span class="hljs-keyword">return</span><br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">isMalicious</span><span class="hljs-params">(input <span class="hljs-type">string</span>, maliciousStrings []<span class="hljs-type">string</span>)</span></span> <span class="hljs-type">bool</span> &#123;<br>    input = stringToLower(input)<br><br>    <span class="hljs-keyword">for</span> _, s := <span class="hljs-keyword">range</span> maliciousStrings &#123;<br>        <span class="hljs-keyword">if</span> stringContains(input, s) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">stringToLower</span><span class="hljs-params">(str <span class="hljs-type">string</span>)</span></span> <span class="hljs-type">string</span> &#123;<br>    runes := []<span class="hljs-type">rune</span>(str)<br>    <span class="hljs-keyword">for</span> i, r := <span class="hljs-keyword">range</span> runes &#123;<br>        <span class="hljs-keyword">if</span> r &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; r &lt;= <span class="hljs-string">&#x27;Z&#x27;</span> &#123;<br>            runes[i] = r + (<span class="hljs-string">&#x27;a&#x27;</span> - <span class="hljs-string">&#x27;A&#x27;</span>)<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-type">string</span>(runes)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">stringContains</span><span class="hljs-params">(str <span class="hljs-type">string</span>, substr <span class="hljs-type">string</span>)</span></span> <span class="hljs-type">bool</span> &#123;<br>    strRunes := []<span class="hljs-type">rune</span>(str)<br>    substrRunes := []<span class="hljs-type">rune</span>(substr)<br><br>    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt;= <span class="hljs-built_in">len</span>(strRunes)-<span class="hljs-built_in">len</span>(substrRunes); i++ &#123;<br>        found := <span class="hljs-literal">true</span><br>        <span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; <span class="hljs-built_in">len</span>(substrRunes); j++ &#123;<br>            <span class="hljs-keyword">if</span> strRunes[i+j] != substrRunes[j] &#123;<br>                found = <span class="hljs-literal">false</span><br>                <span class="hljs-keyword">break</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> found &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="rce-3"><a href="#rce-3" class="headerlink" title="rce"></a>rce</h3><h4 id="黑名单-12"><a href="#黑名单-12" class="headerlink" title="黑名单"></a>黑名单</h4><p>主要危险点一般出现在：</p>
+<ul>
+<li>os&#x2F;exec.Command</li>
+<li>exec.CommandContext</li>
+<li>syscall.Exec</li>
+<li>任何把用户输入直接拼到 shell 的场景</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;regexp&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">wafrce</span><span class="hljs-params">(value <span class="hljs-type">string</span>)</span></span> <span class="hljs-type">bool</span> &#123;<br>    pattern := regexp.MustCompile(<span class="hljs-string">&quot;(?i)exec|bash|sh|curl|wget|nc|cat|ls|flag|\\$\\(|`|\\.\\./&quot;</span>)<br>    <span class="hljs-keyword">return</span> !pattern.MatchString(value)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>net&#x2F;http 中快速拦截：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> (<br>        <span class="hljs-string">&quot;net/http&quot;</span><br>        <span class="hljs-string">&quot;regexp&quot;</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">wafrce</span><span class="hljs-params">(value <span class="hljs-type">string</span>)</span></span> <span class="hljs-type">bool</span> &#123;<br>    pattern := regexp.MustCompile(<span class="hljs-string">&quot;(?i)exec|bash|sh|curl|wget|nc|cat|ls|flag|\\$\\(|`|\\.\\./&quot;</span>)<br>    <span class="hljs-keyword">return</span> !pattern.MatchString(value)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">rceMiddleware</span><span class="hljs-params">(next http.Handler)</span></span> http.Handler &#123;<br>        <span class="hljs-keyword">return</span> http.HandlerFunc(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;<br>                input := r.URL.RawQuery<br>                <span class="hljs-keyword">if</span> !wafrce(input) &#123;<br>                        http.Error(w, <span class="hljs-string">&quot;blocked&quot;</span>, http.StatusForbidden)<br>                        <span class="hljs-keyword">return</span><br>                &#125;<br>                next.ServeHTTP(w, r)<br>        &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果必须执行命令，不要把用户输入直接拼进 shell：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go">cmd := exec.Command(<span class="hljs-string">&quot;/usr/bin/id&quot;</span>, <span class="hljs-string">&quot;www-data&quot;</span>)<br>output, err := cmd.Output()<br><span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>        <span class="hljs-keyword">return</span><br>&#125;<br>fmt.Println(<span class="hljs-type">string</span>(output))<br></code></pre></td></tr></table></figure>
+
+<h3 id="xss-3"><a href="#xss-3" class="headerlink" title="xss"></a>xss</h3><h4 id="黑名单-13"><a href="#黑名单-13" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;regexp&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">wafxss</span><span class="hljs-params">(value <span class="hljs-type">string</span>)</span></span> <span class="hljs-type">bool</span> &#123;<br>        pattern := regexp.MustCompile(<span class="hljs-string">`(?i)script|onerror|onload|alert|cookie|&lt;|&gt;|&#x27;|&quot;|javascript:`</span>)<br>        <span class="hljs-keyword">return</span> !pattern.MatchString(value)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="CSP策略-2"><a href="#CSP策略-2" class="headerlink" title="CSP策略"></a>CSP策略</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">cspMiddleware</span><span class="hljs-params">(next http.Handler)</span></span> http.Handler &#123;<br>        <span class="hljs-keyword">return</span> http.HandlerFunc(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;<br>                w.Header().Set(<span class="hljs-string">&quot;Content-Security-Policy&quot;</span>, <span class="hljs-string">&quot;default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;self&#x27;;&quot;</span>)<br>                next.ServeHTTP(w, r)<br>        &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="特殊字符转义-3"><a href="#特殊字符转义-3" class="headerlink" title="特殊字符转义"></a>特殊字符转义</h4><p>Go 里优先使用 html&#x2F;template，它默认会转义：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> (<br>        <span class="hljs-string">&quot;html/template&quot;</span><br>        <span class="hljs-string">&quot;net/http&quot;</span><br>)<br><br><span class="hljs-keyword">var</span> tpl = template.Must(template.New(<span class="hljs-string">&quot;index&quot;</span>).Parse(<span class="hljs-string">`&lt;div&gt;&#123;&#123;.Name&#125;&#125;&lt;/div&gt;`</span>))<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">index</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;<br>        data := <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">string</span>&#123;<br>                <span class="hljs-string">&quot;Name&quot;</span>: r.URL.Query().Get(<span class="hljs-string">&quot;name&quot;</span>),<br>        &#125;<br>        tpl.Execute(w, data)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果是手动转义：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;html&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">e</span><span class="hljs-params">(value <span class="hljs-type">string</span>)</span></span> <span class="hljs-type">string</span> &#123;<br>        <span class="hljs-keyword">return</span> html.EscapeString(value)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="sql注入-3"><a href="#sql注入-3" class="headerlink" title="sql注入"></a>sql注入</h3><h4 id="黑名单-14"><a href="#黑名单-14" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;regexp&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">wafsqli</span><span class="hljs-params">(value <span class="hljs-type">string</span>)</span></span> <span class="hljs-type">bool</span> &#123;<br>        pattern := regexp.MustCompile(<span class="hljs-string">`(?i)select|union|and|or|from|where|join|sleep|benchmark|extractvalue|updatexml|insert|delete|update|drop|;|--|#|/\*|\*/|&#x27;|&quot;|=|&gt;|&lt;`</span>)<br>        <span class="hljs-keyword">return</span> !pattern.MatchString(value)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>快速拦截：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sqliMiddleware</span><span class="hljs-params">(next http.Handler)</span></span> http.Handler &#123;<br>        <span class="hljs-keyword">return</span> http.HandlerFunc(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;<br>                <span class="hljs-keyword">if</span> !wafsqli(r.URL.RawQuery) &#123;<br>                        http.Error(w, <span class="hljs-string">&quot;blocked&quot;</span>, http.StatusForbidden)<br>                        <span class="hljs-keyword">return</span><br>                &#125;<br>                next.ServeHTTP(w, r)<br>        &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="database-sql-预处理"><a href="#database-sql-预处理" class="headerlink" title="database&#x2F;sql 预处理"></a>database&#x2F;sql 预处理</h4><p>错误写法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs go">username := r.URL.Query().Get(<span class="hljs-string">&quot;username&quot;</span>)<br>query := <span class="hljs-string">&quot;select * from users where username = &#x27;&quot;</span> + username + <span class="hljs-string">&quot;&#x27;&quot;</span><br>rows, _ := db.Query(query)<br></code></pre></td></tr></table></figure>
+
+<p>安全写法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go">username := r.URL.Query().Get(<span class="hljs-string">&quot;username&quot;</span>)<br>rows, err := db.Query(<span class="hljs-string">&quot;select * from users where username = ?&quot;</span>, username)<br><span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>        <span class="hljs-keyword">return</span><br>&#125;<br><span class="hljs-keyword">defer</span> rows.Close()<br></code></pre></td></tr></table></figure>
+
+<p>多个参数：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs go">username := r.FormValue(<span class="hljs-string">&quot;username&quot;</span>)<br>password := r.FormValue(<span class="hljs-string">&quot;password&quot;</span>)<br>row := db.QueryRow(<br>        <span class="hljs-string">&quot;select * from users where username = ? and password = ?&quot;</span>,<br>        username,<br>        password,<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="GORM-预处理"><a href="#GORM-预处理" class="headerlink" title="GORM 预处理"></a>GORM 预处理</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> user User<br>err := db.Where(<span class="hljs-string">&quot;username = ?&quot;</span>, r.URL.Query().Get(<span class="hljs-string">&quot;username&quot;</span>)).First(&amp;user).Error<br><span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>        <span class="hljs-keyword">return</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="强制类型转换-2"><a href="#强制类型转换-2" class="headerlink" title="强制类型转换"></a>强制类型转换</h4><p>如果是数字参数：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go">id, _ := strconv.Atoi(r.URL.Query().Get(<span class="hljs-string">&quot;id&quot;</span>))<br>row := db.QueryRow(<span class="hljs-string">&quot;select * from users where id = ?&quot;</span>, id)<br></code></pre></td></tr></table></figure>
+
+<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><p>改jar包</p>
+<p>idea jareditor直接改</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">jar </span>-xvf your_jar_name.<span class="hljs-keyword">jar </span><br><span class="hljs-keyword">javac </span>-cp <span class="hljs-string">&quot;..\lib\*&quot;</span> <span class="hljs-keyword">org\ota\MyApp.java </span><br><span class="hljs-keyword">jar </span>-uvf util.<span class="hljs-keyword">jar </span>MyApp.class<br><span class="hljs-keyword">jar </span>-tvf util.<span class="hljs-keyword">jar</span><br></code></pre></td></tr></table></figure>
+
+<p>或者zip直接解压压缩</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-built_in">String</span>[] filterList = &#123;<span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-string">&quot;cherry&quot;</span>&#125;;<br><span class="hljs-built_in">String</span> <span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;ana&quot;</span>;<br><br><span class="hljs-keyword">for</span> (<span class="hljs-built_in">String</span> s : filterList) &#123;<br>    <span class="hljs-keyword">if</span> (s.<span class="hljs-property">contains</span>(<span class="hljs-built_in">str</span>)) &#123;<br>        System.<span class="hljs-property">out</span>.<span class="hljs-property">println</span>(<span class="hljs-string">&quot;Hacker!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="rce-4"><a href="#rce-4" class="headerlink" title="rce"></a>rce</h3><h4 id="黑名单-15"><a href="#黑名单-15" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.regex.Pattern;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">wafRce</span><span class="hljs-params">(String value)</span> &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">pattern</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;(?i)exec|bash|sh|cmd|powershell|curl|wget|nc|whoami|cat|ls|flag|runtime|processbuilder&quot;</span>;<br>    <span class="hljs-keyword">if</span> (value == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">return</span> !Pattern.compile(pattern).matcher(value).find();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="xss-4"><a href="#xss-4" class="headerlink" title="xss"></a>xss</h3><h4 id="黑名单-16"><a href="#黑名单-16" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.regex.Pattern;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">wafXss</span><span class="hljs-params">(String value)</span> &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">pattern</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;(?i)script|onerror|onload|alert|cookie|&lt;|&gt;|&#x27;|\&quot;|javascript:&quot;</span>;<br>    <span class="hljs-keyword">if</span> (value == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">return</span> !Pattern.compile(pattern).matcher(value).find();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="特殊字符转义-4"><a href="#特殊字符转义-4" class="headerlink" title="特殊字符转义"></a>特殊字符转义</h4><p>Spring Boot &#x2F; Thymeleaf 等框架默认会对输出进行 HTML 转义。</p>
+<p>如果手动转义，可使用 <code>StringEscapeUtils</code> (需引入 commons-text)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.apache.commons.text.StringEscapeUtils;<br><br><span class="hljs-keyword">public</span> String <span class="hljs-title function_">safe</span><span class="hljs-params">(String value)</span> &#123;<br>    <span class="hljs-keyword">return</span> StringEscapeUtils.escapeHtml4(value);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>或者简单替换：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">htmlEncode</span><span class="hljs-params">(String s)</span> &#123;<br>    <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); i++) &#123;<br>        <span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> s.charAt(i);<br>        <span class="hljs-keyword">switch</span> (c) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;&lt;&#x27;</span>: sb.append(<span class="hljs-string">&quot;&amp;lt;&quot;</span>); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;&gt;&#x27;</span>: sb.append(<span class="hljs-string">&quot;&amp;gt;&quot;</span>); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;&amp;&#x27;</span>: sb.append(<span class="hljs-string">&quot;&amp;amp;&quot;</span>); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;&quot;&#x27;</span>: sb.append(<span class="hljs-string">&quot;&amp;quot;&quot;</span>); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;\&#x27;&#x27;</span>: sb.append(<span class="hljs-string">&quot;&amp;#39;&quot;</span>); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">default</span>: sb.append(c);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> sb.toString();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="sql注入-4"><a href="#sql注入-4" class="headerlink" title="sql注入"></a>sql注入</h3><h4 id="黑名单-17"><a href="#黑名单-17" class="headerlink" title="黑名单"></a>黑名单</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.regex.Pattern;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">wafSqli</span><span class="hljs-params">(String value)</span> &#123;<br>    <span class="hljs-type">String</span> <span class="hljs-variable">pattern</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;(?i)select|union|and|or|from|where|join|sleep|benchmark|extractvalue|updatexml|insert|delete|update|drop|;|--|#|/\\*|\\*/|&#x27;|\&quot;|=|&gt;|&lt;&quot;</span>;<br>    <span class="hljs-keyword">if</span> (value == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">return</span> !Pattern.compile(pattern).matcher(value).find();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="JDBC-预处理"><a href="#JDBC-预处理" class="headerlink" title="JDBC 预处理"></a>JDBC 预处理</h4><p>错误写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> request.getParameter(<span class="hljs-string">&quot;username&quot;</span>);<br><span class="hljs-type">String</span> <span class="hljs-variable">sql</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;select * from users where username = &#x27;&quot;</span> + username + <span class="hljs-string">&quot;&#x27;&quot;</span>;<br><span class="hljs-type">Statement</span> <span class="hljs-variable">stmt</span> <span class="hljs-operator">=</span> connection.createStatement();<br><span class="hljs-type">ResultSet</span> <span class="hljs-variable">rs</span> <span class="hljs-operator">=</span> stmt.executeQuery(sql);<br></code></pre></td></tr></table></figure>
+
+<p>安全写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">username</span> <span class="hljs-operator">=</span> request.getParameter(<span class="hljs-string">&quot;username&quot;</span>);<br><span class="hljs-type">String</span> <span class="hljs-variable">sql</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;select * from users where username = ?&quot;</span>;<br><span class="hljs-type">PreparedStatement</span> <span class="hljs-variable">pstmt</span> <span class="hljs-operator">=</span> connection.prepareStatement(sql);<br>pstmt.setString(<span class="hljs-number">1</span>, username);<br><span class="hljs-type">ResultSet</span> <span class="hljs-variable">rs</span> <span class="hljs-operator">=</span> pstmt.executeQuery();<br></code></pre></td></tr></table></figure>
+
+<h4 id="MyBatis-预处理"><a href="#MyBatis-预处理" class="headerlink" title="MyBatis 预处理"></a>MyBatis 预处理</h4><p>使用 <code>#&#123;&#125;</code> 而不是 <code>$&#123;&#125;</code>。</p>
+<p>错误写法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;getUser&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;User&quot;</span>&gt;</span><br>  select * from users where username = $&#123;username&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>安全写法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;getUser&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;User&quot;</span>&gt;</span><br>  select * from users where username = #&#123;username&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="java反序列化"><a href="#java反序列化" class="headerlink" title="java反序列化"></a>java反序列化</h3><h4 id="ObjectInputFilter-JEP-290"><a href="#ObjectInputFilter-JEP-290" class="headerlink" title="ObjectInputFilter (JEP 290)"></a>ObjectInputFilter (JEP 290)</h4><p>Java 9+ (或 Java 8u121+) 支持。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-comment">// 白名单模式：只允许 java.util.HashMap 和 java.lang.Number 以及 java.lang 包下的类(示例)</span><br><span class="hljs-comment">// config可以在启动参数中配置jdk.serialFilter，也可以代码配置</span><br><span class="hljs-type">ObjectInputFilter</span> <span class="hljs-variable">filter</span> <span class="hljs-operator">=</span> ObjectInputFilter.Config.createFilter(<br>    <span class="hljs-string">&quot;java.util.HashMap;java.lang.*;!*&quot;</span><br>);<br>objectInputStream.setObjectInputFilter(filter);<br></code></pre></td></tr></table></figure>
+
+<h4 id="重写-resolveClass"><a href="#重写-resolveClass" class="headerlink" title="重写 resolveClass"></a>重写 resolveClass</h4><p>如果不支持 JEP 290，可以重写 <code>ObjectInputStream</code> 的 <code>resolveClass</code> 方法进行黑白名单校验。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SafeObjectInputStream</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ObjectInputStream</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">SafeObjectInputStream</span><span class="hljs-params">(InputStream in)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>        <span class="hljs-built_in">super</span>(in);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> Class&lt;?&gt; resolveClass(ObjectStreamClass desc) <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> desc.getName();<br>        <span class="hljs-comment">// 黑名单</span><br>        <span class="hljs-keyword">if</span> (name.contains(<span class="hljs-string">&quot;org.apache.commons.collections.functors&quot;</span>) ||<br>            name.contains(<span class="hljs-string">&quot;org.apache.xalan&quot;</span>) ||<br>            name.contains(<span class="hljs-string">&quot;java.lang.Runtime&quot;</span>) ||<br>            name.contains(<span class="hljs-string">&quot;java.lang.ProcessBuilder&quot;</span>)) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">InvalidClassException</span>(<span class="hljs-string">&quot;Unauthorized deserialization attempt&quot;</span>, name);<br>        &#125;<br>        <span class="hljs-comment">// 白名单建议：只放行项目自己的包名</span><br>        <span class="hljs-comment">// if (!name.startsWith(&quot;com.mycompany.myapp.&quot;)) &#123;</span><br>        <span class="hljs-comment">//     throw new InvalidClassException(&quot;Unauthorized deserialization attempt&quot;, name);</span><br>        <span class="hljs-comment">// &#125;</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.resolveClass(desc);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">FileInputStream</span> <span class="hljs-variable">fis</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;object.ser&quot;</span>);<br><span class="hljs-type">SafeObjectInputStream</span> <span class="hljs-variable">ois</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SafeObjectInputStream</span>(fis);<br><span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> ois.readObject();<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/AWDP/" class="category-chain-item">AWDP</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/AWDP/" class="print-no-link">#AWDP</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AWDP-FIX手册</div>
+      <div>https://www.xiaotian.org.cn/2025/03/20/AWDP-FIX手册/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xiaotian</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年3月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/04/29/ACTF2025-Web-WriteUp/" title="ACTF2025-Web-WriteUp">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ACTF2025-Web-WriteUp</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/20/java%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" title="java本地命令执行">
+                        <span class="hidden-mobile">java本地命令执行</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

